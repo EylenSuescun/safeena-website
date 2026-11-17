@@ -2,47 +2,51 @@ import { useEffect, useState } from 'react'
 
 const content = {
   en: {
-    announcement: 'LATIN AMERICA  ·  ASIA  ·  A GLOBAL COFFEE NETWORK',
-    announcementRight: 'A GLOBAL COFFEE NETWORK',
+    announcement: 'SPECIALTY COFFEE  ·  COLOMBIA  ·  INDONESIA  ·  VIETNAM  ·  ASIA',
+    announcementRight: 'FROM ORIGIN TO ASIA',
     nav: { story: 'Our idea', network: 'Regions', countries: 'Countries', zones: 'Colombia by zone', partners: 'For partners', contact: 'Let’s connect' },
     language: 'ES',
     hero: {
-      eyebrow: 'A GLOBAL COFFEE NETWORK, ROOTED AT ORIGIN',
-      title: <>From the <em>origin</em><br />to the world.</>,
-      body: 'SAFEENA is building a global network connecting coffee origins, producers and markets across Latin America and Asia. Explore by region, country and — in Colombia — by origin zone.',
-      primary: 'Explore the network',
-      secondary: 'Follow the journey',
-      imageLabel: 'A COLOMBIAN ORIGIN',
-      imageNote: 'A global network begins with a place',
-      captionRegion: 'LATIN AMERICA · ASIA',
-      sideLabel: 'LOCAL ORIGINS · GLOBAL NETWORK',
+      eyebrow: 'COLOMBIA AT THE HEART OF SPECIALTY COFFEE',
+      title: <>Colombia, the<br /><em>heart</em> of specialty coffee.</>,
+      body: 'SAFEENA connects coffee growers in Colombia, Indonesia and Vietnam with specialty coffee buyers, primarily in Asia. Colombia leads our story, with its producers, places and lots in focus.',
+      primary: 'Explore Colombian origins',
+      secondary: 'Meet SAFEENA Asia',
+      imageLabel: 'COLOMBIAN PRODUCERS',
+      imageNote: 'Carefully picked at origin · connected to Asia',
+      captionRegion: 'COLOMBIA → ASIA',
+      sideLabel: 'SPECIALTY COFFEE · COLOMBIAN ORIGINS',
+      imageAlt: 'A coffee grower selectively picking ripe cherries at a Colombian farm',
     },
     intro: {
       index: '01 / THE IDEA',
-      title: 'A global network, built one origin at a time.',
-      body: 'SAFEENA is building connections between coffee producers and partners across Latin America and Asia. Each place has its own context, people and lots; our network makes those local stories easier to discover and follow.',
-      link: 'Explore regions',
-      note: 'LOCAL ROOTS · GLOBAL REACH',
+      title: 'Excellent coffee, from Colombian growers to buyers in Asia.',
+      body: 'We work exclusively with specialty coffee. SAFEENA connects coffee growers in Colombia, Indonesia and Vietnam with buyers based primarily across Asia. We begin in Colombia, building clear relationships around each producer, place and lot.',
+      link: 'Meet Colombian producers',
+      note: 'COLOMBIA · INDONESIA · VIETNAM → ASIA',
     },
     network: {
-      eyebrow: '02 / EXPLORE THE NETWORK',
-      title: <>Connected by region.<br />Experienced place by place.</>,
-      body: 'Start with a region, then explore its markets, countries and origins as the SAFEENA network grows.',
+      eyebrow: '02 / OUR NETWORK',
+      title: <>Colombian origins.<br />Buyers across Asia.</>,
+      body: 'Specialty coffee connects producers in Colombia, Indonesia and Vietnam with buyers primarily in Asia.',
       regions: [
-        { id: 'asia', number: '01', title: 'Asia', label: 'MARKETS & PARTNERS', placeLabel: 'MARKET', place: 'Hong Kong', description: 'This section will bring together market destinations, buyers and partners as the network expands.' },
-        { id: 'latam', number: '02', title: 'Latin America', label: 'ORIGINS & PRODUCERS', placeLabel: 'COUNTRY', place: 'Colombia', description: 'Discover coffee origins and producer relationships, organized country by country.' },
+        { id: 'asia', number: '01', title: 'Asia', label: 'BUYERS & ROASTERS', placeLabel: 'PRIMARY BUYER REGION', place: 'Asia', description: 'Our main buyers are in Asia. We connect their needs directly with specialty coffee at origin.' },
+        { id: 'origins', number: '02', title: 'Colombia, Indonesia & Vietnam', label: 'PRODUCER COUNTRIES', placeLabel: 'LEAD ORIGIN', place: 'Colombia', description: 'Three producer countries, with Colombia in the spotlight and dedicated profiles growing over time.' },
       ],
-      asiaEyebrow: 'ASIA · DESTINATIONS',
-      asiaTitle: 'Asia, market by market.',
-      asiaBody: 'Explore SAFEENA destinations and partnerships across Asia. The network starts in Hong Kong.',
+      asiaEyebrow: 'ASIA · BUYERS & MARKETS',
+      asiaTitle: 'Our buyers are based across Asia.',
+      asiaBody: 'Asia is SAFEENA’s primary buyer region. We bring market demand closer to exceptional coffee at origin.',
       asiaMarket: 'Hong Kong',
-      asiaMarketDetail: 'Initial market · Asia',
-      countriesEyebrow: '03 / COUNTRY DIRECTORY',
-      countriesTitle: 'Explore by country.',
-      countriesBody: 'Each country will have a dedicated view of its origins, people and coffee lots.',
-      countryRegion: 'LATIN AMERICA',
-      country: 'Colombia',
-      countryDetail: 'Latin America · Explore by zone',
+      asiaMarketDetail: 'An Asian buyer market · specialty coffee',
+      asiaInstagram: 'Follow SAFEENA Asia on Instagram',
+      countriesEyebrow: '03 / PRODUCER COUNTRIES',
+      countriesTitle: 'Colombia first. More origins in the network.',
+      countriesBody: 'Producers in Colombia, Indonesia and Vietnam. Colombia leads with the most developed origin stories and lot profiles.',
+      producerCountries: [
+        { id: 'colombia', number: '01', name: 'Colombia', label: 'LEAD ORIGIN · PRODUCER PROFILES', detail: 'Antioquia · Tolima · Explore Colombia by zone', action: 'Explore Colombia', imageAlt: 'Coffee grower selecting ripe cherries at a Colombian farm' },
+        { id: 'indonesia', number: '02', name: 'Indonesia', label: 'PRODUCER ORIGIN', detail: 'Producer profiles are being built.', action: 'Connect with SAFEENA' },
+        { id: 'vietnam', number: '03', name: 'Vietnam', label: 'PRODUCER ORIGIN', detail: 'Producer profiles are being built.', action: 'Connect with SAFEENA' },
+      ],
       zonesEyebrow: 'COLOMBIA · BY ZONE',
       zonesTitle: 'Every zone has a story.',
       zonesBody: 'Explore Colombian coffee origins zone by zone, with each profile bringing together local producers, practices and lots.',
@@ -71,7 +75,7 @@ const content = {
       availabilityCta: 'Ask about lots',
       storyHeading: 'ORIGIN STORIES · VIDEO',
       storyTitle: 'Vanessa and Julián, in their own words.',
-      storyBody: 'Short films from origin are being prepared to bring producer stories closer to buyers in Asia and Latin America.',
+      storyBody: 'Short films from origin are being prepared to bring producer stories closer to buyers, primarily in Asia.',
       storyStatus: 'COMING SOON',
       profiles: [
         {
@@ -107,69 +111,74 @@ const content = {
     },
     values: {
       eyebrow: '05 / WHAT MATTERS',
-      title: 'Closer to the people and places behind the cup.',
-      body: 'We believe the most meaningful coffee relationships begin with curiosity and grow through clarity.',
+      title: 'Specialty coffee, with origin at its heart.',
+      body: 'SAFEENA brings excellent coffee growers and buyers together through clear origin stories and long-term relationships.',
       cards: [
-        { number: 'A', title: 'Origin with context', text: 'The producer, region and lot are part of the coffee story — not small print.' },
-        { number: 'B', title: 'Details that travel', text: 'Traceability helps keep origin and quality information connected along the journey.' },
-        { number: 'C', title: 'Relationships built to last', text: 'Thoughtful sourcing puts people and long-term collaboration at the centre.' },
+        { number: 'A', title: 'Specialty coffee only', text: 'Every coffee we represent meets the specialty coffee focus at the core of SAFEENA.' },
+        { number: 'B', title: 'Grower to Asian buyer', text: 'We connect growers directly with buyers, primarily across Asia.' },
+        { number: 'C', title: 'Colombia in focus', text: 'We give Colombian origins the clearest stage while building the wider producer network.' },
       ],
     },
     partners: {
       eyebrow: '06 / WORK WITH US',
-      title: 'Good coffee starts with a good conversation.',
-      body: 'Are you a producer, roaster, importer or distribution partner in Latin America or Asia? We’d love to hear what you are looking for and learn what you are building.',
-      button: 'Connect with SAFEENA',
-      social: 'Or follow along on Instagram',
+      title: 'Connecting Colombia’s coffee with Asia.',
+      body: 'Are you a specialty coffee grower in Colombia, Indonesia or Vietnam, or a buyer based in Asia? Tell us what you are sourcing and what you are building.',
+      button: 'Connect with SAFEENA Asia',
+      secondaryButton: 'For Colombian producers',
+      social: 'Specialty coffee · Colombia to Asia',
     },
     footer: {
-      phrase: 'Local origins. A world of connection.',
-      copyright: '© SAFEENA. Coffee origins and markets, connected with care.',
+      phrase: 'Colombian origins. Specialty coffee connected with Asia.',
+      copyright: '© SAFEENA. Connecting specialty coffee growers and buyers.',
       back: 'Back to top ↑',
     },
   },
   es: {
-    announcement: 'AMÉRICA LATINA  ·  ASIA  ·  UNA RED GLOBAL DE CAFÉ',
-    announcementRight: 'UNA RED GLOBAL DE CAFÉ',
+    announcement: 'CAFÉ ESPECIAL  ·  COLOMBIA  ·  INDONESIA  ·  VIETNAM  ·  ASIA',
+    announcementRight: 'DEL ORIGEN A ASIA',
     nav: { story: 'La idea', network: 'Regiones', countries: 'Países', zones: 'Colombia por zonas', partners: 'Aliados', contact: 'Conversemos' },
     language: 'EN',
     hero: {
-      eyebrow: 'UNA RED GLOBAL DE CAFÉ, CON RAÍCES EN EL ORIGEN',
-      title: <>Del <em>origen</em><br />al mundo entero.</>,
-      body: 'SAFEENA está construyendo una red global que conecta orígenes cafeteros, productores y mercados de América Latina y Asia. Explora por región, país y — en Colombia — por zonas de origen.',
-      primary: 'Explora la red',
-      secondary: 'Sigue el recorrido',
-      imageLabel: 'UN ORIGEN COLOMBIANO',
-      imageNote: 'Toda red global comienza en un lugar',
-      captionRegion: 'AMÉRICA LATINA · ASIA',
-      sideLabel: 'ORÍGENES LOCALES · RED GLOBAL',
+      eyebrow: 'COLOMBIA EN EL CORAZÓN DEL CAFÉ ESPECIAL',
+      title: <>Colombia,<br />el <em>corazón</em> del café especial.</>,
+      body: 'SAFEENA conecta caficultores de Colombia, Indonesia y Vietnam con compradores de café especial, principalmente en Asia. Colombia lidera nuestra historia: sus productores, territorios y lotes están en primer plano.',
+      primary: 'Explorar orígenes colombianos',
+      secondary: 'Conoce SAFEENA Asia',
+      imageLabel: 'PRODUCTORES COLOMBIANOS',
+      imageNote: 'Recolección selectiva en origen · conexión con Asia',
+      captionRegion: 'COLOMBIA → ASIA',
+      sideLabel: 'CAFÉ ESPECIAL · ORÍGENES COLOMBIANOS',
+      imageAlt: 'Una persona selecciona cerezas maduras de café en una finca colombiana',
     },
     intro: {
       index: '01 / LA IDEA',
-      title: 'Una red global, construida origen por origen.',
-      body: 'SAFEENA está construyendo conexiones entre productores de café y aliados de América Latina y Asia. Cada lugar tiene su propio contexto, su gente y sus lotes; nuestra red ayuda a descubrir y seguir esas historias locales.',
-      link: 'Explora las regiones',
-      note: 'RAÍCES LOCALES · ALCANCE GLOBAL',
+      title: 'Café excelente, de caficultores colombianos a compradores en Asia.',
+      body: 'Trabajamos exclusivamente con café especial. SAFEENA conecta caficultores de Colombia, Indonesia y Vietnam con compradores ubicados principalmente en Asia. Empezamos por Colombia y ponemos en primer plano a cada productor, territorio y lote.',
+      link: 'Conoce a los productores colombianos',
+      note: 'COLOMBIA · INDONESIA · VIETNAM → ASIA',
     },
     network: {
-      eyebrow: '02 / EXPLORA LA RED',
-      title: <>Conectados por región.<br />Presentes en cada lugar.</>,
-      body: 'Empieza por una región y explora sus mercados, países y orígenes a medida que crece la red SAFEENA.',
+      eyebrow: '02 / NUESTRA RED',
+      title: <>Orígenes colombianos.<br />Compradores en Asia.</>,
+      body: 'El café especial conecta productores de Colombia, Indonesia y Vietnam con compradores ubicados principalmente en Asia.',
       regions: [
-        { id: 'asia', number: '01', title: 'Asia', label: 'MERCADOS Y ALIADOS', placeLabel: 'MERCADO', place: 'Hong Kong', description: 'Esta sección reunirá destinos, compradores y aliados a medida que se expanda la red.' },
-        { id: 'latam', number: '02', title: 'América Latina', label: 'ORÍGENES Y PRODUCTORES', placeLabel: 'PAÍS', place: 'Colombia', description: 'Descubre orígenes cafeteros y relaciones con productores, organizados por país.' },
+        { id: 'asia', number: '01', title: 'Asia', label: 'COMPRADORES Y TOSTADORES', placeLabel: 'REGIÓN COMPRADORA PRINCIPAL', place: 'Asia', description: 'Nuestros compradores están principalmente en Asia. Conectamos su demanda con café especial en origen.' },
+        { id: 'origins', number: '02', title: 'Colombia, Indonesia y Vietnam', label: 'PAÍSES PRODUCTORES', placeLabel: 'ORIGEN PRINCIPAL', place: 'Colombia', description: 'Tres países productores, con Colombia en primer plano y perfiles dedicados que crecerán con la red.' },
       ],
-      asiaEyebrow: 'ASIA · DESTINOS',
-      asiaTitle: 'Asia, mercado por mercado.',
-      asiaBody: 'Explora los destinos y alianzas de SAFEENA en Asia. La red comienza en Hong Kong.',
+      asiaEyebrow: 'ASIA · COMPRADORES Y MERCADOS',
+      asiaTitle: 'Nuestros compradores están en Asia.',
+      asiaBody: 'Asia es la principal región compradora de SAFEENA. Acercamos su demanda a cafés excepcionales en origen.',
       asiaMarket: 'Hong Kong',
-      asiaMarketDetail: 'Mercado inicial · Asia',
-      countriesEyebrow: '03 / DIRECTORIO POR PAÍS',
-      countriesTitle: 'Explora por país.',
-      countriesBody: 'Cada país tendrá un espacio para conocer sus orígenes, su gente y sus lotes de café.',
-      countryRegion: 'AMÉRICA LATINA',
-      country: 'Colombia',
-      countryDetail: 'América Latina · Explora por zonas',
+      asiaMarketDetail: 'Un mercado comprador de Asia · café especial',
+      asiaInstagram: 'Sigue a SAFEENA Asia en Instagram',
+      countriesEyebrow: '03 / PAÍSES PRODUCTORES',
+      countriesTitle: 'Colombia primero. Más orígenes en la red.',
+      countriesBody: 'Productores en Colombia, Indonesia y Vietnam. Colombia lidera con las historias de origen y fichas de lote más desarrolladas.',
+      producerCountries: [
+        { id: 'colombia', number: '01', name: 'Colombia', label: 'ORIGEN PRINCIPAL · PRODUCTORES ACTIVOS', detail: 'Antioquia · Tolima · Explora Colombia por zonas', action: 'Explorar Colombia', imageAlt: 'Caficultor selecciona cerezas maduras en una finca colombiana' },
+        { id: 'indonesia', number: '02', name: 'Indonesia', label: 'ORIGEN PRODUCTOR', detail: 'Estamos construyendo los perfiles de sus productores.', action: 'Conecta con SAFEENA' },
+        { id: 'vietnam', number: '03', name: 'Vietnam', label: 'ORIGEN PRODUCTOR', detail: 'Estamos construyendo los perfiles de sus productores.', action: 'Conecta con SAFEENA' },
+      ],
       zonesEyebrow: 'COLOMBIA · POR ZONAS',
       zonesTitle: 'Cada zona tiene su historia.',
       zonesBody: 'Explora los orígenes cafeteros de Colombia por zonas, reuniendo productores, prácticas y lotes de cada lugar.',
@@ -198,7 +207,7 @@ const content = {
       availabilityCta: 'Consultar lotes',
       storyHeading: 'HISTORIAS DE ORIGEN · VIDEO',
       storyTitle: 'Vanessa y Julián, en sus propias palabras.',
-      storyBody: 'Preparamos cortometrajes desde el origen para acercar las historias de los productores a compradores de Asia y América Latina.',
+      storyBody: 'Preparamos cortometrajes desde el origen para acercar las historias de los productores a compradores, principalmente en Asia.',
       storyStatus: 'PRÓXIMAMENTE',
       profiles: [
         {
@@ -234,30 +243,32 @@ const content = {
     },
     values: {
       eyebrow: '05 / LO QUE NOS MUEVE',
-      title: 'Más cerca de las personas y lugares detrás de cada taza.',
-      body: 'Creemos que las relaciones cafeteras más valiosas comienzan con curiosidad y crecen con claridad.',
+      title: 'Café especial, con el origen en el centro.',
+      body: 'SAFEENA conecta caficultores de café excelente con compradores a través de historias de origen claras y relaciones duraderas.',
       cards: [
-        { number: 'A', title: 'Origen con contexto', text: 'El productor, la región y el lote son parte de la historia del café, no una nota al pie.' },
-        { number: 'B', title: 'Detalles que viajan', text: 'La trazabilidad mantiene conectada la información de origen y calidad durante el recorrido.' },
-        { number: 'C', title: 'Relaciones que perduran', text: 'El abastecimiento consciente pone a las personas y la colaboración a largo plazo en el centro.' },
+        { number: 'A', title: 'Solo café especial', text: 'Trabajamos exclusivamente con café especial, poniendo calidad y origen en el centro de cada lote.' },
+        { number: 'B', title: 'Del caficultor al comprador en Asia', text: 'Conectamos caficultores con compradores ubicados principalmente en Asia.' },
+        { number: 'C', title: 'Colombia en primer plano', text: 'Damos a los orígenes colombianos el mayor protagonismo mientras crece la red de productores.' },
       ],
     },
     partners: {
       eyebrow: '06 / TRABAJEMOS JUNTOS',
-      title: 'El buen café empieza con una buena conversación.',
-      body: '¿Eres productor, tostador, importador o aliado de distribución en América Latina o Asia? Queremos conocer lo que buscas y descubrir lo que estás construyendo.',
-      button: 'Conecta con SAFEENA',
-      social: 'También puedes seguirnos en Instagram',
+      title: 'Conectamos el café colombiano con Asia.',
+      body: '¿Eres caficultor de café especial en Colombia, Indonesia o Vietnam, o comprador ubicado en Asia? Cuéntanos qué estás buscando y qué estás construyendo.',
+      button: 'Conecta con SAFEENA Asia',
+      secondaryButton: 'Para productores en Colombia',
+      social: 'Café especial · Colombia hacia Asia',
     },
     footer: {
-      phrase: 'Orígenes locales. Un mundo de conexiones.',
-      copyright: '© SAFEENA. Orígenes y mercados conectados con cuidado.',
+      phrase: 'Orígenes colombianos. Café especial conectado con Asia.',
+      copyright: '© SAFEENA. Conectamos caficultores y compradores de café especial.',
       back: 'Volver arriba ↑',
     },
   },
 }
 
-const InstagramLink = 'https://www.instagram.com/safeena_coffeelatam/'
+const InstagramAsiaLink = 'https://www.instagram.com/safeena.coffee/'
+const InstagramLatamLink = 'https://www.instagram.com/safeena_coffeelatam/'
 
 function Logo({ language }) {
   return (
@@ -330,8 +341,8 @@ function App() {
             <h1 id="hero-title">{t.hero.title}</h1>
             <p className="hero__body">{t.hero.body}</p>
             <div className="hero__actions">
-              <a className="button button--dark" href="#network">{t.hero.primary}<Arrow diagonal /></a>
-              <a className="text-link" href={InstagramLink} target="_blank" rel="noreferrer">{t.hero.secondary}<Arrow /></a>
+              <a className="button button--dark" href="#colombia-zones">{t.hero.primary}<Arrow diagonal /></a>
+              <a className="text-link" href={InstagramAsiaLink} target="_blank" rel="noreferrer">{t.hero.secondary}<Arrow /></a>
             </div>
             <div className="hero__signature">
               <span className="signature-mark" aria-hidden="true">✳</span>
@@ -341,7 +352,7 @@ function App() {
 
           <div className="hero__visual">
             <div className="hero__image-frame">
-              <img className="hero__image" src="/images/coffee-origin.png" alt={language === 'en' ? 'Coffee cherries growing in the green Colombian highlands at dawn' : 'Cerezas de café creciendo en las montañas verdes de Colombia al amanecer'} fetchPriority="high" />
+              <img className="hero__image" src="/images/producers/kafesedna-harvest.jpg" alt={t.hero.imageAlt} fetchPriority="high" />
               <span className="image-stamp">{t.hero.imageLabel}</span>
               <span className="image-counter">01 <span>/</span> 03</span>
             </div>
@@ -414,6 +425,7 @@ function App() {
               <span className="market-card__region">ASIA</span>
               <strong>{t.network.asiaMarket}</strong>
               <span>{t.network.asiaMarketDetail}</span>
+              <a className="market-card__social" href={InstagramAsiaLink} target="_blank" rel="noreferrer">{t.network.asiaInstagram}<Arrow diagonal /></a>
             </div>
           </div>
 
@@ -425,12 +437,20 @@ function App() {
               </div>
               <p>{t.network.countriesBody}</p>
             </div>
-            <a className="country-card" href="#colombia-zones">
-              <span className="country-card__region">{t.network.countryRegion}</span>
-              <strong>{t.network.country}</strong>
-              <span>{t.network.countryDetail}</span>
-              <span className="country-card__arrow" aria-hidden="true">↗</span>
-            </a>
+            <div className="country-grid">
+              {t.network.producerCountries.map((country) => (
+                <a className={`country-card country-card--${country.id}`} href={country.id === 'colombia' ? '#colombia-zones' : '#partners'} key={country.id}>
+                  {country.id === 'colombia' && <img className="country-card__image" src="/images/producers/kafesedna-harvest.jpg" alt={country.imageAlt} loading="lazy" />}
+                  <span className="country-card__number" aria-hidden="true">{country.number}</span>
+                  <span className="country-card__content">
+                    <span className="country-card__region">{country.label}</span>
+                    <strong>{country.name}</strong>
+                    <span className="country-card__detail">{country.detail}</span>
+                    <span className="country-card__action">{country.action}<Arrow diagonal /></span>
+                  </span>
+                </a>
+              ))}
+            </div>
           </div>
 
           <div className="colombia-zones" id="colombia-zones">
@@ -547,8 +567,8 @@ function App() {
                           <div><span>{t.network.traceLabel}</span><strong>{profile.trace}</strong></div>
                         </div>
                         <div className="origin-profile__actions">
-                          <a className="button button--dark" href={InstagramLink} target="_blank" rel="noreferrer">{t.network.sampleCta}<Arrow diagonal /></a>
-                          <a className="origin-profile__availability" href={InstagramLink} target="_blank" rel="noreferrer">{t.network.availabilityCta}<Arrow /></a>
+                          <a className="button button--dark" href={InstagramAsiaLink} target="_blank" rel="noreferrer">{t.network.sampleCta}<Arrow diagonal /></a>
+                          <a className="origin-profile__availability" href={InstagramAsiaLink} target="_blank" rel="noreferrer">{t.network.availabilityCta}<Arrow /></a>
                         </div>
                       </div>
                     </article>
@@ -596,7 +616,8 @@ function App() {
               <h2 id="partners-title">{t.partners.title}</h2>
               <p className="partner-band__body">{t.partners.body}</p>
               <div className="partner-band__actions">
-                <a className="button button--cream" href={InstagramLink} target="_blank" rel="noreferrer">{t.partners.button}<Arrow diagonal /></a>
+                <a className="button button--cream" href={InstagramAsiaLink} target="_blank" rel="noreferrer">{t.partners.button}<Arrow diagonal /></a>
+                <a className="partner-band__secondary" href={InstagramLatamLink} target="_blank" rel="noreferrer">{t.partners.secondaryButton}<Arrow /></a>
                 <span className="partner-band__social">{t.partners.social}</span>
               </div>
             </div>
@@ -616,7 +637,8 @@ function App() {
         <div className="site-footer__bottom">
           <span>{t.footer.copyright}</span>
           <div className="footer-links">
-            <a href={InstagramLink} target="_blank" rel="noreferrer">Instagram <Arrow diagonal /></a>
+            <a href={InstagramAsiaLink} target="_blank" rel="noreferrer">Instagram Asia <Arrow diagonal /></a>
+            <a href={InstagramLatamLink} target="_blank" rel="noreferrer">Instagram LatAm <Arrow diagonal /></a>
             <span>{language === 'en' ? 'ORIGIN → MARKET' : 'ORIGEN → MERCADO'}</span>
           </div>
         </div>

@@ -108,37 +108,56 @@ button { color: inherit; }
 .network__heading > p, .country-directory__heading > p { max-width: 300px; margin: 0 0 5px; color: #74776d; font-size: 12px; line-height: 1.8; }
 .region-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 17px; margin-top: 52px; }
 .region-card { display: flex; min-height: 330px; flex-direction: column; padding: 30px; color: var(--paper-light); background: var(--forest); }
-.region-card--latam { color: var(--ink); background: #e6dece; }
+.region-card--latam, .region-card--origins { color: var(--ink); background: #e6dece; }
 .region-card__top { display: flex; align-items: center; justify-content: space-between; gap: 16px; }
 .region-card__number { color: #ed987c; font-family: Georgia, "Times New Roman", serif; font-size: 22px; }
-.region-card--latam .region-card__number { color: var(--red); }
+.region-card--latam .region-card__number, .region-card--origins .region-card__number { color: var(--red); }
 .region-card__label, .region-card__place > span, .country-card__region { font-size: 8px; font-weight: 750; letter-spacing: .16em; }
 .region-card__label { color: rgba(250,247,239,.65); }
-.region-card--latam .region-card__label { color: #777b70; }
+.region-card--latam .region-card__label, .region-card--origins .region-card__label { color: #777b70; }
 .region-card h3 { margin: 35px 0 11px; font-family: Georgia, "Times New Roman", serif; font-size: clamp(35px, 4.4vw, 54px); font-weight: 400; letter-spacing: -.045em; }
 .region-card > p { max-width: 400px; margin: 0; color: rgba(250,247,239,.72); font-size: 12px; line-height: 1.8; }
-.region-card--latam > p { color: #62685f; }
+.region-card--latam > p, .region-card--origins > p { color: #62685f; }
 .region-card__place { display: flex; align-items: baseline; gap: 12px; margin-top: auto; padding-top: 28px; }
 .region-card__place > span { color: rgba(250,247,239,.56); }
-.region-card--latam .region-card__place > span { color: #7d7e73; }
+.region-card--latam .region-card__place > span, .region-card--origins .region-card__place > span { color: #7d7e73; }
 .region-card__place strong { font-family: Georgia, "Times New Roman", serif; font-size: 19px; font-weight: 400; }
 .region-card .text-link { width: max-content; margin-top: 14px; color: #f4a088; }
-.region-card--latam .text-link { color: var(--forest); }
+.region-card--latam .text-link, .region-card--origins .text-link { color: var(--forest); }
 .asia-directory { padding-top: 74px; }
 .asia-directory__heading h3 { margin: 0; color: var(--forest); font-family: Georgia, "Times New Roman", serif; font-size: clamp(34px, 4.2vw, 52px); font-weight: 400; letter-spacing: -.045em; line-height: 1.05; }
 .asia-directory__heading > p { max-width: 300px; margin: 0 0 5px; color: #74776d; font-size: 12px; line-height: 1.8; }
-.market-card { display: grid; grid-template-columns: minmax(110px, .4fr) 1fr minmax(180px, .6fr); align-items: center; gap: 20px; min-height: 82px; margin-top: 25px; padding: 18px 24px; background: var(--paper-light); }
+.market-card { display: grid; grid-template-columns: minmax(70px, .28fr) minmax(120px, .7fr) minmax(180px, .8fr) minmax(190px, .8fr); align-items: center; gap: 20px; min-height: 82px; margin-top: 25px; padding: 18px 24px; background: var(--paper-light); }
 .market-card__region { color: var(--red); font-size: 8px; font-weight: 750; letter-spacing: .16em; }
 .market-card strong { color: var(--forest); font-family: Georgia, "Times New Roman", serif; font-size: 25px; font-weight: 400; }
-.market-card > span:last-child { color: #777b70; font-size: 11px; }
+.market-card > span:nth-child(3) { color: #777b70; font-size: 11px; }
+.market-card__social { display: inline-flex; align-items: center; justify-content: space-between; gap: 12px; color: var(--forest); font-size: 10px; font-weight: 650; }
+.market-card__social .arrow { color: var(--red); }
+.market-card__social:hover .arrow { transform: translate(2px, -2px); }
 .country-directory { padding-top: 91px; }
 .country-directory__heading h3, .colombia-zones h3 { margin: 0; color: var(--forest); font-family: Georgia, "Times New Roman", serif; font-size: clamp(34px, 4.2vw, 52px); font-weight: 400; letter-spacing: -.045em; line-height: 1.05; }
-.country-card { position: relative; display: flex; min-height: 104px; flex-direction: column; justify-content: center; gap: 6px; margin-top: 25px; padding: 20px 65px 20px 24px; border: 1px solid var(--line); transition: border-color .2s ease, background .2s ease; }
-.country-card:hover { border-color: var(--red); background: rgba(255,255,255,.28); }
-.country-card__region { color: var(--red); }
-.country-card strong { color: var(--forest); font-family: Georgia, "Times New Roman", serif; font-size: 25px; font-weight: 400; }
-.country-card > span:not(.country-card__region):not(.country-card__arrow) { color: #777b70; font-size: 11px; }
-.country-card__arrow { position: absolute; top: 50%; right: 25px; color: var(--red); font-size: 21px; transform: translateY(-50%); }
+.country-grid { display: grid; grid-template-columns: minmax(0, 1.25fr) minmax(0, .85fr); grid-template-rows: repeat(2, minmax(190px, 1fr)); gap: 12px; margin-top: 28px; }
+.country-card { position: relative; display: flex; min-width: 0; min-height: 190px; overflow: hidden; align-items: stretch; border: 1px solid var(--line); background: #e6dece; transition: border-color .2s ease, transform .25s ease; }
+.country-card:hover { border-color: var(--red); transform: translateY(-3px); }
+.country-card--colombia { grid-row: span 2; min-height: 392px; color: white; background: var(--forest); }
+.country-card--indonesia, .country-card--vietnam { background: #e6dece; }
+.country-card__image { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; object-position: center 45%; }
+.country-card--colombia::after { position: absolute; inset: 0; background: linear-gradient(90deg, rgba(19,39,29,.8), rgba(19,39,29,.34) 70%), linear-gradient(0deg, rgba(19,39,29,.58), transparent 64%); content: ""; }
+.country-card__number { position: absolute; z-index: 2; top: 20px; right: 23px; color: var(--red); font-family: Georgia, "Times New Roman", serif; font-size: 18px; }
+.country-card--colombia .country-card__number { color: rgba(255,255,255,.82); }
+.country-card__content { position: relative; z-index: 2; display: flex; width: 100%; flex-direction: column; align-items: flex-start; justify-content: center; gap: 8px; padding: 27px; }
+.country-card--colombia .country-card__content { justify-content: flex-end; padding: clamp(24px, 4vw, 48px); }
+.country-card__region { color: var(--red); font-size: 8px; font-weight: 750; letter-spacing: .16em; }
+.country-card--colombia .country-card__region { color: #ffc7ae; }
+.country-card strong { color: var(--forest); font-family: Georgia, "Times New Roman", serif; font-size: clamp(25px, 3vw, 35px); font-weight: 400; letter-spacing: -.035em; }
+.country-card--colombia strong { max-width: 500px; color: white; font-size: clamp(47px, 6.2vw, 82px); letter-spacing: -.055em; line-height: .95; }
+.country-card__detail { max-width: 290px; color: #696e64; font-size: 11px; line-height: 1.6; }
+.country-card--colombia .country-card__detail { color: rgba(255,255,255,.82); font-size: 12px; }
+.country-card__action { display: inline-flex; align-items: center; gap: 11px; margin-top: 8px; color: var(--forest); font-size: 10px; font-weight: 700; }
+.country-card--colombia .country-card__action { color: white; }
+.country-card__action .arrow { color: var(--red); }
+.country-card--colombia .country-card__action .arrow { color: #ffc7ae; }
+.country-card:hover .country-card__action .arrow { transform: translate(2px, -2px); }
 .colombia-zones { display: block; margin-top: 84px; padding-block: 39px 24px; border-top: 1px solid var(--line); }
 .colombia-zones__copy h3 { max-width: 600px; }
 .colombia-zones__copy > p:last-child { max-width: 580px; margin: 17px 0 0; color: #6c7066; font-size: 13px; line-height: 1.85; }
@@ -254,6 +273,9 @@ button { color: inherit; }
 .partner-band__actions { display: flex; align-items: center; gap: 22px; flex-wrap: wrap; margin-top: 27px; }
 .button--cream { color: var(--forest); background: var(--paper-light); }
 .button--cream:hover { color: var(--paper-light); background: var(--forest); }
+.partner-band__secondary { display: inline-flex; align-items: center; gap: 9px; color: rgba(255,255,255,.92); font-size: 10px; }
+.partner-band__secondary .arrow { color: #ffd4c4; }
+.partner-band__secondary:hover .arrow { transform: translateX(3px); }
 .partner-band__social { color: rgba(255,255,255,.8); font-size: 10px; }
 .partner-band__orbit { position: relative; width: 185px; height: 185px; justify-self: end; border: 1px solid rgba(255,255,255,.4); border-radius: 50%; }
 .partner-band__orbit::before, .partner-band__orbit::after { content: ""; position: absolute; border: 1px solid rgba(255,255,255,.31); border-radius: 50%; }
@@ -352,11 +374,16 @@ button { color: inherit; }
   .region-card h3 { margin-top: 28px; font-size: 42px; }
   .asia-directory { padding-top: 64px; }
   .asia-directory__heading h3 { font-size: clamp(36px, 9vw, 53px); }
-  .market-card { grid-template-columns: 1fr; gap: 5px; min-height: 0; margin-top: 19px; padding: 18px; }
+  .market-card { grid-template-columns: 1fr; gap: 8px; min-height: 0; margin-top: 19px; padding: 18px; }
   .country-directory { padding-top: 65px; }
   .country-directory__heading h3, .colombia-zones h3 { font-size: clamp(36px, 9vw, 53px); }
-  .country-card { min-height: 98px; margin-top: 19px; padding: 17px 54px 17px 18px; }
-  .country-card__arrow { right: 18px; }
+  .country-grid { grid-template-columns: minmax(0, 1.1fr) minmax(0, .9fr); grid-template-rows: repeat(2, minmax(165px, 1fr)); gap: 9px; margin-top: 21px; }
+  .country-card { min-height: 165px; }
+  .country-card--colombia { min-height: 339px; }
+  .country-card__content { padding: 20px; }
+  .country-card--colombia .country-card__content { padding: 24px; }
+  .country-card strong { font-size: 29px; }
+  .country-card--colombia strong { font-size: clamp(43px, 10vw, 66px); }
   .colombia-zones { margin-top: 64px; padding-block: 30px 9px; }
   .colombia-zones__copy > p:last-child { margin-top: 13px; }
   .origin-atlas { margin-top: 36px; }
@@ -417,7 +444,13 @@ button { color: inherit; }
   .site-footer__top p { max-width: 245px; margin-left: 0; font-size: 14px; }
   .footer-top-link { margin-top: 8px; white-space: nowrap; }
   .site-footer__bottom { flex-direction: column; gap: 13px; line-height: 1.6; }
-  .footer-links { justify-content: space-between; }
+  .footer-links { justify-content: flex-start; gap: 15px; flex-wrap: wrap; }
+}
+
+@media (max-width: 720px) {
+  .country-grid { grid-template-columns: 1fr; grid-template-rows: auto; }
+  .country-card, .country-card--colombia { min-height: 176px; grid-row: auto; }
+  .country-card--colombia { min-height: 320px; }
 }
 
 @media (prefers-reduced-motion: reduce) {
