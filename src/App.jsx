@@ -1,10 +1,11 @@
 import { useEffect, useState } from 'react'
+import { BrowserRouter, Link, useLocation } from 'react-router-dom'
 
 const content = {
   en: {
-    announcement: 'SPECIALTY COFFEE  ·  COLOMBIA  ·  INDONESIA  ·  VIETNAM  ·  ASIA',
-    announcementRight: 'FROM ORIGIN TO ASIA',
-    nav: { story: 'Our idea', network: 'Regions', countries: 'Countries', zones: 'Colombia by zone', partners: 'For partners', contact: 'Let’s connect' },
+    announcement: 'SPECIALTY COFFEE  ·  LATIN AMERICA  ·  ASIA',
+    announcementRight: 'ORIGINS TO ASIA',
+    nav: { story: 'Our idea', network: 'Regions', producers: 'Producer countries', buyers: 'Buyer countries', zones: 'Colombia by zone', partners: 'For partners', contact: 'Let’s connect' },
     language: 'ES',
     hero: {
       eyebrow: 'COLOMBIA AT THE HEART OF SPECIALTY COFFEE',
@@ -12,11 +13,11 @@ const content = {
       body: 'SAFEENA connects coffee growers in Colombia, Indonesia and Vietnam with specialty coffee buyers, primarily in Asia. Colombia leads our story, with its producers, places and lots in focus.',
       primary: 'Explore Colombian origins',
       secondary: 'Meet SAFEENA Asia',
-      imageLabel: 'COLOMBIAN PRODUCERS',
-      imageNote: 'Carefully picked at origin · connected to Asia',
+      imageLabel: 'A COLOMBIAN ORIGIN',
+      imageNote: 'Mountain-grown coffee · Antioquia, Colombia',
       captionRegion: 'COLOMBIA → ASIA',
       sideLabel: 'SPECIALTY COFFEE · COLOMBIAN ORIGINS',
-      imageAlt: 'A coffee grower selectively picking ripe cherries at a Colombian farm',
+      imageAlt: 'A green mountain landscape at a coffee-growing origin in Colombia',
     },
     intro: {
       index: '01 / THE IDEA',
@@ -30,22 +31,23 @@ const content = {
       title: <>Colombian origins.<br />Buyers across Asia.</>,
       body: 'Specialty coffee connects producers in Colombia, Indonesia and Vietnam with buyers primarily in Asia.',
       regions: [
-        { id: 'asia', number: '01', title: 'Asia', label: 'BUYERS & ROASTERS', placeLabel: 'PRIMARY BUYER REGION', place: 'Asia', description: 'Our main buyers are in Asia. We connect their needs directly with specialty coffee at origin.' },
-        { id: 'origins', number: '02', title: 'Colombia, Indonesia & Vietnam', label: 'PRODUCER COUNTRIES', placeLabel: 'LEAD ORIGIN', place: 'Colombia', description: 'Three producer countries, with Colombia in the spotlight and dedicated profiles growing over time.' },
+        { id: 'asia', number: '01', title: 'Asia', label: 'BUYER REGION', placeLabel: 'BUYERS PRIMARILY IN', place: 'Asia', description: 'SAFEENA connects specialty coffee origins with buyers across its primary market region.' },
+        { id: 'latam', number: '02', title: 'Latin America', label: 'PRODUCER REGION', placeLabel: 'LEAD COUNTRY', place: 'Colombia', description: 'Colombia leads today. This origin network is ready to grow with more countries across Latin America.' },
       ],
-      asiaEyebrow: 'ASIA · BUYERS & MARKETS',
-      asiaTitle: 'Our buyers are based across Asia.',
-      asiaBody: 'Asia is SAFEENA’s primary buyer region. We bring market demand closer to exceptional coffee at origin.',
-      asiaMarket: 'Hong Kong',
-      asiaMarketDetail: 'An Asian buyer market · specialty coffee',
-      asiaInstagram: 'Follow SAFEENA Asia on Instagram',
+      buyersEyebrow: '04 / BUYER COUNTRIES',
+      buyersTitle: 'Asia, country by country.',
+      buyersBody: 'Asia is SAFEENA’s primary buyer region. Hong Kong is an initial market; more destinations can join as the network grows.',
+      buyerCountries: [
+        { number: '01', name: 'Hong Kong', region: 'ASIA', detail: 'Initial buyer market · specialty coffee' },
+      ],
       countriesEyebrow: '03 / PRODUCER COUNTRIES',
-      countriesTitle: 'Colombia first. More origins in the network.',
-      countriesBody: 'Producers in Colombia, Indonesia and Vietnam. Colombia leads with the most developed origin stories and lot profiles.',
+      countriesTitle: 'Exceptional coffee, rooted in origin.',
+      countriesBody: 'Producers in Colombia, Indonesia and Vietnam. Colombia takes the lead, while the network can expand across Latin America and Asia.',
+      producerNetworkNote: 'The Latin American origin directory is designed to welcome more producer countries as the network grows.',
       producerCountries: [
-        { id: 'colombia', number: '01', name: 'Colombia', label: 'LEAD ORIGIN · PRODUCER PROFILES', detail: 'Antioquia · Tolima · Explore Colombia by zone', action: 'Explore Colombia', imageAlt: 'Coffee grower selecting ripe cherries at a Colombian farm' },
-        { id: 'indonesia', number: '02', name: 'Indonesia', label: 'PRODUCER ORIGIN', detail: 'Producer profiles are being built.', action: 'Connect with SAFEENA' },
-        { id: 'vietnam', number: '03', name: 'Vietnam', label: 'PRODUCER ORIGIN', detail: 'Producer profiles are being built.', action: 'Connect with SAFEENA' },
+        { id: 'colombia', number: '01', name: 'Colombia', label: 'LATIN AMERICA · LEAD ORIGIN', detail: 'Antioquia · Tolima · Explore by zone', action: 'Explore Colombia', imageAlt: 'A green mountain landscape at a coffee-growing origin in Colombia' },
+        { id: 'indonesia', number: '02', name: 'Indonesia', label: 'ASIA · PRODUCER COUNTRY', detail: 'Producer profiles are in development.', action: 'Meet our network' },
+        { id: 'vietnam', number: '03', name: 'Vietnam', label: 'ASIA · PRODUCER COUNTRY', detail: 'Producer profiles are in development.', action: 'Meet our network' },
       ],
       zonesEyebrow: 'COLOMBIA · BY ZONE',
       zonesTitle: 'Every zone has a story.',
@@ -62,21 +64,24 @@ const content = {
         { id: 'jardin', number: '01', place: 'Jardín', department: 'Antioquia', count: '2 PRODUCERS', suppliers: [{ name: 'Kafesedna', profile: 'kafesedna' }, { name: 'Villa Martín', profile: 'villa-martin' }], mapName: 'JARDÍN' },
         { id: 'murillo', number: '02', place: 'Murillo', department: 'Tolima', count: '1 PRODUCER', suppliers: [{ name: 'Salinas', profile: 'salinas' }], mapName: 'MURILLO' },
       ],
-      profilesEyebrow: '04 / PRODUCER & LOT PROFILES',
-      profilesTitle: 'A coffee profile, grounded in its place.',
-      profilesBody: 'Origin and lot details stay connected, so buyers can see what is confirmed and what still needs validation.',
+      profilesEyebrow: '05 / COLOMBIAN PRODUCERS',
+      profilesTitle: 'Meet the people behind each origin.',
+      profilesBody: 'Open a producer profile to explore their place, coffee and lot details.',
       specsHeading: 'LOT DETAILS',
       scoreLabel: 'CUPPING SCORE',
       scorePending: 'Not confirmed for this lot',
       traceLabel: 'QR / LOT TRACEABILITY',
       tracePending: 'QR destination awaiting validation',
       traceMissing: 'QR data not provided',
-      sampleCta: 'Request a sample',
-      availabilityCta: 'Ask about lots',
-      storyHeading: 'ORIGIN STORIES · VIDEO',
-      storyTitle: 'Vanessa and Julián, in their own words.',
-      storyBody: 'Short films from origin are being prepared to bring producer stories closer to buyers, primarily in Asia.',
-      storyStatus: 'COMING SOON',
+      availabilityCta: 'Check lot availability',
+      openProfile: 'Explore producer profile',
+      profileBack: 'Back to Colombian origins',
+      profileEyebrow: 'SAFEENA · PRODUCER PROFILE',
+      profileRegion: 'COLOMBIA · SPECIALTY COFFEE',
+      profileStory: 'The producer and their origin',
+      profileGallery: 'At origin',
+      profileContact: 'Ask about lot availability',
+      profileCupping: 'A score will be added when the lot is confirmed.',
       profiles: [
         {
           id: 'kafesedna', number: '01', supplier: 'Kafesedna', product: 'Don Carlos', origin: 'San Bartolo · Andes, Antioquia', altitude: '1,950 m a.s.l.', variety: 'Castillo', process: 'Washed', roast: 'Medium',
@@ -110,7 +115,7 @@ const content = {
       ],
     },
     values: {
-      eyebrow: '05 / WHAT MATTERS',
+      eyebrow: '06 / WHAT MATTERS',
       title: 'Specialty coffee, with origin at its heart.',
       body: 'SAFEENA brings excellent coffee growers and buyers together through clear origin stories and long-term relationships.',
       cards: [
@@ -120,7 +125,7 @@ const content = {
       ],
     },
     partners: {
-      eyebrow: '06 / WORK WITH US',
+      eyebrow: '07 / WORK WITH US',
       title: 'Connecting Colombia’s coffee with Asia.',
       body: 'Are you a specialty coffee grower in Colombia, Indonesia or Vietnam, or a buyer based in Asia? Tell us what you are sourcing and what you are building.',
       button: 'Connect with SAFEENA Asia',
@@ -134,9 +139,9 @@ const content = {
     },
   },
   es: {
-    announcement: 'CAFÉ ESPECIAL  ·  COLOMBIA  ·  INDONESIA  ·  VIETNAM  ·  ASIA',
-    announcementRight: 'DEL ORIGEN A ASIA',
-    nav: { story: 'La idea', network: 'Regiones', countries: 'Países', zones: 'Colombia por zonas', partners: 'Aliados', contact: 'Conversemos' },
+    announcement: 'CAFÉ ESPECIAL  ·  LATINOAMÉRICA  ·  ASIA',
+    announcementRight: 'ORÍGENES HACIA ASIA',
+    nav: { story: 'La idea', network: 'Regiones', producers: 'Países productores', buyers: 'Países compradores', zones: 'Colombia por zonas', partners: 'Aliados', contact: 'Conversemos' },
     language: 'EN',
     hero: {
       eyebrow: 'COLOMBIA EN EL CORAZÓN DEL CAFÉ ESPECIAL',
@@ -144,11 +149,11 @@ const content = {
       body: 'SAFEENA conecta caficultores de Colombia, Indonesia y Vietnam con compradores de café especial, principalmente en Asia. Colombia lidera nuestra historia: sus productores, territorios y lotes están en primer plano.',
       primary: 'Explorar orígenes colombianos',
       secondary: 'Conoce SAFEENA Asia',
-      imageLabel: 'PRODUCTORES COLOMBIANOS',
-      imageNote: 'Recolección selectiva en origen · conexión con Asia',
+      imageLabel: 'UN ORIGEN COLOMBIANO',
+      imageNote: 'Café de montaña · Antioquia, Colombia',
       captionRegion: 'COLOMBIA → ASIA',
       sideLabel: 'CAFÉ ESPECIAL · ORÍGENES COLOMBIANOS',
-      imageAlt: 'Una persona selecciona cerezas maduras de café en una finca colombiana',
+      imageAlt: 'Paisaje de montaña verde en un origen cafetero de Colombia',
     },
     intro: {
       index: '01 / LA IDEA',
@@ -162,22 +167,23 @@ const content = {
       title: <>Orígenes colombianos.<br />Compradores en Asia.</>,
       body: 'El café especial conecta productores de Colombia, Indonesia y Vietnam con compradores ubicados principalmente en Asia.',
       regions: [
-        { id: 'asia', number: '01', title: 'Asia', label: 'COMPRADORES Y TOSTADORES', placeLabel: 'REGIÓN COMPRADORA PRINCIPAL', place: 'Asia', description: 'Nuestros compradores están principalmente en Asia. Conectamos su demanda con café especial en origen.' },
-        { id: 'origins', number: '02', title: 'Colombia, Indonesia y Vietnam', label: 'PAÍSES PRODUCTORES', placeLabel: 'ORIGEN PRINCIPAL', place: 'Colombia', description: 'Tres países productores, con Colombia en primer plano y perfiles dedicados que crecerán con la red.' },
+        { id: 'asia', number: '01', title: 'Asia', label: 'REGIÓN COMPRADORA', placeLabel: 'COMPRADORES PRINCIPALMENTE EN', place: 'Asia', description: 'SAFEENA conecta orígenes de café especial con compradores en su principal región de mercado.' },
+        { id: 'latam', number: '02', title: 'Latinoamérica', label: 'REGIÓN PRODUCTORA', placeLabel: 'PAÍS PRINCIPAL', place: 'Colombia', description: 'Colombia lidera hoy. La red está preparada para crecer con más países productores de Latinoamérica.' },
       ],
-      asiaEyebrow: 'ASIA · COMPRADORES Y MERCADOS',
-      asiaTitle: 'Nuestros compradores están en Asia.',
-      asiaBody: 'Asia es la principal región compradora de SAFEENA. Acercamos su demanda a cafés excepcionales en origen.',
-      asiaMarket: 'Hong Kong',
-      asiaMarketDetail: 'Un mercado comprador de Asia · café especial',
-      asiaInstagram: 'Sigue a SAFEENA Asia en Instagram',
+      buyersEyebrow: '04 / PAÍSES COMPRADORES',
+      buyersTitle: 'Asia, país por país.',
+      buyersBody: 'Asia es la principal región compradora de SAFEENA. Hong Kong es un mercado inicial; nuevos destinos se sumarán a medida que crezca la red.',
+      buyerCountries: [
+        { number: '01', name: 'Hong Kong', region: 'ASIA', detail: 'Mercado comprador inicial · café especial' },
+      ],
       countriesEyebrow: '03 / PAÍSES PRODUCTORES',
-      countriesTitle: 'Colombia primero. Más orígenes en la red.',
-      countriesBody: 'Productores en Colombia, Indonesia y Vietnam. Colombia lidera con las historias de origen y fichas de lote más desarrolladas.',
+      countriesTitle: 'Café excepcional, arraigado en su origen.',
+      countriesBody: 'Productores en Colombia, Indonesia y Vietnam. Colombia ocupa el primer plano mientras la red crece entre Latinoamérica y Asia.',
+      producerNetworkNote: 'El directorio de Latinoamérica está preparado para sumar países productores a medida que crece la red.',
       producerCountries: [
-        { id: 'colombia', number: '01', name: 'Colombia', label: 'ORIGEN PRINCIPAL · PRODUCTORES ACTIVOS', detail: 'Antioquia · Tolima · Explora Colombia por zonas', action: 'Explorar Colombia', imageAlt: 'Caficultor selecciona cerezas maduras en una finca colombiana' },
-        { id: 'indonesia', number: '02', name: 'Indonesia', label: 'ORIGEN PRODUCTOR', detail: 'Estamos construyendo los perfiles de sus productores.', action: 'Conecta con SAFEENA' },
-        { id: 'vietnam', number: '03', name: 'Vietnam', label: 'ORIGEN PRODUCTOR', detail: 'Estamos construyendo los perfiles de sus productores.', action: 'Conecta con SAFEENA' },
+        { id: 'colombia', number: '01', name: 'Colombia', label: 'LATINOAMÉRICA · ORIGEN PRINCIPAL', detail: 'Antioquia · Tolima · Explora por zonas', action: 'Explorar Colombia', imageAlt: 'Paisaje de montaña verde en un origen cafetero de Colombia' },
+        { id: 'indonesia', number: '02', name: 'Indonesia', label: 'ASIA · PAÍS PRODUCTOR', detail: 'Perfiles de productores en desarrollo.', action: 'Conoce nuestra red' },
+        { id: 'vietnam', number: '03', name: 'Vietnam', label: 'ASIA · PAÍS PRODUCTOR', detail: 'Perfiles de productores en desarrollo.', action: 'Conoce nuestra red' },
       ],
       zonesEyebrow: 'COLOMBIA · POR ZONAS',
       zonesTitle: 'Cada zona tiene su historia.',
@@ -194,21 +200,24 @@ const content = {
         { id: 'jardin', number: '01', place: 'Jardín', department: 'Antioquia', count: '2 PROVEEDORES', suppliers: [{ name: 'Kafesedna', profile: 'kafesedna' }, { name: 'Villa Martín', profile: 'villa-martin' }], mapName: 'JARDÍN' },
         { id: 'murillo', number: '02', place: 'Murillo', department: 'Tolima', count: '1 PROVEEDOR', suppliers: [{ name: 'Salinas', profile: 'salinas' }], mapName: 'MURILLO' },
       ],
-      profilesEyebrow: '04 / FICHAS DE PRODUCTOR Y LOTE',
-      profilesTitle: 'Cada café, con su lugar y su historia.',
-      profilesBody: 'Conectamos el origen con los datos del lote para mostrar qué está confirmado y qué falta validar.',
+      profilesEyebrow: '05 / PRODUCTORES COLOMBIANOS',
+      profilesTitle: 'Conoce a las personas detrás de cada origen.',
+      profilesBody: 'Abre cada perfil para explorar su lugar, sus cafés y los datos de sus lotes.',
       specsHeading: 'DATOS DEL LOTE',
       scoreLabel: 'PUNTAJE DE CATACIÓN',
       scorePending: 'No confirmado para este lote',
       traceLabel: 'QR / TRAZABILIDAD DEL LOTE',
       tracePending: 'Enlace del QR pendiente de validación',
       traceMissing: 'No recibimos el QR',
-      sampleCta: 'Solicitar una muestra',
-      availabilityCta: 'Consultar lotes',
-      storyHeading: 'HISTORIAS DE ORIGEN · VIDEO',
-      storyTitle: 'Vanessa y Julián, en sus propias palabras.',
-      storyBody: 'Preparamos cortometrajes desde el origen para acercar las historias de los productores a compradores, principalmente en Asia.',
-      storyStatus: 'PRÓXIMAMENTE',
+      availabilityCta: 'Consultar disponibilidad',
+      openProfile: 'Explorar perfil del productor',
+      profileBack: 'Volver a los orígenes colombianos',
+      profileEyebrow: 'SAFEENA · PERFIL DE PRODUCTOR',
+      profileRegion: 'COLOMBIA · CAFÉ ESPECIAL',
+      profileStory: 'El productor y su origen',
+      profileGallery: 'En el origen',
+      profileContact: 'Consultar disponibilidad del lote',
+      profileCupping: 'Agregaremos el puntaje cuando se confirme para el lote.',
       profiles: [
         {
           id: 'kafesedna', number: '01', supplier: 'Kafesedna', product: 'Don Carlos', origin: 'San Bartolo · Andes, Antioquia', altitude: '1.950 m s. n. m.', variety: 'Castillo', process: 'Lavado', roast: 'Medio',
@@ -242,7 +251,7 @@ const content = {
       ],
     },
     values: {
-      eyebrow: '05 / LO QUE NOS MUEVE',
+      eyebrow: '06 / LO QUE NOS MUEVE',
       title: 'Café especial, con el origen en el centro.',
       body: 'SAFEENA conecta caficultores de café excelente con compradores a través de historias de origen claras y relaciones duraderas.',
       cards: [
@@ -252,7 +261,7 @@ const content = {
       ],
     },
     partners: {
-      eyebrow: '06 / TRABAJEMOS JUNTOS',
+      eyebrow: '07 / TRABAJEMOS JUNTOS',
       title: 'Conectamos el café colombiano con Asia.',
       body: '¿Eres caficultor de café especial en Colombia, Indonesia o Vietnam, o comprador ubicado en Asia? Cuéntanos qué estás buscando y qué estás construyendo.',
       button: 'Conecta con SAFEENA Asia',
@@ -272,12 +281,12 @@ const InstagramLatamLink = 'https://www.instagram.com/safeena_coffeelatam/'
 
 function Logo({ language }) {
   return (
-    <a className="brand" href="#top" aria-label={language === 'en' ? 'SAFEENA — back to top' : 'SAFEENA — volver arriba'}>
+    <Link className="brand" to="/#top" aria-label={language === 'en' ? 'SAFEENA — back to top' : 'SAFEENA — volver arriba'}>
       <span className="brand__mark" aria-hidden="true">
         <img src="/images/safeena-logo.jpg" alt="" />
       </span>
       <span className="brand__word">SAFEENA</span>
-    </a>
+    </Link>
   )
 }
 
@@ -285,16 +294,147 @@ function Arrow({ diagonal = false }) {
   return <span className={`arrow${diagonal ? ' arrow--diagonal' : ''}`} aria-hidden="true">{diagonal ? '↗' : '→'}</span>
 }
 
+function ProducerMiniPage({ profile, language, t, onToggleLanguage }) {
+  const gallery = profile.photos?.length > 1 ? profile.photos.slice(1) : []
+  const heroImage = profile.photos?.[0] || (profile.labelImage ? { src: profile.labelImage, alt: profile.labelAlt } : null)
+
+  return (
+    <>
+      <div className="announcement">
+        <span className="announcement__dot" />
+        <span>{t.announcement}</span>
+        <span className="announcement__right">{t.announcementRight}</span>
+      </div>
+      <header className="site-header">
+        <div className="nav-wrap producer-page__nav">
+          <Logo language={language} />
+          <div className="producer-page__nav-actions">
+            <Link className="producer-page__back" to="/#colombia-zones">← {t.network.profileBack}</Link>
+            <button className="language-switch" type="button" onClick={onToggleLanguage} aria-label={language === 'en' ? 'Cambiar a español' : 'Switch to English'}>
+              <span className="language-switch__current">{language.toUpperCase()}</span>
+              <span className="language-switch__divider">/</span>
+              <span>{t.language}</span>
+            </button>
+          </div>
+        </div>
+      </header>
+
+      <main className="producer-page section-shell" id="main">
+        <p className="producer-page__eyebrow"><span>{t.network.profileEyebrow}</span><span>{profile.number} / {t.network.providerLabel}</span></p>
+        <section className="producer-page__hero" aria-labelledby="producer-title">
+          <figure className={`producer-page__visual${profile.labelImage ? ' producer-page__visual--label' : ''}`}>
+            {heroImage && <img src={heroImage.src} alt={heroImage.alt || profile.visualAlt} fetchPriority="high" />}
+            <figcaption>{profile.origin}</figcaption>
+          </figure>
+          <div className="producer-page__intro">
+            <p className="eyebrow"><span className="eyebrow__line" />{t.network.profileRegion}</p>
+            <h1 id="producer-title">{profile.supplier}</h1>
+            <p className="producer-page__product">{profile.product}</p>
+            <p className="producer-page__story">{profile.story}</p>
+            <p className="producer-page__lot"><span>{language === 'en' ? 'LOT ORIGIN' : 'ORIGEN DEL LOTE'}</span>{profile.origin}</p>
+          </div>
+        </section>
+
+        <section className="producer-page__spec-section" aria-label={t.network.specsHeading}>
+          <div className="producer-page__section-heading">
+            <p className="eyebrow"><span className="eyebrow__line" />{t.network.specsHeading}</p>
+            <h2>{language === 'en' ? 'A closer look at this coffee.' : 'Conoce mejor este café.'}</h2>
+          </div>
+          <dl className="producer-page__specs">
+            <div><dt>{language === 'en' ? 'Altitude' : 'Altitud'}</dt><dd>{profile.altitude}</dd></div>
+            <div><dt>{language === 'en' ? 'Variety' : 'Variedad'}</dt><dd>{profile.variety}</dd></div>
+            <div><dt>{language === 'en' ? 'Process' : 'Proceso'}</dt><dd>{profile.process}</dd></div>
+            <div><dt>{language === 'en' ? 'Roast' : 'Tostión'}</dt><dd>{profile.roast}</dd></div>
+          </dl>
+          <div className="producer-page__sensory">
+            <span>{language === 'en' ? 'SENSORY PROFILE' : 'PERFIL SENSORIAL'}</span>
+            <p>{profile.profile}</p>
+          </div>
+        </section>
+
+        {(gallery.length > 0 || profile.labelImage) && (
+          <section className="producer-page__gallery-section">
+            <div className="producer-page__section-heading">
+              <p className="eyebrow"><span className="eyebrow__line" />{t.network.profileGallery}</p>
+              <h2>{language === 'en' ? 'A place shaped by coffee.' : 'Un territorio marcado por el café.'}</h2>
+            </div>
+            <div className="producer-page__gallery">
+              {(gallery.length ? gallery : [{ src: profile.labelImage, alt: profile.labelAlt }]).map((photo) => (
+                <figure key={photo.src}><img src={photo.src} alt={photo.alt} loading="lazy" /></figure>
+              ))}
+            </div>
+          </section>
+        )}
+
+        <section className="producer-page__traceability">
+          <div>
+            <span>{t.network.scoreLabel}</span>
+            <strong>{profile.score}</strong>
+            <p>{t.network.profileCupping}</p>
+          </div>
+          <div>
+            <span>{t.network.traceLabel}</span>
+            <strong>{profile.trace}</strong>
+            <p>{language === 'en' ? 'Lot verification details will appear here once the QR destination is confirmed.' : 'Aquí aparecerán los datos de verificación cuando confirmemos el destino del QR.'}</p>
+          </div>
+        </section>
+
+        <section className="producer-page__contact">
+          <div>
+            <p className="eyebrow eyebrow--light"><span className="eyebrow__line" />{language === 'en' ? 'FOR BUYERS IN ASIA' : 'PARA COMPRADORES EN ASIA'}</p>
+            <h2>{language === 'en' ? 'Interested in this coffee?' : '¿Te interesa este café?'}</h2>
+            <p>{language === 'en' ? 'Ask SAFEENA Asia about availability for this lot.' : 'Consulta con SAFEENA Asia la disponibilidad de este lote.'}</p>
+          </div>
+          <a className="button button--cream" href={InstagramAsiaLink} target="_blank" rel="noreferrer">{t.network.profileContact}<Arrow diagonal /></a>
+        </section>
+      </main>
+      <footer className="site-footer section-shell producer-page__footer">
+        <div className="site-footer__top">
+          <div><Logo language={language} /><p>{t.footer.phrase}</p></div>
+          <Link className="footer-top-link" to="/#colombia-zones">{t.network.profileBack}</Link>
+        </div>
+        <div className="site-footer__bottom">
+          <span>{t.footer.copyright}</span>
+          <div className="footer-links"><a href={InstagramAsiaLink} target="_blank" rel="noreferrer">Instagram Asia <Arrow diagonal /></a><a href={InstagramLatamLink} target="_blank" rel="noreferrer">Instagram LatAm <Arrow diagonal /></a></div>
+        </div>
+      </footer>
+    </>
+  )
+}
+
 function App() {
-  const [language, setLanguage] = useState('en')
+  return (
+    <BrowserRouter>
+      <SafeenaWebsite />
+    </BrowserRouter>
+  )
+}
+
+function SafeenaWebsite() {
+  const [language, setLanguage] = useState(() => window.localStorage.getItem('safeena-language') || 'en')
   const [menuOpen, setMenuOpen] = useState(false)
   const t = content[language]
+  const location = useLocation()
+  const producerRoute = location.pathname.match(/^\/producers\/([^/]+)\/?$/)
+  const producerProfile = producerRoute ? t.network.profiles.find((profile) => profile.id === producerRoute[1]) : null
 
   useEffect(() => {
     document.documentElement.lang = language
-  }, [language])
+    document.title = producerProfile ? `${producerProfile.supplier} · SAFEENA` : 'SAFEENA — Colombian specialty coffee, connected'
+  }, [language, location.pathname])
 
   const closeMenu = () => setMenuOpen(false)
+  const toggleLanguage = () => {
+    const nextLanguage = language === 'en' ? 'es' : 'en'
+    window.localStorage.setItem('safeena-language', nextLanguage)
+    setLanguage(nextLanguage)
+  }
+
+  if (producerRoute) {
+    return producerProfile
+      ? <ProducerMiniPage profile={producerProfile} language={language} t={t} onToggleLanguage={toggleLanguage} />
+      : <main className="producer-not-found section-shell"><h1>{language === 'en' ? 'Origin not found' : 'No encontramos este origen'}</h1><Link to="/#producer-countries">{language === 'en' ? 'Explore producer countries' : 'Explorar países productores'}<Arrow /></Link></main>
+  }
 
   return (
     <>
@@ -321,10 +461,11 @@ function App() {
           <nav className={`main-nav${menuOpen ? ' main-nav--open' : ''}`} aria-label={language === 'en' ? 'Main navigation' : 'Navegación principal'}>
             <a href="#story" onClick={closeMenu}>{t.nav.story}</a>
             <a href="#network" onClick={closeMenu}>{t.nav.network}</a>
-            <a href="#countries" onClick={closeMenu}>{t.nav.countries}</a>
+            <a href="#producer-countries" onClick={closeMenu}>{t.nav.producers}</a>
+            <a href="#buyer-countries" onClick={closeMenu}>{t.nav.buyers}</a>
             <a href="#colombia-zones" onClick={closeMenu}>{t.nav.zones}</a>
             <a href="#partners" onClick={closeMenu}>{t.nav.partners}</a>
-            <button className="language-switch" type="button" onClick={() => { setLanguage(language === 'en' ? 'es' : 'en'); closeMenu() }} aria-label={language === 'en' ? 'Cambiar a español' : 'Switch to English'}>
+            <button className="language-switch" type="button" onClick={() => { toggleLanguage(); closeMenu() }} aria-label={language === 'en' ? 'Cambiar a español' : 'Switch to English'}>
               <span className="language-switch__current">{language.toUpperCase()}</span>
               <span className="language-switch__divider">/</span>
               <span>{t.language}</span>
@@ -352,7 +493,7 @@ function App() {
 
           <div className="hero__visual">
             <div className="hero__image-frame">
-              <img className="hero__image" src="/images/producers/kafesedna-harvest.jpg" alt={t.hero.imageAlt} fetchPriority="high" />
+              <img className="hero__image" src="/images/producers/kafesedna-landscape.jpg" alt={t.hero.imageAlt} fetchPriority="high" />
               <span className="image-stamp">{t.hero.imageLabel}</span>
               <span className="image-counter">01 <span>/</span> 03</span>
             </div>
@@ -406,30 +547,14 @@ function App() {
                   <span>{region.placeLabel}</span>
                   <strong>{region.place}</strong>
                 </div>
-                <a className="text-link" href={region.id === 'asia' ? '#asia-destinations' : '#countries'}>
-                  {region.id === 'asia' ? (language === 'en' ? 'Explore destinations' : 'Explora destinos') : (language === 'en' ? 'Explore countries' : 'Explora países')}<Arrow diagonal />
+                <a className="text-link" href={region.id === 'asia' ? '#buyer-countries' : '#producer-countries'}>
+                  {region.id === 'asia' ? (language === 'en' ? 'Explore buyer countries' : 'Explora países compradores') : (language === 'en' ? 'Explore producer countries' : 'Explora países productores')}<Arrow diagonal />
                 </a>
               </article>
             ))}
           </div>
 
-          <div className="asia-directory" id="asia-destinations">
-            <div className="asia-directory__heading">
-              <div>
-                <p className="eyebrow"><span className="eyebrow__line" />{t.network.asiaEyebrow}</p>
-                <h3>{t.network.asiaTitle}</h3>
-              </div>
-              <p>{t.network.asiaBody}</p>
-            </div>
-            <div className="market-card">
-              <span className="market-card__region">ASIA</span>
-              <strong>{t.network.asiaMarket}</strong>
-              <span>{t.network.asiaMarketDetail}</span>
-              <a className="market-card__social" href={InstagramAsiaLink} target="_blank" rel="noreferrer">{t.network.asiaInstagram}<Arrow diagonal /></a>
-            </div>
-          </div>
-
-          <div className="country-directory" id="countries">
+          <div className="country-directory producer-directory" id="producer-countries">
             <div className="country-directory__heading">
               <div>
                 <p className="eyebrow"><span className="eyebrow__line" />{t.network.countriesEyebrow}</p>
@@ -440,7 +565,7 @@ function App() {
             <div className="country-grid">
               {t.network.producerCountries.map((country) => (
                 <a className={`country-card country-card--${country.id}`} href={country.id === 'colombia' ? '#colombia-zones' : '#partners'} key={country.id}>
-                  {country.id === 'colombia' && <img className="country-card__image" src="/images/producers/kafesedna-harvest.jpg" alt={country.imageAlt} loading="lazy" />}
+                  {country.id === 'colombia' && <img className="country-card__image" src="/images/producers/kafesedna-landscape.jpg" alt={country.imageAlt} loading="lazy" />}
                   <span className="country-card__number" aria-hidden="true">{country.number}</span>
                   <span className="country-card__content">
                     <span className="country-card__region">{country.label}</span>
@@ -450,6 +575,31 @@ function App() {
                   </span>
                 </a>
               ))}
+            </div>
+            <p className="producer-network-note"><span aria-hidden="true">✳</span>{t.network.producerNetworkNote}</p>
+          </div>
+
+          <div className="country-directory buyer-directory" id="buyer-countries">
+            <div className="country-directory__heading">
+              <div>
+                <p className="eyebrow"><span className="eyebrow__line" />{t.network.buyersEyebrow}</p>
+                <h3>{t.network.buyersTitle}</h3>
+              </div>
+              <p>{t.network.buyersBody}</p>
+            </div>
+            <div className="buyer-country-grid">
+              {t.network.buyerCountries.map((country) => (
+                <article className="buyer-country-card" key={country.name}>
+                  <span className="buyer-country-card__region">{country.region} · {language === 'en' ? 'BUYER COUNTRY' : 'PAÍS COMPRADOR'}</span>
+                  <strong>{country.name}</strong>
+                  <span>{country.detail}</span>
+                </article>
+              ))}
+              <a className="buyer-country-card buyer-country-card--connect" href={InstagramAsiaLink} target="_blank" rel="noreferrer">
+                <span className="buyer-country-card__region">{language === 'en' ? 'ASIA · SAFEENA NETWORK' : 'ASIA · RED SAFEENA'}</span>
+                <strong>{language === 'en' ? 'Meet SAFEENA Asia' : 'Conoce SAFEENA Asia'}</strong>
+                <span>{language === 'en' ? 'Connect with our buyer network' : 'Conecta con nuestra red compradora'}<Arrow diagonal /></span>
+              </a>
             </div>
           </div>
 
@@ -513,7 +663,7 @@ function App() {
                       </div>
                       <h5>{location.place}</h5>
                       <p className="origin-card__department">{location.department}, Colombia</p>
-                      <ul>{location.suppliers.map((supplier) => <li key={supplier.profile}><a href={`#producer-${supplier.profile}`}>{supplier.name}<Arrow diagonal /></a></li>)}</ul>
+                      <ul>{location.suppliers.map((supplier) => <li key={supplier.profile}><Link to={`/producers/${supplier.profile}`}>{supplier.name}<Arrow diagonal /></Link></li>)}</ul>
                     </article>
                   ))}
                 </div>
@@ -526,63 +676,25 @@ function App() {
                   </div>
                   <p>{t.network.profilesBody}</p>
                 </div>
-                <div className="origin-profile-grid">
-                  {t.network.profiles.map((profile) => (
-                    <article className="origin-profile" id={`producer-${profile.id}`} key={profile.id}>
-                      {profile.labelImage ? (
-                        <figure className="origin-profile__visual origin-profile__visual--label">
-                          <img src={profile.labelImage} alt={profile.labelAlt} loading="lazy" />
-                          <figcaption>{profile.supplier} · {profile.product}</figcaption>
-                        </figure>
-                      ) : (
-                        <>
-                          <figure className="origin-profile__visual">
-                            <img src={profile.photos[0].src} alt={profile.visualAlt} loading="lazy" />
-                            <figcaption>{profile.supplier} · {profile.origin}</figcaption>
-                          </figure>
-                          <div className="origin-profile__gallery">
-                            {profile.photos.slice(1).map((photo) => <img src={photo.src} alt={photo.alt} loading="lazy" key={photo.src} />)}
-                          </div>
-                        </>
-                      )}
-                      <div className="origin-profile__content">
-                        <div className="origin-profile__heading">
-                          <span>{profile.number} / {t.network.providerLabel}</span>
-                          <span className="origin-profile__arrow" aria-hidden="true">↗</span>
+                <div className="producer-teaser-grid">
+                  {t.network.profiles.map((profile) => {
+                    const cover = profile.photos?.[0]
+                    return (
+                      <Link className="producer-teaser" to={`/producers/${profile.id}`} key={profile.id}>
+                        <div className={`producer-teaser__visual${profile.labelImage ? ' producer-teaser__visual--label' : ''}`}>
+                          <img src={profile.labelImage || cover?.src} alt={profile.labelAlt || cover?.alt || profile.visualAlt} loading="lazy" />
+                          <span className="producer-teaser__number">{profile.number}</span>
                         </div>
-                        <h5>{profile.supplier}</h5>
-                        <p className="origin-profile__product">{profile.product}</p>
-                        <p className="origin-profile__origin"><span>{language === 'en' ? 'LOT ORIGIN' : 'ORIGEN DEL LOTE'}</span>{profile.origin}</p>
-                        <p className="origin-profile__story">{profile.story}</p>
-                        <p className="origin-profile__specs-label">{t.network.specsHeading}</p>
-                        <dl className="origin-profile__specs">
-                          <div><dt>{language === 'en' ? 'Altitude' : 'Altitud'}</dt><dd>{profile.altitude}</dd></div>
-                          <div><dt>{language === 'en' ? 'Variety' : 'Variedad'}</dt><dd>{profile.variety}</dd></div>
-                          <div><dt>{language === 'en' ? 'Process' : 'Proceso'}</dt><dd>{profile.process}</dd></div>
-                          <div><dt>{language === 'en' ? 'Roast' : 'Tostión'}</dt><dd>{profile.roast}</dd></div>
-                        </dl>
-                        <p className="origin-profile__sensory"><span>{language === 'en' ? 'SENSORY PROFILE' : 'PERFIL SENSORIAL'}</span>{profile.profile}</p>
-                        <div className="origin-profile__verification">
-                          <div><span>{t.network.scoreLabel}</span><strong>{profile.score}</strong></div>
-                          <div><span>{t.network.traceLabel}</span><strong>{profile.trace}</strong></div>
+                        <div className="producer-teaser__content">
+                          <span className="producer-teaser__eyebrow">{profile.origin}</span>
+                          <h5>{profile.supplier}</h5>
+                          <p>{profile.product}</p>
+                          <span className="producer-teaser__link">{t.network.openProfile}<Arrow diagonal /></span>
                         </div>
-                        <div className="origin-profile__actions">
-                          <a className="button button--dark" href={InstagramAsiaLink} target="_blank" rel="noreferrer">{t.network.sampleCta}<Arrow diagonal /></a>
-                          <a className="origin-profile__availability" href={InstagramAsiaLink} target="_blank" rel="noreferrer">{t.network.availabilityCta}<Arrow /></a>
-                        </div>
-                      </div>
-                    </article>
-                  ))}
+                      </Link>
+                    )
+                  })}
                 </div>
-                <aside className="origin-film-note">
-                  <span className="origin-film-note__play" aria-hidden="true">▶</span>
-                  <div>
-                    <p className="origin-profile__specs-label">{t.network.storyHeading}</p>
-                    <h5>{t.network.storyTitle}</h5>
-                    <p>{t.network.storyBody}</p>
-                  </div>
-                  <span className="origin-film-note__status">{t.network.storyStatus}</span>
-                </aside>
               </section>
             </div>
           </div>
