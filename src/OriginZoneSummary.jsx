@@ -4,7 +4,8 @@ export default function OriginZoneSummary({ location, network, language }) {
   if (!location) return null
 
   const producers = location.suppliers.map((supplier) => ({
-    ...supplier,
+    id: supplier.profile,
+    name: supplier.name,
     profile: network.profiles.find((profile) => profile.id === supplier.profile),
   }))
 
@@ -24,7 +25,7 @@ export default function OriginZoneSummary({ location, network, language }) {
       <ul className="origin-zone-summary__list">
         {producers.map((producer) => (
           <li key={producer.profile}>
-            <Link to={`/producers/${producer.profile}`} className="origin-zone-summary__producer">
+            <Link to={`/producers/${producer.id}`} className="origin-zone-summary__producer">
               <span className="origin-zone-summary__producer-mark" aria-hidden="true">{producer.profile?.number || '↗'}</span>
               <span className="origin-zone-summary__producer-copy">
                 <strong>{producer.name}</strong>
