@@ -2,37 +2,54 @@ import { useEffect, useState } from 'react'
 
 const content = {
   en: {
-    announcement: 'COLOMBIA  ·  HONG KONG  ·  ASIA',
-    nav: { story: 'Our story', journey: 'The journey', partners: 'For partners', contact: 'Let’s connect' },
+    announcement: 'LATIN AMERICA  ·  ASIA  ·  A GLOBAL COFFEE NETWORK',
+    announcementRight: 'A GLOBAL COFFEE NETWORK',
+    nav: { story: 'Our idea', network: 'Regions', countries: 'Countries', zones: 'Colombia by zone', partners: 'For partners', contact: 'Let’s connect' },
     language: 'ES',
     hero: {
-      eyebrow: 'COFFEE WITH A CLEARER WAY FORWARD',
-      title: <>From the <em>origin,</em><br />a world of possibility.</>,
-      body: 'We connect Colombian coffee producers with the people and markets ready to discover what grows here — keeping the story close to every lot.',
-      primary: 'Discover our approach',
+      eyebrow: 'A GLOBAL COFFEE NETWORK, ROOTED AT ORIGIN',
+      title: <>From local <em>origins,</em><br />a world of possibility.</>,
+      body: 'SAFEENA is building a global network connecting coffee origins, producers and markets across Latin America and Asia. Explore by region, country and — in Colombia — by origin zone.',
+      primary: 'Explore the network',
       secondary: 'Follow the journey',
-      imageLabel: 'COLOMBIAN HIGHLANDS',
-      imageNote: 'A journey that begins at origin',
+      imageLabel: 'A COLOMBIAN ORIGIN',
+      imageNote: 'A global network begins with a place',
+      captionRegion: 'LATIN AMERICA · ASIA',
+      sideLabel: 'LOCAL ORIGINS · GLOBAL NETWORK',
     },
     intro: {
       index: '01 / THE IDEA',
-      title: 'Great coffee travels further when its story travels with it.',
-      body: 'SAFEENA is building a thoughtful bridge between Colombia’s coffee origins and buyers across Hong Kong and Asia. Our work begins with relationships, moves through careful coordination, and keeps each producer and lot in view.',
-      link: 'See how it works',
-      note: 'ORIGIN FIRST',
+      title: 'A global network, built one origin at a time.',
+      body: 'SAFEENA is building connections between coffee producers and partners across Latin America and Asia. Each place has its own context, people and lots; our network makes those local stories easier to discover and follow.',
+      link: 'Explore regions',
+      note: 'LOCAL ROOTS · GLOBAL REACH',
     },
-    journey: {
-      eyebrow: '02 / THE JOURNEY',
-      title: <>One clear route.<br />Every origin stays in focus.</>,
-      body: 'A connected path gives buyers a clearer view of where coffee comes from and helps producers carry their identity forward.',
-      steps: [
-        { number: '01', title: 'Colombia', text: 'Meet producers and explore coffees shaped by their place, process and craft.' },
-        { number: '02', title: 'SAFEENA', text: 'Coordinate relationships, quality details and lot-level traceability.' },
-        { number: '03', title: 'Hong Kong · Asia', text: 'Create a considered path to importers, roasters and distribution partners.' },
+    network: {
+      eyebrow: '02 / EXPLORE THE NETWORK',
+      title: <>Connected by region.<br />Experienced place by place.</>,
+      body: 'Start with a region, then explore its markets, countries and origins as the SAFEENA network grows.',
+      regions: [
+        { id: 'asia', number: '01', title: 'Asia', label: 'MARKETS & PARTNERS', placeLabel: 'MARKET', place: 'Hong Kong', description: 'This section will bring together market destinations, buyers and partners as the network expands.' },
+        { id: 'latam', number: '02', title: 'Latin America', label: 'ORIGINS & PRODUCERS', placeLabel: 'COUNTRY', place: 'Colombia', description: 'Discover coffee origins and producer relationships, organized country by country.' },
       ],
+      asiaEyebrow: 'ASIA · DESTINATIONS',
+      asiaTitle: 'Asia, market by market.',
+      asiaBody: 'Explore SAFEENA destinations and partnerships across Asia. The network starts in Hong Kong.',
+      asiaMarket: 'Hong Kong',
+      asiaMarketDetail: 'Initial market · Asia',
+      countriesEyebrow: '03 / COUNTRY DIRECTORY',
+      countriesTitle: 'Explore by country.',
+      countriesBody: 'Each country will have a dedicated view of its origins, people and coffee lots.',
+      countryRegion: 'LATIN AMERICA',
+      country: 'Colombia',
+      countryDetail: 'Latin America · Explore by zone',
+      zonesEyebrow: 'COLOMBIA · BY ZONE',
+      zonesTitle: 'Every zone has a story.',
+      zonesBody: 'Explore Colombian coffee origins zone by zone, with each profile bringing together local producers, practices and lots.',
+      zonesNote: 'The zone directory is taking shape. Names and profiles will appear here as origin details are confirmed.',
     },
     values: {
-      eyebrow: '03 / WHAT MATTERS',
+      eyebrow: '04 / WHAT MATTERS',
       title: 'Closer to the people and places behind the cup.',
       body: 'We believe the most meaningful coffee relationships begin with curiosity and grow through clarity.',
       cards: [
@@ -42,50 +59,67 @@ const content = {
       ],
     },
     partners: {
-      eyebrow: '04 / WORK WITH US',
+      eyebrow: '05 / WORK WITH US',
       title: 'Good coffee starts with a good conversation.',
-      body: 'Are you a Colombian producer, roaster, importer or distribution partner? We’d love to hear what you are looking for and learn what you are building.',
+      body: 'Are you a producer, roaster, importer or distribution partner in Latin America or Asia? We’d love to hear what you are looking for and learn what you are building.',
       button: 'Connect with SAFEENA',
       social: 'Or follow along on Instagram',
     },
     footer: {
-      phrase: 'A clearer path from origin to opportunity.',
-      copyright: '© SAFEENA. Colombian origins, connected with care.',
+      phrase: 'Local origins. A world of connection.',
+      copyright: '© SAFEENA. Coffee origins and markets, connected with care.',
       back: 'Back to top ↑',
     },
   },
   es: {
-    announcement: 'COLOMBIA  ·  HONG KONG  ·  ASIA',
-    nav: { story: 'Nuestra historia', journey: 'El recorrido', partners: 'Aliados', contact: 'Conversemos' },
+    announcement: 'AMÉRICA LATINA  ·  ASIA  ·  UNA RED GLOBAL DE CAFÉ',
+    announcementRight: 'UNA RED GLOBAL DE CAFÉ',
+    nav: { story: 'La idea', network: 'Regiones', countries: 'Países', zones: 'Colombia por zonas', partners: 'Aliados', contact: 'Conversemos' },
     language: 'EN',
     hero: {
-      eyebrow: 'CAFÉ CON UN CAMINO MÁS CLARO',
-      title: <>Desde el <em>origen,</em><br />un mundo de posibilidades.</>,
-      body: 'Conectamos a productores de café colombiano con las personas y los mercados que quieren descubrir lo que nace aquí, manteniendo la historia cerca de cada lote.',
-      primary: 'Conoce nuestro enfoque',
+      eyebrow: 'UNA RED GLOBAL DE CAFÉ, CON RAÍCES EN EL ORIGEN',
+      title: <>Desde los <em>orígenes</em><br />locales, un mundo de posibilidades.</>,
+      body: 'SAFEENA está construyendo una red global que conecta orígenes cafeteros, productores y mercados de América Latina y Asia. Explora por región, país y — en Colombia — por zonas de origen.',
+      primary: 'Explora la red',
       secondary: 'Sigue el recorrido',
-      imageLabel: 'MONTAÑAS COLOMBIANAS',
-      imageNote: 'Un recorrido que comienza en el origen',
+      imageLabel: 'UN ORIGEN COLOMBIANO',
+      imageNote: 'Toda red global comienza en un lugar',
+      captionRegion: 'AMÉRICA LATINA · ASIA',
+      sideLabel: 'ORÍGENES LOCALES · RED GLOBAL',
     },
     intro: {
       index: '01 / LA IDEA',
-      title: 'El café llega más lejos cuando su historia viaja con él.',
-      body: 'SAFEENA construye un puente consciente entre los orígenes cafeteros de Colombia y compradores en Hong Kong y Asia. Nuestro trabajo parte de las relaciones, avanza con coordinación cuidadosa y mantiene a la vista a cada productor y lote.',
-      link: 'Así funciona',
-      note: 'PRIMERO EL ORIGEN',
+      title: 'Una red global, construida origen por origen.',
+      body: 'SAFEENA está construyendo conexiones entre productores de café y aliados de América Latina y Asia. Cada lugar tiene su propio contexto, su gente y sus lotes; nuestra red ayuda a descubrir y seguir esas historias locales.',
+      link: 'Explora las regiones',
+      note: 'RAÍCES LOCALES · ALCANCE GLOBAL',
     },
-    journey: {
-      eyebrow: '02 / EL RECORRIDO',
-      title: <>Una ruta clara.<br />Cada origen sigue presente.</>,
-      body: 'Un camino conectado ayuda a los compradores a conocer de dónde viene el café y permite a los productores llevar su identidad consigo.',
-      steps: [
-        { number: '01', title: 'Colombia', text: 'Conocemos productores y exploramos cafés marcados por su lugar, proceso y oficio.' },
-        { number: '02', title: 'SAFEENA', text: 'Coordinamos relaciones, datos de calidad y trazabilidad por lote.' },
-        { number: '03', title: 'Hong Kong · Asia', text: 'Creamos un camino pensado para importadores, tostadores y aliados de distribución.' },
+    network: {
+      eyebrow: '02 / EXPLORA LA RED',
+      title: <>Conectados por región.<br />Presentes en cada lugar.</>,
+      body: 'Empieza por una región y explora sus mercados, países y orígenes a medida que crece la red SAFEENA.',
+      regions: [
+        { id: 'asia', number: '01', title: 'Asia', label: 'MERCADOS Y ALIADOS', placeLabel: 'MERCADO', place: 'Hong Kong', description: 'Esta sección reunirá destinos, compradores y aliados a medida que se expanda la red.' },
+        { id: 'latam', number: '02', title: 'América Latina', label: 'ORÍGENES Y PRODUCTORES', placeLabel: 'PAÍS', place: 'Colombia', description: 'Descubre orígenes cafeteros y relaciones con productores, organizados por país.' },
       ],
+      asiaEyebrow: 'ASIA · DESTINOS',
+      asiaTitle: 'Asia, mercado por mercado.',
+      asiaBody: 'Explora los destinos y alianzas de SAFEENA en Asia. La red comienza en Hong Kong.',
+      asiaMarket: 'Hong Kong',
+      asiaMarketDetail: 'Mercado inicial · Asia',
+      countriesEyebrow: '03 / DIRECTORIO POR PAÍS',
+      countriesTitle: 'Explora por país.',
+      countriesBody: 'Cada país tendrá un espacio para conocer sus orígenes, su gente y sus lotes de café.',
+      countryRegion: 'AMÉRICA LATINA',
+      country: 'Colombia',
+      countryDetail: 'América Latina · Explora por zonas',
+      zonesEyebrow: 'COLOMBIA · POR ZONAS',
+      zonesTitle: 'Cada zona tiene su historia.',
+      zonesBody: 'Explora los orígenes cafeteros de Colombia por zonas, reuniendo productores, prácticas y lotes de cada lugar.',
+      zonesNote: 'Estamos organizando el directorio por zonas. Los nombres y perfiles aparecerán a medida que confirmemos la información de origen.',
     },
     values: {
-      eyebrow: '03 / LO QUE NOS MUEVE',
+      eyebrow: '04 / LO QUE NOS MUEVE',
       title: 'Más cerca de las personas y lugares detrás de cada taza.',
       body: 'Creemos que las relaciones cafeteras más valiosas comienzan con curiosidad y crecen con claridad.',
       cards: [
@@ -95,15 +129,15 @@ const content = {
       ],
     },
     partners: {
-      eyebrow: '04 / TRABAJEMOS JUNTOS',
+      eyebrow: '05 / TRABAJEMOS JUNTOS',
       title: 'El buen café empieza con una buena conversación.',
-      body: '¿Eres productor colombiano, tostador, importador o aliado de distribución? Queremos conocer lo que buscas y descubrir lo que estás construyendo.',
+      body: '¿Eres productor, tostador, importador o aliado de distribución en América Latina o Asia? Queremos conocer lo que buscas y descubrir lo que estás construyendo.',
       button: 'Conecta con SAFEENA',
       social: 'También puedes seguirnos en Instagram',
     },
     footer: {
-      phrase: 'Un camino más claro del origen a la oportunidad.',
-      copyright: '© SAFEENA. Orígenes colombianos, conectados con cuidado.',
+      phrase: 'Orígenes locales. Un mundo de conexiones.',
+      copyright: '© SAFEENA. Orígenes y mercados conectados con cuidado.',
       back: 'Volver arriba ↑',
     },
   },
@@ -111,9 +145,9 @@ const content = {
 
 const InstagramLink = 'https://www.instagram.com/safeena_coffeelatam/'
 
-function Logo() {
+function Logo({ language }) {
   return (
-    <a className="brand" href="#top" aria-label="SAFEENA — back to top">
+    <a className="brand" href="#top" aria-label={language === 'en' ? 'SAFEENA — back to top' : 'SAFEENA — volver arriba'}>
       <span className="brand__mark" aria-hidden="true">
         <img src="/images/safeena-logo.jpg" alt="" />
       </span>
@@ -142,26 +176,28 @@ function App() {
       <div className="announcement">
         <span className="announcement__dot" />
         <span>{t.announcement}</span>
-        <span className="announcement__right">A COLOMBIAN COFFEE CONNECTION</span>
+        <span className="announcement__right">{t.announcementRight}</span>
       </div>
 
       <header className="site-header" id="top">
-        <a className="skip-link" href="#main">Skip to content</a>
+        <a className="skip-link" href="#main">{language === 'en' ? 'Skip to content' : 'Saltar al contenido'}</a>
         <div className="nav-wrap">
-          <Logo />
+          <Logo language={language} />
           <button
             type="button"
             className="menu-toggle"
-            aria-label={menuOpen ? 'Close menu' : 'Open menu'}
+            aria-label={language === 'en' ? (menuOpen ? 'Close menu' : 'Open menu') : (menuOpen ? 'Cerrar menú' : 'Abrir menú')}
             aria-expanded={menuOpen}
             onClick={() => setMenuOpen((open) => !open)}
           >
             <span />
             <span />
           </button>
-          <nav className={`main-nav${menuOpen ? ' main-nav--open' : ''}`} aria-label="Main navigation">
+          <nav className={`main-nav${menuOpen ? ' main-nav--open' : ''}`} aria-label={language === 'en' ? 'Main navigation' : 'Navegación principal'}>
             <a href="#story" onClick={closeMenu}>{t.nav.story}</a>
-            <a href="#journey" onClick={closeMenu}>{t.nav.journey}</a>
+            <a href="#network" onClick={closeMenu}>{t.nav.network}</a>
+            <a href="#countries" onClick={closeMenu}>{t.nav.countries}</a>
+            <a href="#colombia-zones" onClick={closeMenu}>{t.nav.zones}</a>
             <a href="#partners" onClick={closeMenu}>{t.nav.partners}</a>
             <button className="language-switch" type="button" onClick={() => { setLanguage(language === 'en' ? 'es' : 'en'); closeMenu() }} aria-label={language === 'en' ? 'Cambiar a español' : 'Switch to English'}>
               <span className="language-switch__current">{language.toUpperCase()}</span>
@@ -180,7 +216,7 @@ function App() {
             <h1 id="hero-title">{t.hero.title}</h1>
             <p className="hero__body">{t.hero.body}</p>
             <div className="hero__actions">
-              <a className="button button--dark" href="#story">{t.hero.primary}<Arrow diagonal /></a>
+              <a className="button button--dark" href="#network">{t.hero.primary}<Arrow diagonal /></a>
               <a className="text-link" href={InstagramLink} target="_blank" rel="noreferrer">{t.hero.secondary}<Arrow /></a>
             </div>
             <div className="hero__signature">
@@ -198,9 +234,9 @@ function App() {
             <div className="hero__caption">
               <span className="caption-rule" />
               <span>{t.hero.imageNote}</span>
-              <span className="caption-coordinates">COLOMBIA · SOUTH AMERICA</span>
+              <span className="caption-coordinates">{t.hero.captionRegion}</span>
             </div>
-            <span className="hero__side-label">COLOMBIA, CONNECTED</span>
+            <span className="hero__side-label">{t.hero.sideLabel}</span>
           </div>
           <div className="hero__number" aria-hidden="true">01</div>
         </section>
@@ -214,7 +250,7 @@ function App() {
             </div>
             <div className="intro__detail">
               <p>{t.intro.body}</p>
-              <a className="text-link text-link--red" href="#journey">{t.intro.link}<Arrow /></a>
+              <a className="text-link text-link--red" href="#network">{t.intro.link}<Arrow /></a>
             </div>
           </div>
           <div className="intro__seal" aria-hidden="true">
@@ -224,32 +260,75 @@ function App() {
           </div>
         </section>
 
-        <section className="journey section-shell" id="journey" aria-labelledby="journey-title">
-          <div className="journey__top">
+        <section className="network section-shell" id="network" aria-labelledby="network-title">
+          <div className="network__heading">
             <div>
-              <p className="eyebrow eyebrow--light"><span className="eyebrow__line" />{t.journey.eyebrow}</p>
-              <h2 id="journey-title">{t.journey.title}</h2>
+              <p className="eyebrow"><span className="eyebrow__line" />{t.network.eyebrow}</p>
+              <h2 id="network-title">{t.network.title}</h2>
             </div>
-            <p className="journey__lead">{t.journey.body}</p>
+            <p>{t.network.body}</p>
           </div>
-          <div className="route-line" aria-hidden="true">
-            <span className="route-line__start" />
-            <span className="route-line__path" />
-            <span className="route-line__end">↗</span>
-          </div>
-          <div className="journey__steps">
-            {t.journey.steps.map((step) => (
-              <article className="journey-card" key={step.number}>
-                <span className="journey-card__number">{step.number}</span>
-                <h3>{step.title}</h3>
-                <p>{step.text}</p>
-                <span className="journey-card__corner" aria-hidden="true">↗</span>
+          <div className="region-grid">
+            {t.network.regions.map((region) => (
+              <article className={`region-card region-card--${region.id}`} key={region.id} id={region.id}>
+                <div className="region-card__top">
+                  <span className="region-card__number">{region.number}</span>
+                  <span className="region-card__label">{region.label}</span>
+                </div>
+                <h3>{region.title}</h3>
+                <p>{region.description}</p>
+                <div className="region-card__place">
+                  <span>{region.placeLabel}</span>
+                  <strong>{region.place}</strong>
+                </div>
+                <a className="text-link" href={region.id === 'asia' ? '#asia-destinations' : '#countries'}>
+                  {region.id === 'asia' ? (language === 'en' ? 'Explore destinations' : 'Explora destinos') : (language === 'en' ? 'Explore countries' : 'Explora países')}<Arrow diagonal />
+                </a>
               </article>
             ))}
           </div>
-          <div className="journey__footnote">
-            <span className="mini-sail" aria-hidden="true">◢</span>
-            <span>{language === 'en' ? 'The producer’s identity stays part of the journey.' : 'La identidad del productor sigue presente en el recorrido.'}</span>
+
+          <div className="asia-directory" id="asia-destinations">
+            <div className="asia-directory__heading">
+              <div>
+                <p className="eyebrow"><span className="eyebrow__line" />{t.network.asiaEyebrow}</p>
+                <h3>{t.network.asiaTitle}</h3>
+              </div>
+              <p>{t.network.asiaBody}</p>
+            </div>
+            <div className="market-card">
+              <span className="market-card__region">ASIA</span>
+              <strong>{t.network.asiaMarket}</strong>
+              <span>{t.network.asiaMarketDetail}</span>
+            </div>
+          </div>
+
+          <div className="country-directory" id="countries">
+            <div className="country-directory__heading">
+              <div>
+                <p className="eyebrow"><span className="eyebrow__line" />{t.network.countriesEyebrow}</p>
+                <h3>{t.network.countriesTitle}</h3>
+              </div>
+              <p>{t.network.countriesBody}</p>
+            </div>
+            <a className="country-card" href="#colombia-zones">
+              <span className="country-card__region">{t.network.countryRegion}</span>
+              <strong>{t.network.country}</strong>
+              <span>{t.network.countryDetail}</span>
+              <span className="country-card__arrow" aria-hidden="true">↗</span>
+            </a>
+          </div>
+
+          <div className="colombia-zones" id="colombia-zones">
+            <div className="colombia-zones__copy">
+              <p className="eyebrow"><span className="eyebrow__line" />{t.network.zonesEyebrow}</p>
+              <h3>{t.network.zonesTitle}</h3>
+              <p>{t.network.zonesBody}</p>
+            </div>
+            <div className="zone-directory-note">
+              <span className="zone-directory-note__mark" aria-hidden="true">CO</span>
+              <p>{t.network.zonesNote}</p>
+            </div>
           </div>
         </section>
 
@@ -293,7 +372,7 @@ function App() {
       <footer className="site-footer section-shell">
         <div className="site-footer__top">
           <div>
-            <Logo />
+            <Logo language={language} />
             <p>{t.footer.phrase}</p>
           </div>
           <a className="footer-top-link" href="#top">{t.footer.back}</a>
@@ -302,7 +381,7 @@ function App() {
           <span>{t.footer.copyright}</span>
           <div className="footer-links">
             <a href={InstagramLink} target="_blank" rel="noreferrer">Instagram <Arrow diagonal /></a>
-            <span>COLOMBIA → ASIA</span>
+            <span>{language === 'en' ? 'ORIGIN → MARKET' : 'ORIGEN → MERCADO'}</span>
           </div>
         </div>
       </footer>

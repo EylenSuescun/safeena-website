@@ -1,6 +1,6 @@
 # SAFEENA website
 
-A bilingual, responsive React + Vite landing page for SAFEENA, a platform connecting Colombian coffee origins with Hong Kong and Asian markets.
+A bilingual, responsive React + Vite website for SAFEENA, building a global coffee network across Latin America and Asia. The information architecture starts with regions, then countries, with Colombia organized by origin zones.
 
 ## Run locally
 
@@ -34,6 +34,6 @@ The Pages Git integration builds and deploys each push. The default `*.pages.dev
 
 ## Brand and content
 
-The site uses the SAFEENA logo asset and the English-first brand direction already defined for SAFEENA, with a Spanish language switch. The copy describes the planned Colombia → Hong Kong → Asia business path and avoids claims about specific shipments, partners, certifications, tasting scores or producer permissions.
+The site uses the SAFEENA logo asset and an English-first brand direction, with a Spanish language switch. Its region directory starts with Asia and Latin America, its country directory currently features Colombia, and its Colombia section is prepared for zone profiles. It avoids claims about specific shipments, partners, certifications, tasting scores or producer permissions.
 
 The hero photograph was generated for this website and is used as an illustrative coffee-origin image. It does not represent a named farm or a specific producer.
