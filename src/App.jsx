@@ -101,9 +101,9 @@ const content = {
           score: 'Not confirmed for this lot',
         },
         {
-          id: 'salinas', number: '03', supplier: 'Salinas', product: 'Coffee from Murillo', origin: 'Murillo · Tolima', altitude: 'To be confirmed', variety: 'To be confirmed', process: 'To be confirmed', roast: 'To be confirmed',
+          id: 'salinas', number: '03', supplier: 'Salinas', product: 'Coffee from Murillo', origin: 'Murillo · Tolima · near Nevado del Ruiz', altitude: 'To be confirmed', variety: 'To be confirmed', process: 'To be confirmed', roast: 'To be confirmed',
           profile: 'Lot-specific sensory notes are being gathered.',
-          story: 'The photo record shows mountain landscapes, coffee cherries and raised-bed drying. Lot details remain to be confirmed.',
+          story: 'Brothers Fernando and Aduar Salinas Castellanos have developed their coffee project at Finca El Limón, in Vereda Corozal, Murillo. Since 2011, they have cultivated specialty coffee in the highlands of northern Tolima, close to Nevado del Ruiz—a landscape that gives this origin a strong sense of place.',
           photos: [
             { src: '/images/producers/salinas-landscape.jpg', alt: 'Mountain landscape at Salinas in Murillo, Tolima' },
             { src: '/images/producers/salinas-drying.jpg', alt: 'Coffee drying on a raised bed at Salinas' },
@@ -236,9 +236,9 @@ const content = {
           score: 'No confirmado para este lote',
         },
         {
-          id: 'salinas', number: '03', supplier: 'Salinas', product: 'Café de Murillo', origin: 'Murillo · Tolima', altitude: 'Por confirmar', variety: 'Por confirmar', process: 'Por confirmar', roast: 'Por confirmar',
+          id: 'salinas', number: '03', supplier: 'Salinas', product: 'Café de Murillo', origin: 'Murillo · Tolima · cerca del Nevado del Ruiz', altitude: 'Por confirmar', variety: 'Por confirmar', process: 'Por confirmar', roast: 'Por confirmar',
           profile: 'Perfil sensorial por recopilar para el lote.',
-          story: 'El registro fotográfico muestra paisajes de montaña, cerezas de café y secado en camas elevadas. Los datos del lote están pendientes de confirmación.',
+          story: 'Los hermanos Fernando y Aduar Salinas Castellanos han desarrollado su proyecto cafetero en la finca El Limón, vereda Corozal, Murillo. Desde 2011 cultivan café especial en las montañas del norte del Tolima, cerca del Nevado del Ruiz. Su historia está arraigada en la agricultura familiar y en el paisaje de alta montaña de este origen.',
           photos: [
             { src: '/images/producers/salinas-landscape.jpg', alt: 'Paisaje de montaña de Salinas en Murillo, Tolima' },
             { src: '/images/producers/salinas-drying.jpg', alt: 'Café en secado sobre una cama elevada en Salinas' },
