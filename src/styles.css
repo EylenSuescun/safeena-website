@@ -171,28 +171,47 @@ button { color: inherit; }
 .origin-atlas__heading h4 { max-width: 680px; margin: 0; color: var(--forest); font-family: Georgia, "Times New Roman", serif; font-size: clamp(33px, 4vw, 49px); font-weight: 400; letter-spacing: -.045em; line-height: 1.06; }
 .origin-atlas__heading > p { max-width: 310px; margin: 0 0 4px; color: #74776d; font-size: 12px; line-height: 1.8; }
 .origin-atlas__body { display: grid; grid-template-columns: minmax(0, 1.12fr) minmax(280px, .88fr); gap: 14px; align-items: stretch; }
-.origin-map { position: relative; display: flex; min-width: 0; flex-direction: column; margin: 0; padding: 19px 21px 15px; overflow: hidden; background: #e8e9dd; }
+.origin-map { position: relative; display: flex; min-width: 0; flex-direction: column; margin: 0; padding: 19px 21px 14px; overflow: hidden; border: 1px solid rgba(50,74,57,.11); background: linear-gradient(145deg, #f1f2e9 0%, #e7eee7 100%); }
 .origin-map::after { position: absolute; top: -90px; right: -75px; width: 220px; height: 220px; border: 1px solid rgba(62, 85, 67, .12); border-radius: 50%; box-shadow: 0 0 0 22px rgba(62,85,67,.035), 0 0 0 44px rgba(62,85,67,.025); content: ""; pointer-events: none; }
-.origin-map__topline { position: relative; z-index: 2; display: flex; justify-content: space-between; gap: 14px; color: #727a6c; font-size: 8px; font-weight: 750; letter-spacing: .15em; }
-.origin-map__topline span:last-child { color: #9b9c8f; }
-.origin-map__canvas { position: relative; width: 100%; aspect-ratio: 500 / 490; margin-top: 8px; }
+.origin-map__topline { position: relative; z-index: 2; display: flex; justify-content: space-between; gap: 14px; color: #687363; font-size: 8px; font-weight: 750; letter-spacing: .15em; }
+.origin-map__status { display: flex; align-items: center; gap: 7px; color: #81877a; white-space: nowrap; }
+.origin-map__status i { width: 6px; height: 6px; border-radius: 50%; background: var(--red); box-shadow: 0 0 0 3px rgba(217,78,50,.12); }
+.origin-map__canvas { position: relative; width: 100%; aspect-ratio: 500 / 510; margin-top: 7px; }
 .origin-map__drawing { position: absolute; inset: 0; display: block; width: 100%; height: 100%; overflow: visible; }
-.origin-map__contour { fill: none; stroke: #83927e; stroke-width: 1; opacity: .23; }
-.origin-map__land { fill: url(#land-wash); stroke: #718571; stroke-width: 1.5; stroke-linejoin: round; }
-.origin-map__land-grain { fill: url(#map-grain); opacity: .42; }
-.origin-map__river { fill: none; stroke: #f4f1e7; stroke-width: 2; stroke-linecap: round; opacity: .85; }
-.origin-map__region { fill: #516650; font-family: Georgia, "Times New Roman", serif; font-size: 16px; font-style: italic; letter-spacing: .15em; opacity: .62; }
-.origin-map__water { fill: #8b9382; font-size: 7px; font-weight: 700; letter-spacing: .16em; opacity: .66; }
-.origin-map__water--east { transform: rotate(90deg); transform-origin: 375px 303px; }
-.origin-map__pin { position: absolute; z-index: 2; display: flex; align-items: center; gap: 8px; color: var(--forest); text-decoration: none; }
-.origin-map__pin--jardin { top: 43%; left: 37%; }
-.origin-map__pin--murillo { top: 50%; left: 43%; }
-.origin-map__pin-dot { position: relative; display: block; width: 12px; height: 12px; flex: 0 0 auto; border: 3px solid var(--paper-light); border-radius: 50%; background: var(--red); box-shadow: 0 0 0 1px var(--red); }
-.origin-map__pin-dot::after { position: absolute; inset: -8px; border: 1px solid rgba(217,78,50,.28); border-radius: 50%; content: ""; animation: origin-pulse 2.7s ease-out infinite; }
-.origin-map__pin-label { padding: 5px 7px; color: var(--forest); background: rgba(248,246,239,.88); font-size: 8px; font-weight: 800; letter-spacing: .1em; box-shadow: 0 2px 10px rgba(36,49,42,.05); }
-.origin-map__pin:hover .origin-map__pin-label, .origin-map__pin:focus-visible .origin-map__pin-label { color: white; background: var(--red); }
-.origin-map__caption { display: flex; align-items: center; gap: 8px; min-height: 25px; color: #777b70; font-size: 9px; line-height: 1.5; }
-.origin-map__legend-dot { width: 6px; height: 6px; flex: 0 0 auto; border-radius: 50%; background: var(--red); }
+.origin-map__grid { fill: none; stroke: #9aa99a; stroke-width: .55; stroke-dasharray: 2 7; opacity: .28; }
+.origin-map__water { fill: #7f928a; font-family: Arial, sans-serif; font-size: 7px; font-weight: 700; letter-spacing: .17em; opacity: .77; }
+.origin-map__water--caribbean { text-anchor: middle; }
+.origin-map__water--pacific { text-anchor: start; transform: rotate(-72deg); transform-origin: 17px 371px; }
+.origin-map__compass { fill: none; stroke: #6d806f; stroke-width: 1; }
+.origin-map__compass text { fill: #6d806f; stroke: none; font-family: Georgia, "Times New Roman", serif; font-size: 10px; font-style: italic; text-anchor: middle; }
+.origin-map__land-shadow { fill: #415846; opacity: .17; }
+.origin-map__land { fill: url(#colombia-land); stroke: #617966; stroke-width: 1.8; stroke-linejoin: round; }
+.origin-map__land-grain { fill: url(#colombia-grain); opacity: .62; }
+.origin-map__contour { fill: none; stroke: #769078; stroke-width: .7; stroke-linecap: round; opacity: .34; }
+.origin-map__ridge { fill: none; stroke: #667e69; stroke-width: 1.1; stroke-dasharray: 2 3; stroke-linecap: round; opacity: .64; }
+.origin-map__river { fill: none; stroke: #f8f4e7; stroke-width: 1.8; stroke-linecap: round; opacity: .8; }
+.origin-map__country { fill: #4e6854; font-family: Georgia, "Times New Roman", serif; font-size: 14px; font-weight: 600; letter-spacing: .22em; opacity: .68; }
+.origin-map__andescopy { fill: #5d765f; font-family: Arial, sans-serif; font-size: 6px; font-weight: 700; letter-spacing: .16em; opacity: .72; }
+.origin-map__origin-link { fill: none; stroke: #d85c40; stroke-width: 1.2; stroke-dasharray: 2 4; stroke-linecap: round; opacity: .75; }
+.origin-map__pin { position: absolute; z-index: 2; display: flex; align-items: center; gap: 7px; color: var(--forest); text-decoration: none; transform: translate(-50%, -50%); }
+.origin-map__pin--west { flex-direction: row-reverse; }
+.origin-map__pin-dot { position: relative; display: block; width: 13px; height: 13px; flex: 0 0 auto; border: 3px solid #f4f4e9; border-radius: 50%; background: var(--red); box-shadow: 0 0 0 1.5px #b95942; }
+.origin-map__pin-dot::after { position: absolute; inset: -7px; border: 1px solid rgba(217,78,50,.3); border-radius: 50%; content: ""; animation: origin-pulse 2.7s ease-out infinite; }
+.origin-map__pin-label { display: grid; gap: 2px; min-width: max-content; padding: 6px 9px; border: 1px solid rgba(48,71,53,.13); border-radius: 999px; color: var(--forest); background: rgba(250,248,240,.95); box-shadow: 0 3px 12px rgba(36,49,42,.1); transition: color .2s ease, background .2s ease, border-color .2s ease; }
+.origin-map__pin-label strong { font-size: 7px; font-weight: 800; letter-spacing: .1em; }
+.origin-map__pin-label small { color: #808578; font-size: 6px; font-weight: 700; letter-spacing: .12em; text-transform: uppercase; }
+.origin-map__pin--west .origin-map__pin-label { text-align: right; }
+.origin-map__pin:hover .origin-map__pin-label, .origin-map__pin:focus-visible .origin-map__pin-label { border-color: var(--forest); color: white; background: var(--forest); }
+.origin-map__pin:hover .origin-map__pin-label small, .origin-map__pin:focus-visible .origin-map__pin-label small { color: rgba(255,255,255,.7); }
+.origin-map__caption { display: flex; align-items: center; gap: 7px; min-height: 24px; color: #74796f; font-size: 8px; line-height: 1.5; }
+.origin-map__legend-dot, .origin-map__legend-future { width: 7px; height: 7px; flex: 0 0 auto; border-radius: 50%; }
+.origin-map__legend-dot { margin-left: 2px; background: var(--red); }
+.origin-map__legend-future { margin-left: 8px; border: 1px solid #9a9d8d; }
+.origin-map__expansion { display: flex; align-items: center; justify-content: space-between; gap: 12px; padding-top: 10px; border-top: 1px solid rgba(48,71,53,.1); }
+.origin-map__expansion > span { color: #818477; font-size: 7px; font-weight: 750; letter-spacing: .13em; }
+.origin-map__expansion p { display: flex; flex-wrap: wrap; gap: 5px; margin: 0; }
+.origin-map__expansion i { padding: 4px 7px; border: 1px solid rgba(83,103,82,.15); border-radius: 999px; color: #788072; background: rgba(249,248,240,.54); font-size: 8px; font-style: normal; }
+.origin-map__credit { align-self: flex-end; margin-top: 8px; color: #a0a294; font-size: 6px; letter-spacing: .1em; }
 .origin-list { display: flex; flex-direction: column; gap: 9px; }
 .origin-list__label { margin: 0 0 2px; padding: 9px 14px; color: var(--red); font-size: 8px; font-weight: 750; letter-spacing: .16em; }
 .origin-card { position: relative; flex: 1; min-height: 175px; padding: 20px 21px; background: var(--paper-light); scroll-margin-top: 100px; }
@@ -422,10 +441,9 @@ button { color: inherit; }
   .origin-atlas__body { grid-template-columns: 1fr; gap: 11px; }
   .origin-map { padding: 15px 14px 10px; }
   .origin-map__topline { font-size: 7px; }
-  .origin-map__canvas { aspect-ratio: 500 / 470; }
-  .origin-map__pin--jardin { top: 42%; left: 34%; }
-  .origin-map__pin--murillo { top: 49%; left: 42%; }
-  .origin-map__pin-label { padding: 5px; font-size: 7px; }
+  .origin-map__canvas { aspect-ratio: 500 / 510; }
+  .origin-map__pin-label { padding: 5px 7px; }
+  .origin-map__expansion { align-items: flex-start; flex-direction: column; }
   .origin-card { min-height: 160px; padding: 17px; }
   .origin-card h5 { margin-top: 12px; font-size: 27px; }
   .origin-card ul { margin-top: 12px; }
