@@ -51,16 +51,62 @@ const content = {
       originsTitle: 'Three partners. Two places. One shared story.',
       originsBody: 'Meet the Colombian producers already part of SAFEENA, rooted in the mountain landscapes of Antioquia and Tolima.',
       mapLabel: 'A MAP OF OUR ORIGINS',
-      mapNote: 'Municipal locations · markers show town centers',
+      mapNote: 'Supplier locations · lot origins are listed in each profile',
       mapAlt: 'Illustrated map of Colombia marking Jardín in Antioquia and Murillo in Tolima',
       providerLabel: 'ORIGIN PARTNERS',
       locations: [
-        { id: 'jardin', number: '01', place: 'Jardín', department: 'Antioquia', count: '2 PRODUCERS', suppliers: ['Kafesedna', 'Villa Martin'], mapName: 'JARDÍN' },
-        { id: 'murillo', number: '02', place: 'Murillo', department: 'Tolima', count: '1 PRODUCER', suppliers: ['Salinas'], mapName: 'MURILLO' },
+        { id: 'jardin', number: '01', place: 'Jardín', department: 'Antioquia', count: '2 PRODUCERS', suppliers: [{ name: 'Kafesedna', profile: 'kafesedna' }, { name: 'Villa Martín', profile: 'villa-martin' }], mapName: 'JARDÍN' },
+        { id: 'murillo', number: '02', place: 'Murillo', department: 'Tolima', count: '1 PRODUCER', suppliers: [{ name: 'Salinas', profile: 'salinas' }], mapName: 'MURILLO' },
+      ],
+      profilesEyebrow: '04 / PRODUCER & LOT PROFILES',
+      profilesTitle: 'A coffee profile, grounded in its place.',
+      profilesBody: 'Origin and lot details stay connected, so buyers can see what is confirmed and what still needs validation.',
+      specsHeading: 'LOT DETAILS',
+      scoreLabel: 'CUPPING SCORE',
+      scorePending: 'Not confirmed for this lot',
+      traceLabel: 'QR / LOT TRACEABILITY',
+      tracePending: 'QR destination awaiting validation',
+      traceMissing: 'QR data not provided',
+      sampleCta: 'Request a sample',
+      availabilityCta: 'Ask about lots',
+      storyHeading: 'ORIGIN STORIES · VIDEO',
+      storyTitle: 'Vanessa and Julián, in their own words.',
+      storyBody: 'Short films from origin are being prepared to bring producer stories closer to buyers in Asia and Latin America.',
+      storyStatus: 'COMING SOON',
+      profiles: [
+        {
+          id: 'kafesedna', number: '01', supplier: 'Kafesedna', product: 'Don Carlos', origin: 'San Bartolo · Andes, Antioquia', altitude: '1,950 m a.s.l.', variety: 'Castillo', process: 'Washed', roast: 'Medium',
+          profile: 'Cinnamon, caramel, chocolate, tangerine, blackberry and panela. Juicy body, spice notes and a fruity finish.',
+          story: 'The Don Carlos edition honors a coffee grower and the family legacy, tenacity and love for the land described on the package.',
+          photos: [
+            { src: '/images/producers/kafesedna-landscape.jpg', alt: 'Mountain landscape among coffee plots at Kafesedna' },
+            { src: '/images/producers/kafesedna-harvest.jpg', alt: 'Hand-selecting ripe coffee cherries at the farm' },
+            { src: '/images/producers/kafesedna-processing.jpg', alt: 'Coffee drying under cover at the farm' },
+          ],
+          visualAlt: 'Coffee hills at the Don Carlos origin in Antioquia', score: 'Not confirmed for this lot', trace: 'QR destination awaiting validation',
+        },
+        {
+          id: 'villa-martin', number: '02', supplier: 'Villa Martín', product: 'Café cultivado a la sombra', origin: 'Finca La Matilde · Vereda San Bartolo · Jardín, Antioquia', altitude: '1,750 m a.s.l.', variety: 'Castillo', process: 'Washed', roast: 'Not specified',
+          profile: 'Chocolate, sugar cane, orange and tangerine.',
+          story: 'The package describes a shade-grown Arabica coffee from Finca La Matilde.',
+          photos: [], labelImage: '/images/producers/villa-martin-label.png', labelAlt: 'Villa Martín coffee label with the printed origin and lot profile',
+          score: 'Not confirmed for this lot', trace: 'QR destination awaiting validation',
+        },
+        {
+          id: 'salinas', number: '03', supplier: 'Salinas', product: 'Coffee from Murillo', origin: 'Murillo · Tolima', altitude: 'To be confirmed', variety: 'To be confirmed', process: 'To be confirmed', roast: 'To be confirmed',
+          profile: 'Lot-specific sensory notes are being gathered.',
+          story: 'The photo record shows mountain landscapes, coffee cherries and raised-bed drying. Lot details remain to be confirmed.',
+          photos: [
+            { src: '/images/producers/salinas-landscape.jpg', alt: 'Mountain landscape at Salinas in Murillo, Tolima' },
+            { src: '/images/producers/salinas-drying.jpg', alt: 'Coffee drying on a raised bed at Salinas' },
+            { src: '/images/producers/salinas-finca.jpg', alt: 'Coffee drying structure in the mountain landscape' },
+          ],
+          visualAlt: 'Coffee-growing landscape in Murillo, Tolima', score: 'To be confirmed', trace: 'QR data not provided',
+        },
       ],
     },
     values: {
-      eyebrow: '04 / WHAT MATTERS',
+      eyebrow: '05 / WHAT MATTERS',
       title: 'Closer to the people and places behind the cup.',
       body: 'We believe the most meaningful coffee relationships begin with curiosity and grow through clarity.',
       cards: [
@@ -70,7 +116,7 @@ const content = {
       ],
     },
     partners: {
-      eyebrow: '05 / WORK WITH US',
+      eyebrow: '06 / WORK WITH US',
       title: 'Good coffee starts with a good conversation.',
       body: 'Are you a producer, roaster, importer or distribution partner in Latin America or Asia? We’d love to hear what you are looking for and learn what you are building.',
       button: 'Connect with SAFEENA',
@@ -132,16 +178,62 @@ const content = {
       originsTitle: 'Tres aliados. Dos lugares. Una historia compartida.',
       originsBody: 'Conoce a los proveedores colombianos que ya hacen parte de SAFEENA, entre los paisajes de montaña de Antioquia y Tolima.',
       mapLabel: 'MAPA DE NUESTROS ORÍGENES',
-      mapNote: 'Ubicaciones municipales · los marcadores señalan los cascos urbanos',
+      mapNote: 'Ubicación de proveedores · el origen del lote aparece en cada ficha',
       mapAlt: 'Mapa ilustrado de Colombia con marcas en Jardín, Antioquia, y Murillo, Tolima',
       providerLabel: 'ALIADOS DE ORIGEN',
       locations: [
-        { id: 'jardin', number: '01', place: 'Jardín', department: 'Antioquia', count: '2 PROVEEDORES', suppliers: ['Kafesedna', 'Villa Martin'], mapName: 'JARDÍN' },
-        { id: 'murillo', number: '02', place: 'Murillo', department: 'Tolima', count: '1 PROVEEDOR', suppliers: ['Salinas'], mapName: 'MURILLO' },
+        { id: 'jardin', number: '01', place: 'Jardín', department: 'Antioquia', count: '2 PROVEEDORES', suppliers: [{ name: 'Kafesedna', profile: 'kafesedna' }, { name: 'Villa Martín', profile: 'villa-martin' }], mapName: 'JARDÍN' },
+        { id: 'murillo', number: '02', place: 'Murillo', department: 'Tolima', count: '1 PROVEEDOR', suppliers: [{ name: 'Salinas', profile: 'salinas' }], mapName: 'MURILLO' },
+      ],
+      profilesEyebrow: '04 / FICHAS DE PRODUCTOR Y LOTE',
+      profilesTitle: 'Cada café, con su lugar y su historia.',
+      profilesBody: 'Conectamos el origen con los datos del lote para mostrar qué está confirmado y qué falta validar.',
+      specsHeading: 'DATOS DEL LOTE',
+      scoreLabel: 'PUNTAJE DE CATACIÓN',
+      scorePending: 'No confirmado para este lote',
+      traceLabel: 'QR / TRAZABILIDAD DEL LOTE',
+      tracePending: 'Enlace del QR pendiente de validación',
+      traceMissing: 'No recibimos el QR',
+      sampleCta: 'Solicitar una muestra',
+      availabilityCta: 'Consultar lotes',
+      storyHeading: 'HISTORIAS DE ORIGEN · VIDEO',
+      storyTitle: 'Vanessa y Julián, en sus propias palabras.',
+      storyBody: 'Preparamos cortometrajes desde el origen para acercar las historias de los productores a compradores de Asia y América Latina.',
+      storyStatus: 'PRÓXIMAMENTE',
+      profiles: [
+        {
+          id: 'kafesedna', number: '01', supplier: 'Kafesedna', product: 'Don Carlos', origin: 'San Bartolo · Andes, Antioquia', altitude: '1.950 m s. n. m.', variety: 'Castillo', process: 'Lavado', roast: 'Medio',
+          profile: 'Canela, caramelo, chocolate, mandarina, mora y panela. Cuerpo jugoso, notas especiadas y final afrutado.',
+          story: 'La edición Don Carlos rinde homenaje al caficultor y a la herencia familiar, la tenacidad y el amor por la tierra que cuenta su empaque.',
+          photos: [
+            { src: '/images/producers/kafesedna-landscape.jpg', alt: 'Montañas entre cafetales de Kafesedna' },
+            { src: '/images/producers/kafesedna-harvest.jpg', alt: 'Selección manual de cerezas maduras en la finca' },
+            { src: '/images/producers/kafesedna-processing.jpg', alt: 'Café en secado bajo cubierta en la finca' },
+          ],
+          visualAlt: 'Montañas cafeteras del origen Don Carlos en Antioquia', score: 'No confirmado para este lote', trace: 'Enlace del QR pendiente de validación',
+        },
+        {
+          id: 'villa-martin', number: '02', supplier: 'Villa Martín', product: 'Café cultivado a la sombra', origin: 'Finca La Matilde · Vereda San Bartolo · Jardín, Antioquia', altitude: '1.750 m s. n. m.', variety: 'Castillo', process: 'Lavado', roast: 'No especificado',
+          profile: 'Chocolate, caña de azúcar, naranja y mandarina.',
+          story: 'El empaque describe un café arábica cultivado a la sombra en la Finca La Matilde.',
+          photos: [], labelImage: '/images/producers/villa-martin-label.png', labelAlt: 'Etiqueta de Villa Martín con el origen y el perfil del lote impresos',
+          score: 'No confirmado para este lote', trace: 'Enlace del QR pendiente de validación',
+        },
+        {
+          id: 'salinas', number: '03', supplier: 'Salinas', product: 'Café de Murillo', origin: 'Murillo · Tolima', altitude: 'Por confirmar', variety: 'Por confirmar', process: 'Por confirmar', roast: 'Por confirmar',
+          profile: 'Perfil sensorial por recopilar para el lote.',
+          story: 'El registro fotográfico muestra paisajes de montaña, cerezas de café y secado en camas elevadas. Los datos del lote están pendientes de confirmación.',
+          photos: [
+            { src: '/images/producers/salinas-landscape.jpg', alt: 'Paisaje de montaña de Salinas en Murillo, Tolima' },
+            { src: '/images/producers/salinas-drying.jpg', alt: 'Café en secado sobre una cama elevada en Salinas' },
+            { src: '/images/producers/salinas-finca.jpg', alt: 'Estructura de secado de café en el paisaje de montaña' },
+          ],
+          visualAlt: 'Paisaje cafetero en Murillo, Tolima', score: 'Por confirmar', trace: 'No recibimos el QR',
+        },
       ],
     },
     values: {
-      eyebrow: '04 / LO QUE NOS MUEVE',
+      eyebrow: '05 / LO QUE NOS MUEVE',
       title: 'Más cerca de las personas y lugares detrás de cada taza.',
       body: 'Creemos que las relaciones cafeteras más valiosas comienzan con curiosidad y crecen con claridad.',
       cards: [
@@ -151,7 +243,7 @@ const content = {
       ],
     },
     partners: {
-      eyebrow: '05 / TRABAJEMOS JUNTOS',
+      eyebrow: '06 / TRABAJEMOS JUNTOS',
       title: 'El buen café empieza con una buena conversación.',
       body: '¿Eres productor, tostador, importador o aliado de distribución en América Latina o Asia? Queremos conocer lo que buscas y descubrir lo que estás construyendo.',
       button: 'Conecta con SAFEENA',
@@ -401,11 +493,77 @@ function App() {
                       </div>
                       <h5>{location.place}</h5>
                       <p className="origin-card__department">{location.department}, Colombia</p>
-                      <ul>{location.suppliers.map((supplier) => <li key={supplier}>{supplier}</li>)}</ul>
+                      <ul>{location.suppliers.map((supplier) => <li key={supplier.profile}><a href={`#producer-${supplier.profile}`}>{supplier.name}<Arrow diagonal /></a></li>)}</ul>
                     </article>
                   ))}
                 </div>
               </div>
+              <section className="origin-profiles" aria-labelledby="origin-profiles-title">
+                <div className="origin-profiles__heading">
+                  <div>
+                    <p className="eyebrow"><span className="eyebrow__line" />{t.network.profilesEyebrow}</p>
+                    <h4 id="origin-profiles-title">{t.network.profilesTitle}</h4>
+                  </div>
+                  <p>{t.network.profilesBody}</p>
+                </div>
+                <div className="origin-profile-grid">
+                  {t.network.profiles.map((profile) => (
+                    <article className="origin-profile" id={`producer-${profile.id}`} key={profile.id}>
+                      {profile.labelImage ? (
+                        <figure className="origin-profile__visual origin-profile__visual--label">
+                          <img src={profile.labelImage} alt={profile.labelAlt} loading="lazy" />
+                          <figcaption>{profile.supplier} · {profile.product}</figcaption>
+                        </figure>
+                      ) : (
+                        <>
+                          <figure className="origin-profile__visual">
+                            <img src={profile.photos[0].src} alt={profile.visualAlt} loading="lazy" />
+                            <figcaption>{profile.supplier} · {profile.origin}</figcaption>
+                          </figure>
+                          <div className="origin-profile__gallery">
+                            {profile.photos.slice(1).map((photo) => <img src={photo.src} alt={photo.alt} loading="lazy" key={photo.src} />)}
+                          </div>
+                        </>
+                      )}
+                      <div className="origin-profile__content">
+                        <div className="origin-profile__heading">
+                          <span>{profile.number} / {t.network.providerLabel}</span>
+                          <span className="origin-profile__arrow" aria-hidden="true">↗</span>
+                        </div>
+                        <h5>{profile.supplier}</h5>
+                        <p className="origin-profile__product">{profile.product}</p>
+                        <p className="origin-profile__origin"><span>{language === 'en' ? 'LOT ORIGIN' : 'ORIGEN DEL LOTE'}</span>{profile.origin}</p>
+                        <p className="origin-profile__story">{profile.story}</p>
+                        <p className="origin-profile__specs-label">{t.network.specsHeading}</p>
+                        <dl className="origin-profile__specs">
+                          <div><dt>{language === 'en' ? 'Altitude' : 'Altitud'}</dt><dd>{profile.altitude}</dd></div>
+                          <div><dt>{language === 'en' ? 'Variety' : 'Variedad'}</dt><dd>{profile.variety}</dd></div>
+                          <div><dt>{language === 'en' ? 'Process' : 'Proceso'}</dt><dd>{profile.process}</dd></div>
+                          <div><dt>{language === 'en' ? 'Roast' : 'Tostión'}</dt><dd>{profile.roast}</dd></div>
+                        </dl>
+                        <p className="origin-profile__sensory"><span>{language === 'en' ? 'SENSORY PROFILE' : 'PERFIL SENSORIAL'}</span>{profile.profile}</p>
+                        <div className="origin-profile__verification">
+                          <div><span>{t.network.scoreLabel}</span><strong>{profile.score}</strong></div>
+                          <div><span>{t.network.traceLabel}</span><strong>{profile.trace}</strong></div>
+                        </div>
+                        <div className="origin-profile__actions">
+                          <a className="button button--dark" href={InstagramLink} target="_blank" rel="noreferrer">{t.network.sampleCta}<Arrow diagonal /></a>
+                          <a className="origin-profile__availability" href={InstagramLink} target="_blank" rel="noreferrer">{t.network.availabilityCta}<Arrow /></a>
+                        </div>
+                      </div>
+                    </article>
+                  ))}
+                </div>
+                <aside className="origin-film-note">
+                  <span className="origin-film-note__play" aria-hidden="true">▶</span>
+                  <div>
+                    <p className="origin-profile__specs-label">{t.network.storyHeading}</p>
+                    <h5>{t.network.storyTitle}</h5>
+                    <p>{t.network.storyBody}</p>
+                  </div>
+                  <span className="origin-film-note__status">{t.network.storyStatus}</span>
+                </aside>
+              </section>
             </div>
           </div>
         </section>
