@@ -14,7 +14,7 @@ const content = {
       primary: 'Explore Colombian origins',
       secondary: 'Meet SAFEENA Asia',
       imageLabel: 'A COLOMBIAN ORIGIN',
-      imageNote: 'Mountain-grown coffee · Antioquia, Colombia',
+      imageNote: 'From Latin America · led by Colombia',
       captionRegion: 'COLOMBIA → ASIA',
       sideLabel: 'SPECIALTY COFFEE · COLOMBIAN ORIGINS',
       imageAlt: 'A green mountain landscape at a coffee-growing origin in Colombia',
@@ -68,11 +68,10 @@ const content = {
       profilesTitle: 'Meet the people behind each origin.',
       profilesBody: 'Open a producer profile to explore their place, coffee and lot details.',
       specsHeading: 'LOT DETAILS',
-      scoreLabel: 'REPORTED CUPPING AVERAGE',
+      scoreLabel: 'CUPPING SCORE',
       scorePending: 'Not confirmed for this lot',
-      traceLabel: 'QR / LOT TRACEABILITY',
-      tracePending: 'QR destination awaiting validation',
-      traceMissing: 'QR data not provided',
+      traceLabel: 'VERIFIED LOT TRACEABILITY',
+      traceLink: 'Open lot verification',
       availabilityCta: 'Check lot availability',
       openProfile: 'Explore producer profile',
       profileBack: 'Back to Colombian origins',
@@ -92,14 +91,14 @@ const content = {
             { src: '/images/producers/kafesedna-harvest.jpg', alt: 'Hand-selecting ripe coffee cherries at the farm' },
             { src: '/images/producers/kafesedna-processing.jpg', alt: 'Coffee drying under cover at the farm' },
           ],
-          visualAlt: 'Coffee hills at the Don Carlos origin in Antioquia', score: '83.5 / 100 · report average', scoreNote: 'Report SG-3718 records an average of 83.5; its status field says “Not rated.”', trace: 'QR destination awaiting validation',
+          visualAlt: 'Coffee hills at the Don Carlos origin in Antioquia', score: '83.5', scoreScale: '/ 100',
         },
         {
           id: 'villa-martin', number: '02', supplier: 'Villa Martín', product: 'Café cultivado a la sombra', origin: 'Finca La Matilde · Vereda San Bartolo · Jardín, Antioquia', altitude: '1,750 m a.s.l.', variety: 'Castillo', process: 'Washed', roast: 'Not specified',
           profile: 'Chocolate, sugar cane, orange and tangerine.',
           story: 'The package describes a shade-grown Arabica coffee from Finca La Matilde.',
           photos: [], labelImage: '/images/producers/villa-martin-label.png', labelAlt: 'Villa Martín coffee label with the printed origin and lot profile',
-          score: 'Not confirmed for this lot', trace: 'QR destination awaiting validation',
+          score: 'Not confirmed for this lot',
         },
         {
           id: 'salinas', number: '03', supplier: 'Salinas', product: 'Coffee from Murillo', origin: 'Murillo · Tolima', altitude: 'To be confirmed', variety: 'To be confirmed', process: 'To be confirmed', roast: 'To be confirmed',
@@ -110,7 +109,7 @@ const content = {
             { src: '/images/producers/salinas-drying.jpg', alt: 'Coffee drying on a raised bed at Salinas' },
             { src: '/images/producers/salinas-finca.jpg', alt: 'Coffee drying structure in the mountain landscape' },
           ],
-          visualAlt: 'Coffee-growing landscape in Murillo, Tolima', score: 'To be confirmed', trace: 'QR data not provided',
+          visualAlt: 'Coffee-growing landscape in Murillo, Tolima', score: 'To be confirmed',
         },
       ],
     },
@@ -150,7 +149,7 @@ const content = {
       primary: 'Explorar orígenes colombianos',
       secondary: 'Conoce SAFEENA Asia',
       imageLabel: 'UN ORIGEN COLOMBIANO',
-      imageNote: 'Café de montaña · Antioquia, Colombia',
+      imageNote: 'Desde Latinoamérica · Colombia al frente',
       captionRegion: 'COLOMBIA → ASIA',
       sideLabel: 'CAFÉ ESPECIAL · ORÍGENES COLOMBIANOS',
       imageAlt: 'Paisaje de montaña verde en un origen cafetero de Colombia',
@@ -204,11 +203,10 @@ const content = {
       profilesTitle: 'Conoce a las personas detrás de cada origen.',
       profilesBody: 'Abre cada perfil para explorar su lugar, sus cafés y los datos de sus lotes.',
       specsHeading: 'DATOS DEL LOTE',
-      scoreLabel: 'PROMEDIO REPORTADO DE CATACIÓN',
+      scoreLabel: 'PUNTAJE DE CATACIÓN',
       scorePending: 'No confirmado para este lote',
-      traceLabel: 'QR / TRAZABILIDAD DEL LOTE',
-      tracePending: 'Enlace del QR pendiente de validación',
-      traceMissing: 'No recibimos el QR',
+      traceLabel: 'TRAZABILIDAD VERIFICADA DEL LOTE',
+      traceLink: 'Abrir verificación del lote',
       availabilityCta: 'Consultar disponibilidad',
       openProfile: 'Explorar perfil del productor',
       profileBack: 'Volver a los orígenes colombianos',
@@ -228,14 +226,14 @@ const content = {
             { src: '/images/producers/kafesedna-harvest.jpg', alt: 'Selección manual de cerezas maduras en la finca' },
             { src: '/images/producers/kafesedna-processing.jpg', alt: 'Café en secado bajo cubierta en la finca' },
           ],
-          visualAlt: 'Montañas cafeteras del origen Don Carlos en Antioquia', score: '83,5 / 100 · promedio del informe', scoreNote: 'El informe SG-3718 registra un promedio de 83,5, aunque su campo de estado dice «Not rated».', trace: 'Enlace del QR pendiente de validación',
+          visualAlt: 'Montañas cafeteras del origen Don Carlos en Antioquia', score: '83,5', scoreScale: '/ 100',
         },
         {
           id: 'villa-martin', number: '02', supplier: 'Villa Martín', product: 'Café cultivado a la sombra', origin: 'Finca La Matilde · Vereda San Bartolo · Jardín, Antioquia', altitude: '1.750 m s. n. m.', variety: 'Castillo', process: 'Lavado', roast: 'No especificado',
           profile: 'Chocolate, caña de azúcar, naranja y mandarina.',
           story: 'El empaque describe un café arábica cultivado a la sombra en la Finca La Matilde.',
           photos: [], labelImage: '/images/producers/villa-martin-label.png', labelAlt: 'Etiqueta de Villa Martín con el origen y el perfil del lote impresos',
-          score: 'No confirmado para este lote', trace: 'Enlace del QR pendiente de validación',
+          score: 'No confirmado para este lote',
         },
         {
           id: 'salinas', number: '03', supplier: 'Salinas', product: 'Café de Murillo', origin: 'Murillo · Tolima', altitude: 'Por confirmar', variety: 'Por confirmar', process: 'Por confirmar', roast: 'Por confirmar',
@@ -246,7 +244,7 @@ const content = {
             { src: '/images/producers/salinas-drying.jpg', alt: 'Café en secado sobre una cama elevada en Salinas' },
             { src: '/images/producers/salinas-finca.jpg', alt: 'Estructura de secado de café en el paisaje de montaña' },
           ],
-          visualAlt: 'Paisaje cafetero en Murillo, Tolima', score: 'Por confirmar', trace: 'No recibimos el QR',
+          visualAlt: 'Paisaje cafetero en Murillo, Tolima', score: 'Por confirmar',
         },
       ],
     },
@@ -369,14 +367,15 @@ function ProducerMiniPage({ profile, language, t, onToggleLanguage }) {
         <section className="producer-page__traceability">
           <div>
             <span>{t.network.scoreLabel}</span>
-            <strong>{profile.score}</strong>
-            <p>{profile.scoreNote || t.network.profileCupping}</p>
+            <strong data-score={profile.scoreScale ? 'numeric' : undefined}>{profile.score}{profile.scoreScale && <small>{profile.scoreScale}</small>}</strong>
           </div>
-          <div>
-            <span>{t.network.traceLabel}</span>
-            <strong>{profile.trace}</strong>
-            <p>{language === 'en' ? 'Lot verification details will appear here once the QR destination is confirmed.' : 'Aquí aparecerán los datos de verificación cuando confirmemos el destino del QR.'}</p>
-          </div>
+          {profile.traceUrl && (
+            <div>
+              <span>{t.network.traceLabel}</span>
+              <strong>{profile.traceLabel || profile.supplier}</strong>
+              <a className="producer-page__trace-link" href={profile.traceUrl} target="_blank" rel="noreferrer">{t.network.traceLink}<Arrow diagonal /></a>
+            </div>
+          )}
         </section>
 
         <section className="producer-page__contact">
