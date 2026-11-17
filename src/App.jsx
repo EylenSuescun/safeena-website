@@ -68,7 +68,7 @@ const content = {
       profilesTitle: 'Meet the people behind each origin.',
       profilesBody: 'Open a producer profile to explore their place, coffee and lot details.',
       specsHeading: 'LOT DETAILS',
-      scoreLabel: 'CUPPING SCORE',
+      scoreLabel: 'REPORTED CUPPING AVERAGE',
       scorePending: 'Not confirmed for this lot',
       traceLabel: 'QR / LOT TRACEABILITY',
       tracePending: 'QR destination awaiting validation',
@@ -85,14 +85,14 @@ const content = {
       profiles: [
         {
           id: 'kafesedna', number: '01', supplier: 'Kafesedna', product: 'Don Carlos', origin: 'San Bartolo · Andes, Antioquia', altitude: '1,950 m a.s.l.', variety: 'Castillo', process: 'Washed', roast: 'Medium',
-          profile: 'Cinnamon, caramel, chocolate, tangerine, blackberry and panela. Juicy body, spice notes and a fruity finish.',
+          profile: 'Cinnamon, caramel, chocolate, tangerine, molasses, blackberry, orange and panela. Juicy, spicy body, a short fruity aftertaste and lingering spice.',
           story: 'The Don Carlos edition honors a coffee grower and the family legacy, tenacity and love for the land described on the package.',
           photos: [
             { src: '/images/producers/kafesedna-landscape.jpg', alt: 'Mountain landscape among coffee plots at Kafesedna' },
             { src: '/images/producers/kafesedna-harvest.jpg', alt: 'Hand-selecting ripe coffee cherries at the farm' },
             { src: '/images/producers/kafesedna-processing.jpg', alt: 'Coffee drying under cover at the farm' },
           ],
-          visualAlt: 'Coffee hills at the Don Carlos origin in Antioquia', score: 'Not confirmed for this lot', trace: 'QR destination awaiting validation',
+          visualAlt: 'Coffee hills at the Don Carlos origin in Antioquia', score: '83.5 / 100 · report average', scoreNote: 'Report SG-3718 records an average of 83.5; its status field says “Not rated.”', trace: 'QR destination awaiting validation',
         },
         {
           id: 'villa-martin', number: '02', supplier: 'Villa Martín', product: 'Café cultivado a la sombra', origin: 'Finca La Matilde · Vereda San Bartolo · Jardín, Antioquia', altitude: '1,750 m a.s.l.', variety: 'Castillo', process: 'Washed', roast: 'Not specified',
@@ -204,7 +204,7 @@ const content = {
       profilesTitle: 'Conoce a las personas detrás de cada origen.',
       profilesBody: 'Abre cada perfil para explorar su lugar, sus cafés y los datos de sus lotes.',
       specsHeading: 'DATOS DEL LOTE',
-      scoreLabel: 'PUNTAJE DE CATACIÓN',
+      scoreLabel: 'PROMEDIO REPORTADO DE CATACIÓN',
       scorePending: 'No confirmado para este lote',
       traceLabel: 'QR / TRAZABILIDAD DEL LOTE',
       tracePending: 'Enlace del QR pendiente de validación',
@@ -221,14 +221,14 @@ const content = {
       profiles: [
         {
           id: 'kafesedna', number: '01', supplier: 'Kafesedna', product: 'Don Carlos', origin: 'San Bartolo · Andes, Antioquia', altitude: '1.950 m s. n. m.', variety: 'Castillo', process: 'Lavado', roast: 'Medio',
-          profile: 'Canela, caramelo, chocolate, mandarina, mora y panela. Cuerpo jugoso, notas especiadas y final afrutado.',
+          profile: 'Canela, caramelo, chocolate, mandarina, melaza, mora, naranja y panela. Cuerpo jugoso y especiado, residual corto y afrutado, con especias persistentes.',
           story: 'La edición Don Carlos rinde homenaje al caficultor y a la herencia familiar, la tenacidad y el amor por la tierra que cuenta su empaque.',
           photos: [
             { src: '/images/producers/kafesedna-landscape.jpg', alt: 'Montañas entre cafetales de Kafesedna' },
             { src: '/images/producers/kafesedna-harvest.jpg', alt: 'Selección manual de cerezas maduras en la finca' },
             { src: '/images/producers/kafesedna-processing.jpg', alt: 'Café en secado bajo cubierta en la finca' },
           ],
-          visualAlt: 'Montañas cafeteras del origen Don Carlos en Antioquia', score: 'No confirmado para este lote', trace: 'Enlace del QR pendiente de validación',
+          visualAlt: 'Montañas cafeteras del origen Don Carlos en Antioquia', score: '83,5 / 100 · promedio del informe', scoreNote: 'El informe SG-3718 registra un promedio de 83,5, aunque su campo de estado dice «Not rated».', trace: 'Enlace del QR pendiente de validación',
         },
         {
           id: 'villa-martin', number: '02', supplier: 'Villa Martín', product: 'Café cultivado a la sombra', origin: 'Finca La Matilde · Vereda San Bartolo · Jardín, Antioquia', altitude: '1.750 m s. n. m.', variety: 'Castillo', process: 'Lavado', roast: 'No especificado',
@@ -370,7 +370,7 @@ function ProducerMiniPage({ profile, language, t, onToggleLanguage }) {
           <div>
             <span>{t.network.scoreLabel}</span>
             <strong>{profile.score}</strong>
-            <p>{t.network.profileCupping}</p>
+            <p>{profile.scoreNote || t.network.profileCupping}</p>
           </div>
           <div>
             <span>{t.network.traceLabel}</span>
