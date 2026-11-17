@@ -1,12 +1,14 @@
 import { useEffect, useState } from 'react'
 import { BrowserRouter, Link, useLocation } from 'react-router-dom'
 import ColombiaOriginMap from './ColombiaOriginMap.jsx'
+import WorldOriginMap from './WorldOriginMap.jsx'
+import OriginZoneSummary from './OriginZoneSummary.jsx'
 
 const content = {
   en: {
     announcement: 'SPECIALTY COFFEE  ·  LATIN AMERICA  ·  ASIA',
     announcementRight: 'ORIGINS TO ASIA',
-    nav: { story: 'Our idea', network: 'Regions', producers: 'Producer countries', buyers: 'Buyer countries', zones: 'Colombia by zone', partners: 'For partners', contact: 'Let’s connect' },
+    nav: { home: 'Home', origins: 'Origins', producers: 'Producers', markets: 'Buyers', story: 'Our model', contact: 'Let’s connect' },
     language: 'ES',
     hero: {
       eyebrow: 'COLOMBIA AT THE HEART OF SPECIALTY COFFEE',
@@ -68,10 +70,14 @@ const content = {
       mapExpansionLabel: 'NEXT COLOMBIAN ORIGINS TO EXPLORE',
       mapExpansionRegions: ['Huila', 'Nariño', 'Santander'],
       mapCredit: 'GEOGRAPHIC OUTLINE · NATURAL EARTH',
+      mapPinAction: 'Select origin zone',
+      zonePanelEyebrow: 'SELECTED COFFEE ZONE',
+      zonePanelProducers: 'PRODUCERS IN THIS AREA',
+      zonePanelFootnote: 'Open a producer profile to explore their origin and coffee details.',
       providerLabel: 'ORIGIN PARTNERS',
       locations: [
-        { id: 'jardin', number: '01', place: 'Jardín', department: 'Antioquia', count: '2 PRODUCERS', suppliers: [{ name: 'Kafesedna', profile: 'kafesedna' }, { name: 'Villa Martín', profile: 'villa-martin' }], mapName: 'JARDÍN' },
-        { id: 'murillo', number: '02', place: 'Murillo', department: 'Tolima', count: '1 PRODUCER', suppliers: [{ name: 'Salinas', profile: 'salinas' }], mapName: 'MURILLO' },
+        { id: 'jardin', number: '01', place: 'Jardín', department: 'Antioquia', count: '2 PRODUCERS', summary: 'Two coffee producers in Jardín, Antioquia, at the heart of SAFEENA’s Colombian origin network.', suppliers: [{ name: 'Kafesedna', profile: 'kafesedna' }, { name: 'Villa Martín', profile: 'villa-martin' }], mapName: 'JARDÍN' },
+        { id: 'murillo', number: '02', place: 'Murillo', department: 'Tolima', count: '1 PRODUCER', summary: 'A coffee origin in northern Tolima, close to Nevado del Ruiz, represented by producer Salinas.', suppliers: [{ name: 'Salinas', profile: 'salinas' }], mapName: 'MURILLO' },
       ],
       profilesEyebrow: '05 / COLOMBIAN PRODUCERS',
       profilesTitle: 'Meet the people behind each origin.',
@@ -145,11 +151,33 @@ const content = {
       copyright: '© SAFEENA. Connecting specialty coffee growers and buyers.',
       back: 'Back to top ↑',
     },
+    pages: {
+      origins: {
+        eyebrow: 'SAFEENA · ORIGIN NETWORK',
+        title: 'Coffee origins, connected across regions.',
+        body: 'Explore current producer countries and Colombian zones. The map can grow as new origin relationships are confirmed across the Americas, Asia and future regions.',
+        mapLabel: 'GLOBAL PRODUCER NETWORK', mapStatus: '3 PRODUCER COUNTRIES',
+        mapAlt: 'World map with producer countries Colombia, Indonesia and Vietnam, and a future expansion marker in Africa.',
+        americas: 'AMERICAS', asia: 'ASIA', africa: 'AFRICA', pacific: 'PACIFIC OCEAN', atlantic: 'ATLANTIC OCEAN',
+        currentCountries: 'Current producer countries', futureRegions: 'Future regions to explore', futureAfrica: 'Africa · future region',
+        selectCountry: 'Select a country on the map',
+        panelEyebrow: 'ORIGIN NETWORK', panelTitle: 'Colombia leads our origins.',
+        panelBody: 'Start with Colombia’s current coffee regions. Select Jardín or Murillo to see the producers connected to each place.',
+        countryStage: 'PRODUCER COUNTRY', exploreColombia: 'Explore Colombian zones',
+        backToWorld: '← All origin regions', futureTitle: 'Future origin region',
+        futureBody: 'The network can expand into Africa as producer relationships are confirmed. No country or supplier is listed here yet.',
+        countryPrompt: 'Choose a producer country on the map to see its origin network.',
+        zoneCount: 'CURRENT COLOMBIAN ZONES',
+      },
+      producers: { eyebrow: 'ORIGIN PARTNERS', title: 'Meet the producers behind each coffee.', body: 'Explore each producer profile for their place, coffee details and available origin records.' },
+      markets: { eyebrow: 'BUYER NETWORK', title: 'Asia is our primary buyer region.', body: 'Hong Kong is an initial market for SAFEENA. Additional destinations will appear here as buyer relationships are established.' },
+      about: { eyebrow: 'THE SAFEENA MODEL', title: 'Specialty coffee, connected from origin to Asia.', body: 'SAFEENA connects coffee growers with buyers through clear origin information, traceable lots and long-term commercial relationships. We work exclusively with specialty coffee, with Colombia in the foreground and a network built to grow across regions.' },
+    },
   },
   es: {
     announcement: 'CAFÉ ESPECIAL  ·  LATINOAMÉRICA  ·  ASIA',
     announcementRight: 'ORÍGENES HACIA ASIA',
-    nav: { story: 'La idea', network: 'Regiones', producers: 'Países productores', buyers: 'Países compradores', zones: 'Colombia por zonas', partners: 'Aliados', contact: 'Conversemos' },
+    nav: { home: 'Inicio', origins: 'Orígenes', producers: 'Productores', markets: 'Compradores', story: 'Modelo Safeena', contact: 'Conversemos' },
     language: 'EN',
     hero: {
       eyebrow: 'COLOMBIA EN EL CORAZÓN DEL CAFÉ ESPECIAL',
@@ -211,10 +239,14 @@ const content = {
       mapExpansionLabel: 'PRÓXIMOS ORÍGENES COLOMBIANOS POR EXPLORAR',
       mapExpansionRegions: ['Huila', 'Nariño', 'Santander'],
       mapCredit: 'CONTORNO GEOGRÁFICO · NATURAL EARTH',
+      mapPinAction: 'Seleccionar zona de origen',
+      zonePanelEyebrow: 'ZONA CAFETERA SELECCIONADA',
+      zonePanelProducers: 'PRODUCTORES DE ESTA ZONA',
+      zonePanelFootnote: 'Abre el perfil de cada productor para conocer su origen y su café.',
       providerLabel: 'ALIADOS DE ORIGEN',
       locations: [
-        { id: 'jardin', number: '01', place: 'Jardín', department: 'Antioquia', count: '2 PROVEEDORES', suppliers: [{ name: 'Kafesedna', profile: 'kafesedna' }, { name: 'Villa Martín', profile: 'villa-martin' }], mapName: 'JARDÍN' },
-        { id: 'murillo', number: '02', place: 'Murillo', department: 'Tolima', count: '1 PROVEEDOR', suppliers: [{ name: 'Salinas', profile: 'salinas' }], mapName: 'MURILLO' },
+        { id: 'jardin', number: '01', place: 'Jardín', department: 'Antioquia', count: '2 PROVEEDORES', summary: 'Dos productores de café en Jardín, Antioquia, en el centro de la red de orígenes colombianos de SAFEENA.', suppliers: [{ name: 'Kafesedna', profile: 'kafesedna' }, { name: 'Villa Martín', profile: 'villa-martin' }], mapName: 'JARDÍN' },
+        { id: 'murillo', number: '02', place: 'Murillo', department: 'Tolima', count: '1 PRODUCTOR', summary: 'Un origen cafetero en el norte del Tolima, cerca del Nevado del Ruiz, representado por el productor Salinas.', suppliers: [{ name: 'Salinas', profile: 'salinas' }], mapName: 'MURILLO' },
       ],
       profilesEyebrow: '05 / PRODUCTORES COLOMBIANOS',
       profilesTitle: 'Conoce a las personas detrás de cada origen.',
@@ -288,6 +320,28 @@ const content = {
       copyright: '© SAFEENA. Conectamos caficultores y compradores de café especial.',
       back: 'Volver arriba ↑',
     },
+    pages: {
+      origins: {
+        eyebrow: 'SAFEENA · RED DE ORÍGENES',
+        title: 'Orígenes de café conectados entre regiones.',
+        body: 'Explora los países productores y las zonas colombianas actuales. El mapa podrá crecer a medida que se confirmen nuevas relaciones de origen en América, Asia y otras regiones.',
+        mapLabel: 'RED GLOBAL DE PRODUCTORES', mapStatus: '3 PAÍSES PRODUCTORES',
+        mapAlt: 'Mapa del mundo con Colombia, Indonesia y Vietnam como países productores y una marca de expansión futura en África.',
+        americas: 'AMÉRICA', asia: 'ASIA', africa: 'ÁFRICA', pacific: 'OCÉANO PACÍFICO', atlantic: 'OCÉANO ATLÁNTICO',
+        currentCountries: 'Países productores actuales', futureRegions: 'Regiones para explorar a futuro', futureAfrica: 'África · región futura',
+        selectCountry: 'Selecciona un país en el mapa',
+        panelEyebrow: 'RED DE ORÍGENES', panelTitle: 'Colombia lidera nuestros orígenes.',
+        panelBody: 'Empieza por las zonas cafeteras actuales de Colombia. Selecciona Jardín o Murillo para ver a los productores vinculados con cada lugar.',
+        countryStage: 'PAÍS PRODUCTOR', exploreColombia: 'Explorar zonas colombianas',
+        backToWorld: '← Todos los orígenes', futureTitle: 'Región de origen futura',
+        futureBody: 'La red podrá crecer en África a medida que se confirmen relaciones con productores. Aún no hay países ni proveedores registrados aquí.',
+        countryPrompt: 'Selecciona un país productor en el mapa para conocer su red de origen.',
+        zoneCount: 'ZONAS COLOMBIANAS ACTUALES',
+      },
+      producers: { eyebrow: 'ALIADOS DE ORIGEN', title: 'Conoce a quienes producen cada café.', body: 'Explora cada perfil para conocer su territorio, los datos del café y la información disponible de origen.' },
+      markets: { eyebrow: 'RED COMPRADORA', title: 'Asia es nuestra principal región compradora.', body: 'Hong Kong es un mercado inicial para SAFEENA. Aquí aparecerán nuevos destinos a medida que se establezcan relaciones con compradores.' },
+      about: { eyebrow: 'EL MODELO SAFEENA', title: 'Café especial conectado desde el origen con Asia.', body: 'SAFEENA conecta caficultores con compradores a través de información clara de origen, lotes trazables y relaciones comerciales duraderas. Trabajamos exclusivamente con café especial, con Colombia en primer plano y una red preparada para crecer entre regiones.' },
+    },
   },
 }
 
@@ -296,7 +350,7 @@ const InstagramLatamLink = 'https://www.instagram.com/safeena_coffeelatam/'
 
 function Logo({ language }) {
   return (
-    <Link className="brand" to="/#top" aria-label={language === 'en' ? 'SAFEENA — back to top' : 'SAFEENA — volver arriba'}>
+    <Link className="brand" to="/" aria-label={language === 'en' ? 'SAFEENA — home' : 'SAFEENA — inicio'}>
       <span className="brand__mark" aria-hidden="true">
         <img src="/images/safeena-logo.jpg" alt="" />
       </span>
@@ -309,9 +363,15 @@ function Arrow({ diagonal = false }) {
   return <span className={`arrow${diagonal ? ' arrow--diagonal' : ''}`} aria-hidden="true">{diagonal ? '↗' : '→'}</span>
 }
 
-function ProducerMiniPage({ profile, language, t, onToggleLanguage }) {
-  const gallery = profile.photos?.length > 1 ? profile.photos.slice(1) : []
-  const heroImage = profile.photos?.[0] || (profile.labelImage ? { src: profile.labelImage, alt: profile.labelAlt } : null)
+function SiteHeader({ language, t, menuOpen, onMenuToggle, onMenuClose, onToggleLanguage }) {
+  const location = useLocation()
+  const links = [
+    { to: '/', label: t.nav.home },
+    { to: '/origins', label: t.nav.origins },
+    { to: '/producers', label: t.nav.producers },
+    { to: '/markets', label: t.nav.markets },
+    { to: '/about', label: t.nav.story },
+  ]
 
   return (
     <>
@@ -320,21 +380,81 @@ function ProducerMiniPage({ profile, language, t, onToggleLanguage }) {
         <span>{t.announcement}</span>
         <span className="announcement__right">{t.announcementRight}</span>
       </div>
-      <header className="site-header">
-        <div className="nav-wrap producer-page__nav">
+      <header className="site-header" id="top">
+        <a className="skip-link" href="#main">{language === 'en' ? 'Skip to content' : 'Saltar al contenido'}</a>
+        <div className="nav-wrap">
           <Logo language={language} />
-          <div className="producer-page__nav-actions">
-            <Link className="producer-page__back" to="/#colombia-zones">← {t.network.profileBack}</Link>
-            <button className="language-switch" type="button" onClick={onToggleLanguage} aria-label={language === 'en' ? 'Cambiar a español' : 'Switch to English'}>
+          <button
+            type="button"
+            className="menu-toggle"
+            aria-label={language === 'en' ? (menuOpen ? 'Close menu' : 'Open menu') : (menuOpen ? 'Cerrar menú' : 'Abrir menú')}
+            aria-expanded={menuOpen}
+            onClick={onMenuToggle}
+          >
+            <span />
+            <span />
+          </button>
+          <nav className={`main-nav${menuOpen ? ' main-nav--open' : ''}`} aria-label={language === 'en' ? 'Main navigation' : 'Navegación principal'}>
+            {links.map((link) => (
+              <Link
+                to={link.to}
+                onClick={onMenuClose}
+                aria-current={location.pathname === link.to || (link.to === '/producers' && location.pathname.startsWith('/producers/')) ? 'page' : undefined}
+                key={link.to}
+              >{link.label}</Link>
+            ))}
+            <button className="language-switch" type="button" onClick={() => { onToggleLanguage(); onMenuClose() }} aria-label={language === 'en' ? 'Cambiar a español' : 'Switch to English'}>
               <span className="language-switch__current">{language.toUpperCase()}</span>
               <span className="language-switch__divider">/</span>
               <span>{t.language}</span>
             </button>
-          </div>
+            <Link className="nav-cta" to="/about#contact" onClick={onMenuClose}>{t.nav.contact}<Arrow diagonal /></Link>
+          </nav>
         </div>
       </header>
+    </>
+  )
+}
+
+function SiteFooter({ language, t }) {
+  return (
+    <footer className="site-footer section-shell">
+      <div className="site-footer__top">
+        <div><Logo language={language} /><p>{t.footer.phrase}</p></div>
+        <Link className="footer-top-link" to="/">{t.footer.back}</Link>
+      </div>
+      <div className="site-footer__bottom">
+        <span>{t.footer.copyright}</span>
+        <div className="footer-links">
+          <a href={InstagramAsiaLink} target="_blank" rel="noreferrer">Instagram Asia <Arrow diagonal /></a>
+          <a href={InstagramLatamLink} target="_blank" rel="noreferrer">Instagram LatAm <Arrow diagonal /></a>
+          <span>{language === 'en' ? 'ORIGIN → MARKET' : 'ORIGEN → MERCADO'}</span>
+        </div>
+      </div>
+    </footer>
+  )
+}
+
+function PageFrame({ language, t, menuOpen, onMenuToggle, onMenuClose, onToggleLanguage, children }) {
+  return (
+    <>
+      <SiteHeader language={language} t={t} menuOpen={menuOpen} onMenuToggle={onMenuToggle} onMenuClose={onMenuClose} onToggleLanguage={onToggleLanguage} />
+      <main id="main">{children}</main>
+      <SiteFooter language={language} t={t} />
+    </>
+  )
+}
+
+function ProducerMiniPage({ profile, language, t, menuOpen, onMenuToggle, onMenuClose, onToggleLanguage }) {
+  const gallery = profile.photos?.length > 1 ? profile.photos.slice(1) : []
+  const heroImage = profile.photos?.[0] || (profile.labelImage ? { src: profile.labelImage, alt: profile.labelAlt } : null)
+
+  return (
+    <>
+      <SiteHeader language={language} t={t} menuOpen={menuOpen} onMenuToggle={onMenuToggle} onMenuClose={onMenuClose} onToggleLanguage={onToggleLanguage} />
 
       <main className="producer-page section-shell" id="main">
+        <Link className="producer-page__back" to="/origins?country=colombia">← {t.network.profileBack}</Link>
         <p className="producer-page__eyebrow"><span>{t.network.profileEyebrow}</span><span>{profile.number} / {t.network.providerLabel}</span></p>
         <section className="producer-page__hero" aria-labelledby="producer-title">
           <figure className={`producer-page__visual${profile.labelImage ? ' producer-page__visual--label' : ''}`}>
@@ -404,17 +524,228 @@ function ProducerMiniPage({ profile, language, t, onToggleLanguage }) {
           <a className="button button--cream" href={InstagramAsiaLink} target="_blank" rel="noreferrer">{t.network.profileContact}<Arrow diagonal /></a>
         </section>
       </main>
-      <footer className="site-footer section-shell producer-page__footer">
-        <div className="site-footer__top">
-          <div><Logo language={language} /><p>{t.footer.phrase}</p></div>
-          <Link className="footer-top-link" to="/#colombia-zones">{t.network.profileBack}</Link>
-        </div>
-        <div className="site-footer__bottom">
-          <span>{t.footer.copyright}</span>
-          <div className="footer-links"><a href={InstagramAsiaLink} target="_blank" rel="noreferrer">Instagram Asia <Arrow diagonal /></a><a href={InstagramLatamLink} target="_blank" rel="noreferrer">Instagram LatAm <Arrow diagonal /></a></div>
-        </div>
-      </footer>
+      <SiteFooter language={language} t={t} />
     </>
+  )
+}
+
+function OriginExplorerPage({ language, t, menuOpen, onMenuToggle, onMenuClose, onToggleLanguage }) {
+  const [selectedCountry, setSelectedCountry] = useState(() => {
+    const initialCountry = new URLSearchParams(window.location.search).get('country')
+    return ['colombia', 'indonesia', 'vietnam', 'africa'].includes(initialCountry) ? initialCountry : ''
+  })
+  const [selectedZone, setSelectedZone] = useState('jardin')
+  const labels = t.pages.origins
+  const selectedLocation = t.network.locations.find((item) => item.id === selectedZone) || t.network.locations[0]
+  const selectedProducerCountry = t.network.producerCountries.find((country) => country.id === selectedCountry)
+
+  const chooseCountry = (id) => {
+    setSelectedCountry(id)
+    if (id === 'colombia') setSelectedZone('jardin')
+  }
+
+  return (
+    <PageFrame language={language} t={t} menuOpen={menuOpen} onMenuToggle={onMenuToggle} onMenuClose={onMenuClose} onToggleLanguage={onToggleLanguage}>
+      <section className="interior-page section-shell origins-page">
+        <header className="interior-page__heading">
+          <p className="eyebrow"><span className="eyebrow__line" />{labels.eyebrow}</p>
+          <h1>{labels.title}</h1>
+          <p>{labels.body}</p>
+        </header>
+        <div className="origin-explorer">
+          <div className="origin-explorer__visual">
+            <div className="origin-explorer__toolbar">
+              {selectedCountry
+                ? <button type="button" onClick={() => setSelectedCountry('')}>{labels.backToWorld}</button>
+                : <span>{labels.selectCountry}</span>}
+              {selectedCountry === 'colombia' && <strong>COLOMBIA · {t.network.locations.length} {language === 'en' ? 'ZONES' : 'ZONAS'}</strong>}
+            </div>
+            {selectedCountry === 'colombia' ? (
+              <ColombiaOriginMap network={t.network} selectedZone={selectedZone} onSelectZone={setSelectedZone} />
+            ) : (
+              <WorldOriginMap
+                countries={t.network.producerCountries}
+                selectedCountry={selectedCountry}
+                onSelectCountry={chooseCountry}
+                labels={labels}
+              />
+            )}
+          </div>
+
+          <div className="origin-explorer__panel">
+            {selectedCountry === 'colombia' ? (
+              <>
+                <OriginZoneSummary location={selectedLocation} network={t.network} language={language} />
+                <div className="origin-explorer__zone-switcher">
+                  <span>{labels.zoneCount}</span>
+                  <div>{t.network.locations.map((zone) => (
+                    <button
+                      type="button"
+                      className={selectedZone === zone.id ? 'origin-explorer__zone--selected' : ''}
+                      aria-pressed={selectedZone === zone.id}
+                      onClick={() => setSelectedZone(zone.id)}
+                      key={zone.id}
+                    >{zone.place}<small>{zone.department}</small></button>
+                  ))}</div>
+                </div>
+              </>
+            ) : selectedCountry === 'africa' ? (
+              <div className="origin-explorer__country-panel">
+                <p className="eyebrow"><span className="eyebrow__line" />{labels.futureTitle}</p>
+                <h2>{labels.futureAfrica}</h2>
+                <p>{labels.futureBody}</p>
+              </div>
+            ) : selectedProducerCountry ? (
+              <div className="origin-explorer__country-panel">
+                <p className="eyebrow"><span className="eyebrow__line" />{labels.countryStage}</p>
+                <h2>{selectedProducerCountry.name}</h2>
+                <p>{selectedProducerCountry.detail}</p>
+                <Link className="text-link text-link--red" to="/producers">{language === 'en' ? 'Explore producer profiles' : 'Explorar perfiles de productores'}<Arrow /></Link>
+              </div>
+            ) : (
+              <div className="origin-explorer__country-panel">
+                <p className="eyebrow"><span className="eyebrow__line" />{labels.panelEyebrow}</p>
+                <h2>{labels.panelTitle}</h2>
+                <p>{labels.panelBody}</p>
+                <div className="origin-explorer__country-links">
+                  {t.network.producerCountries.map((country) => (
+                    <button type="button" onClick={() => chooseCountry(country.id)} key={country.id}>
+                      <span>{country.name}</span><small>{country.label}</small><Arrow diagonal />
+                    </button>
+                  ))}
+                  <button type="button" onClick={() => chooseCountry('africa')}>
+                    <span>{labels.futureAfrica}</span><small>{labels.futureRegions}</small><Arrow diagonal />
+                  </button>
+                </div>
+              </div>
+            )}
+          </div>
+        </div>
+        <p className="origin-explorer__note"><span aria-hidden="true">✳</span>{language === 'en' ? 'Map markers identify producer countries and municipalities, not individual farm boundaries.' : 'Los marcadores señalan países productores y municipios, no los límites exactos de cada finca.'}</p>
+      </section>
+    </PageFrame>
+  )
+}
+
+function ProducerDirectoryPage({ language, t, menuOpen, onMenuToggle, onMenuClose, onToggleLanguage }) {
+  return (
+    <PageFrame language={language} t={t} menuOpen={menuOpen} onMenuToggle={onMenuToggle} onMenuClose={onMenuClose} onToggleLanguage={onToggleLanguage}>
+      <section className="interior-page section-shell directory-page">
+        <header className="interior-page__heading">
+          <p className="eyebrow"><span className="eyebrow__line" />{t.pages.producers.eyebrow}</p>
+          <h1>{t.pages.producers.title}</h1>
+          <p>{t.pages.producers.body}</p>
+        </header>
+        <div className="producer-teaser-grid">
+          {t.network.profiles.map((profile) => {
+            const cover = profile.photos?.[0]
+            return (
+              <Link className="producer-teaser" to={`/producers/${profile.id}`} key={profile.id}>
+                <div className={`producer-teaser__visual${profile.labelImage ? ' producer-teaser__visual--label' : ''}`}>
+                  <img src={profile.labelImage || cover?.src} alt={profile.labelAlt || cover?.alt || profile.visualAlt} loading="lazy" />
+                  <span className="producer-teaser__number">{profile.number}</span>
+                </div>
+                <div className="producer-teaser__content">
+                  <span className="producer-teaser__eyebrow">{profile.origin}</span>
+                  <h2>{profile.supplier}</h2>
+                  <p>{profile.product}</p>
+                  <span className="producer-teaser__link">{t.network.openProfile}<Arrow diagonal /></span>
+                </div>
+              </Link>
+            )
+          })}
+        </div>
+      </section>
+    </PageFrame>
+  )
+}
+
+function MarketsPage({ language, t, menuOpen, onMenuToggle, onMenuClose, onToggleLanguage }) {
+  return (
+    <PageFrame language={language} t={t} menuOpen={menuOpen} onMenuToggle={onMenuToggle} onMenuClose={onMenuClose} onToggleLanguage={onToggleLanguage}>
+      <section className="interior-page section-shell markets-page">
+        <header className="interior-page__heading">
+          <p className="eyebrow"><span className="eyebrow__line" />{t.pages.markets.eyebrow}</p>
+          <h1>{t.pages.markets.title}</h1>
+          <p>{t.pages.markets.body}</p>
+        </header>
+        <div className="markets-page__grid">
+          {t.network.buyerCountries.map((country) => (
+            <article className="buyer-country-card" key={country.name}>
+              <span className="buyer-country-card__region">{country.region} · {language === 'en' ? 'BUYER COUNTRY' : 'PAÍS COMPRADOR'}</span>
+              <strong>{country.name}</strong>
+              <span>{country.detail}</span>
+            </article>
+          ))}
+          <a className="buyer-country-card buyer-country-card--connect" href={InstagramAsiaLink} target="_blank" rel="noreferrer">
+            <span className="buyer-country-card__region">{language === 'en' ? 'ASIA · SAFEENA NETWORK' : 'ASIA · RED SAFEENA'}</span>
+            <strong>{language === 'en' ? 'Connect with SAFEENA Asia' : 'Conecta con SAFEENA Asia'}</strong>
+            <span>{language === 'en' ? 'Discuss origin and sourcing needs' : 'Conversemos sobre orígenes y abastecimiento'}<Arrow diagonal /></span>
+          </a>
+        </div>
+      </section>
+    </PageFrame>
+  )
+}
+
+function AboutPage({ language, t, menuOpen, onMenuToggle, onMenuClose, onToggleLanguage }) {
+  const steps = language === 'en'
+    ? [
+        { number: '01', title: 'Origin partners', body: 'Build relationships with coffee producers and document the places behind each lot.' },
+        { number: '02', title: 'Specialty lots', body: 'Present specialty coffee with clear producer, process and lot information.' },
+        { number: '03', title: 'Asian buyers', body: 'Connect origin partners with buyers primarily across Asia.' },
+      ]
+    : [
+        { number: '01', title: 'Aliados de origen', body: 'Construimos relaciones con caficultores y documentamos los lugares detrás de cada lote.' },
+        { number: '02', title: 'Lotes de café especial', body: 'Presentamos café especial con información clara del productor, el proceso y el lote.' },
+        { number: '03', title: 'Compradores en Asia', body: 'Conectamos a nuestros aliados de origen con compradores ubicados principalmente en Asia.' },
+      ]
+
+  return (
+    <PageFrame language={language} t={t} menuOpen={menuOpen} onMenuToggle={onMenuToggle} onMenuClose={onMenuClose} onToggleLanguage={onToggleLanguage}>
+      <section className="interior-page section-shell about-page">
+        <header className="interior-page__heading">
+          <p className="eyebrow"><span className="eyebrow__line" />{t.pages.about.eyebrow}</p>
+          <h1>{t.pages.about.title}</h1>
+          <p>{t.pages.about.body}</p>
+        </header>
+        <div className="about-page__steps">
+          {steps.map((step) => (
+            <article key={step.number}>
+              <span>{step.number}</span>
+              <h2>{step.title}</h2>
+              <p>{step.body}</p>
+            </article>
+          ))}
+        </div>
+        <section className="about-page__values">
+          <p className="eyebrow"><span className="eyebrow__line" />{t.values.eyebrow}</p>
+          <h2>{t.values.title}</h2>
+          <div className="values__grid">
+            {t.values.cards.map((card) => (
+              <article className="value-card" key={card.number}>
+                <span className="value-card__letter">{card.number}</span><span className="value-card__rule" />
+                <h3>{card.title}</h3><p>{card.text}</p>
+              </article>
+            ))}
+          </div>
+        </section>
+      </section>
+      <section className="partner-band" id="contact" aria-labelledby="about-contact-title">
+        <div className="partner-band__inner section-shell">
+          <div className="partner-band__marker" aria-hidden="true">S<span>.</span></div>
+          <div className="partner-band__copy">
+            <p className="eyebrow eyebrow--light"><span className="eyebrow__line" />{t.partners.eyebrow}</p>
+            <h2 id="about-contact-title">{t.partners.title}</h2>
+            <p className="partner-band__body">{t.partners.body}</p>
+            <div className="partner-band__actions">
+              <a className="button button--cream" href={InstagramAsiaLink} target="_blank" rel="noreferrer">{t.partners.button}<Arrow diagonal /></a>
+              <a className="partner-band__secondary" href={InstagramLatamLink} target="_blank" rel="noreferrer">{t.partners.secondaryButton}<Arrow /></a>
+            </div>
+          </div>
+        </div>
+      </section>
+    </PageFrame>
   )
 }
 
@@ -429,17 +760,26 @@ function App() {
 function SafeenaWebsite() {
   const [language, setLanguage] = useState(() => window.localStorage.getItem('safeena-language') || 'en')
   const [menuOpen, setMenuOpen] = useState(false)
+  const [selectedZoneId, setSelectedZoneId] = useState('jardin')
   const t = content[language]
   const location = useLocation()
   const producerRoute = location.pathname.match(/^\/producers\/([^/]+)\/?$/)
   const producerProfile = producerRoute ? t.network.profiles.find((profile) => profile.id === producerRoute[1]) : null
+  const pageTitles = {
+    '/': 'SAFEENA — Colombian specialty coffee, connected',
+    '/origins': language === 'en' ? 'Origins · SAFEENA' : 'Orígenes · SAFEENA',
+    '/producers': language === 'en' ? 'Producers · SAFEENA' : 'Productores · SAFEENA',
+    '/markets': language === 'en' ? 'Buyers · SAFEENA' : 'Compradores · SAFEENA',
+    '/about': language === 'en' ? 'Our model · SAFEENA' : 'Modelo SAFEENA',
+  }
 
   useEffect(() => {
     document.documentElement.lang = language
-    document.title = producerProfile ? `${producerProfile.supplier} · SAFEENA` : 'SAFEENA — Colombian specialty coffee, connected'
+    document.title = producerProfile ? `${producerProfile.supplier} · SAFEENA` : pageTitles[location.pathname] || 'SAFEENA'
   }, [language, location.pathname])
 
   const closeMenu = () => setMenuOpen(false)
+  const toggleMenu = () => setMenuOpen((open) => !open)
   const toggleLanguage = () => {
     const nextLanguage = language === 'en' ? 'es' : 'en'
     window.localStorage.setItem('safeena-language', nextLanguage)
@@ -448,48 +788,18 @@ function SafeenaWebsite() {
 
   if (producerRoute) {
     return producerProfile
-      ? <ProducerMiniPage profile={producerProfile} language={language} t={t} onToggleLanguage={toggleLanguage} />
-      : <main className="producer-not-found section-shell"><h1>{language === 'en' ? 'Origin not found' : 'No encontramos este origen'}</h1><Link to="/#producer-countries">{language === 'en' ? 'Explore producer countries' : 'Explorar países productores'}<Arrow /></Link></main>
+      ? <ProducerMiniPage profile={producerProfile} language={language} t={t} menuOpen={menuOpen} onMenuToggle={toggleMenu} onMenuClose={closeMenu} onToggleLanguage={toggleLanguage} />
+      : <PageFrame language={language} t={t} menuOpen={menuOpen} onMenuToggle={toggleMenu} onMenuClose={closeMenu} onToggleLanguage={toggleLanguage}><main className="producer-not-found section-shell"><h1>{language === 'en' ? 'Origin not found' : 'No encontramos este origen'}</h1><Link to="/producers">{language === 'en' ? 'Explore producer profiles' : 'Explorar perfiles de productores'}<Arrow /></Link></main></PageFrame>
   }
+
+  if (location.pathname === '/origins') return <OriginExplorerPage language={language} t={t} menuOpen={menuOpen} onMenuToggle={toggleMenu} onMenuClose={closeMenu} onToggleLanguage={toggleLanguage} />
+  if (location.pathname === '/producers') return <ProducerDirectoryPage language={language} t={t} menuOpen={menuOpen} onMenuToggle={toggleMenu} onMenuClose={closeMenu} onToggleLanguage={toggleLanguage} />
+  if (location.pathname === '/markets') return <MarketsPage language={language} t={t} menuOpen={menuOpen} onMenuToggle={toggleMenu} onMenuClose={closeMenu} onToggleLanguage={toggleLanguage} />
+  if (location.pathname === '/about') return <AboutPage language={language} t={t} menuOpen={menuOpen} onMenuToggle={toggleMenu} onMenuClose={closeMenu} onToggleLanguage={toggleLanguage} />
 
   return (
     <>
-      <div className="announcement">
-        <span className="announcement__dot" />
-        <span>{t.announcement}</span>
-        <span className="announcement__right">{t.announcementRight}</span>
-      </div>
-
-      <header className="site-header" id="top">
-        <a className="skip-link" href="#main">{language === 'en' ? 'Skip to content' : 'Saltar al contenido'}</a>
-        <div className="nav-wrap">
-          <Logo language={language} />
-          <button
-            type="button"
-            className="menu-toggle"
-            aria-label={language === 'en' ? (menuOpen ? 'Close menu' : 'Open menu') : (menuOpen ? 'Cerrar menú' : 'Abrir menú')}
-            aria-expanded={menuOpen}
-            onClick={() => setMenuOpen((open) => !open)}
-          >
-            <span />
-            <span />
-          </button>
-          <nav className={`main-nav${menuOpen ? ' main-nav--open' : ''}`} aria-label={language === 'en' ? 'Main navigation' : 'Navegación principal'}>
-            <a href="#story" onClick={closeMenu}>{t.nav.story}</a>
-            <a href="#network" onClick={closeMenu}>{t.nav.network}</a>
-            <a href="#producer-countries" onClick={closeMenu}>{t.nav.producers}</a>
-            <a href="#buyer-countries" onClick={closeMenu}>{t.nav.buyers}</a>
-            <a href="#colombia-zones" onClick={closeMenu}>{t.nav.zones}</a>
-            <a href="#partners" onClick={closeMenu}>{t.nav.partners}</a>
-            <button className="language-switch" type="button" onClick={() => { toggleLanguage(); closeMenu() }} aria-label={language === 'en' ? 'Cambiar a español' : 'Switch to English'}>
-              <span className="language-switch__current">{language.toUpperCase()}</span>
-              <span className="language-switch__divider">/</span>
-              <span>{t.language}</span>
-            </button>
-            <a className="nav-cta" href="#partners" onClick={closeMenu}>{t.nav.contact}<Arrow diagonal /></a>
-          </nav>
-        </div>
-      </header>
+      <SiteHeader language={language} t={t} menuOpen={menuOpen} onMenuToggle={toggleMenu} onMenuClose={closeMenu} onToggleLanguage={toggleLanguage} />
 
       <main id="main">
         <section className="hero section-shell" aria-labelledby="hero-title">
@@ -498,7 +808,7 @@ function SafeenaWebsite() {
             <h1 id="hero-title">{t.hero.title}</h1>
             <p className="hero__body">{t.hero.body}</p>
             <div className="hero__actions">
-              <a className="button button--dark" href="#colombia-zones">{t.hero.primary}<Arrow diagonal /></a>
+              <Link className="button button--dark" to="/origins?country=colombia">{t.hero.primary}<Arrow diagonal /></Link>
               <a className="text-link" href={InstagramAsiaLink} target="_blank" rel="noreferrer">{t.hero.secondary}<Arrow /></a>
             </div>
             <div className="hero__signature">
@@ -532,7 +842,7 @@ function SafeenaWebsite() {
             </div>
             <div className="intro__detail">
               <p>{t.intro.body}</p>
-              <a className="text-link text-link--red" href="#network">{t.intro.link}<Arrow /></a>
+              <Link className="text-link text-link--red" to="/producers">{t.intro.link}<Arrow /></Link>
             </div>
           </div>
           <div className="intro__seal" aria-hidden="true">
@@ -563,9 +873,9 @@ function SafeenaWebsite() {
                   <span>{region.placeLabel}</span>
                   <strong>{region.place}</strong>
                 </div>
-                <a className="text-link" href={region.id === 'asia' ? '#buyer-countries' : '#producer-countries'}>
+                <Link className="text-link" to={region.id === 'asia' ? '/markets' : '/origins'}>
                   {region.id === 'asia' ? (language === 'en' ? 'Explore buyer countries' : 'Explora países compradores') : (language === 'en' ? 'Explore producer countries' : 'Explora países productores')}<Arrow diagonal />
-                </a>
+                </Link>
               </article>
             ))}
           </div>
@@ -580,7 +890,7 @@ function SafeenaWebsite() {
             </div>
             <div className="country-grid">
               {t.network.producerCountries.map((country) => (
-                <a className={`country-card country-card--${country.id}`} href={country.id === 'colombia' ? '#colombia-zones' : '#partners'} key={country.id}>
+                <Link className={`country-card country-card--${country.id}`} to={`/origins?country=${country.id}`} key={country.id}>
                   {country.id === 'colombia' && <img className="country-card__image" src="/images/producers/kafesedna-landscape.jpg" alt={country.imageAlt} loading="lazy" />}
                   <span className="country-card__number" aria-hidden="true">{country.number}</span>
                   <span className="country-card__content">
@@ -589,7 +899,7 @@ function SafeenaWebsite() {
                     <span className="country-card__detail">{country.detail}</span>
                     <span className="country-card__action">{country.action}<Arrow diagonal /></span>
                   </span>
-                </a>
+                </Link>
               ))}
             </div>
             <p className="producer-network-note"><span aria-hidden="true">✳</span>{t.network.producerNetworkNote}</p>
@@ -611,11 +921,11 @@ function SafeenaWebsite() {
                   <span>{country.detail}</span>
                 </article>
               ))}
-              <a className="buyer-country-card buyer-country-card--connect" href={InstagramAsiaLink} target="_blank" rel="noreferrer">
+              <Link className="buyer-country-card buyer-country-card--connect" to="/markets">
                 <span className="buyer-country-card__region">{language === 'en' ? 'ASIA · SAFEENA NETWORK' : 'ASIA · RED SAFEENA'}</span>
                 <strong>{language === 'en' ? 'Meet SAFEENA Asia' : 'Conoce SAFEENA Asia'}</strong>
                 <span>{language === 'en' ? 'Connect with our buyer network' : 'Conecta con nuestra red compradora'}<Arrow diagonal /></span>
-              </a>
+              </Link>
             </div>
           </div>
 
@@ -634,21 +944,8 @@ function SafeenaWebsite() {
                 <p>{t.network.originsBody}</p>
               </div>
               <div className="origin-atlas__body">
-                <ColombiaOriginMap network={t.network} />
-                <div className="origin-list" aria-label={t.network.providerLabel}>
-                  <p className="origin-list__label">{t.network.providerLabel}</p>
-                  {t.network.locations.map((location) => (
-                    <article className="origin-card" id={`origin-${location.id}`} key={location.id}>
-                      <div className="origin-card__top">
-                        <span>{location.number} / {location.count}</span>
-                        <span className="origin-card__marker" aria-hidden="true">↗</span>
-                      </div>
-                      <h5>{location.place}</h5>
-                      <p className="origin-card__department">{location.department}, Colombia</p>
-                      <ul>{location.suppliers.map((supplier) => <li key={supplier.profile}><Link to={`/producers/${supplier.profile}`}>{supplier.name}<Arrow diagonal /></Link></li>)}</ul>
-                    </article>
-                  ))}
-                </div>
+                <ColombiaOriginMap network={t.network} selectedZone={selectedZoneId} onSelectZone={setSelectedZoneId} />
+                <OriginZoneSummary location={t.network.locations.find((item) => item.id === selectedZoneId)} network={t.network} language={language} />
               </div>
               <section className="origin-profiles" aria-labelledby="origin-profiles-title">
                 <div className="origin-profiles__heading">
@@ -720,23 +1017,7 @@ function SafeenaWebsite() {
         </section>
       </main>
 
-      <footer className="site-footer section-shell">
-        <div className="site-footer__top">
-          <div>
-            <Logo language={language} />
-            <p>{t.footer.phrase}</p>
-          </div>
-          <a className="footer-top-link" href="#top">{t.footer.back}</a>
-        </div>
-        <div className="site-footer__bottom">
-          <span>{t.footer.copyright}</span>
-          <div className="footer-links">
-            <a href={InstagramAsiaLink} target="_blank" rel="noreferrer">Instagram Asia <Arrow diagonal /></a>
-            <a href={InstagramLatamLink} target="_blank" rel="noreferrer">Instagram LatAm <Arrow diagonal /></a>
-            <span>{language === 'en' ? 'ORIGIN → MARKET' : 'ORIGEN → MERCADO'}</span>
-          </div>
-        </div>
-      </footer>
+      <SiteFooter language={language} t={t} />
     </>
   )
 }

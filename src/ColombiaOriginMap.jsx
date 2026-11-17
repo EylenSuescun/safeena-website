@@ -33,7 +33,7 @@ const mapPins = [
   { id: 'murillo', point: [-75.17, 4.88], labelSide: 'east' },
 ]
 
-export default function ColombiaOriginMap({ network }) {
+export default function ColombiaOriginMap({ network, selectedZone, onSelectZone }) {
   const pinCoordinates = mapPins.map(({ point }) => project(point))
   const pinStyle = ([x, y]) => ({ left: `${(x / 500) * 100}%`, top: `${(y / 510) * 100}%` })
 
@@ -82,16 +82,18 @@ export default function ColombiaOriginMap({ network }) {
         {mapPins.map((pin, index) => {
           const location = network.locations.find((item) => item.id === pin.id)
           return (
-            <a
-              className={`origin-map__pin origin-map__pin--${pin.id} origin-map__pin--${pin.labelSide}`}
-              href={`#origin-${pin.id}`}
-              aria-label={`${location.place}, ${location.department}`}
+            <button
+              type="button"
+              className={`origin-map__pin origin-map__pin--${pin.id} origin-map__pin--${pin.labelSide}${selectedZone === pin.id ? ' origin-map__pin--selected' : ''}`}
+              onClick={() => onSelectZone?.(pin.id)}
+              aria-label={`${network.mapPinAction}: ${location.place}, ${location.department}`}
+              aria-pressed={selectedZone === pin.id}
               style={pinStyle(pinCoordinates[index])}
               key={pin.id}
             >
               <span className="origin-map__pin-dot" />
               <span className="origin-map__pin-label"><strong>{location.mapName}</strong><small>{location.department}</small></span>
-            </a>
+            </button>
           )
         })}
       </div>
