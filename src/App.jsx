@@ -8,7 +8,7 @@ const content = {
     language: 'ES',
     hero: {
       eyebrow: 'A GLOBAL COFFEE NETWORK, ROOTED AT ORIGIN',
-      title: <>From local <em>origins,</em><br />a world of possibility.</>,
+      title: <>From the <em>origin</em><br />to the world.</>,
       body: 'SAFEENA is building a global network connecting coffee origins, producers and markets across Latin America and Asia. Explore by region, country and — in Colombia — by origin zone.',
       primary: 'Explore the network',
       secondary: 'Follow the journey',
@@ -78,7 +78,7 @@ const content = {
     language: 'EN',
     hero: {
       eyebrow: 'UNA RED GLOBAL DE CAFÉ, CON RAÍCES EN EL ORIGEN',
-      title: <>Desde los <em>orígenes</em><br />locales, un mundo de posibilidades.</>,
+      title: <>Del <em>origen</em><br />al mundo entero.</>,
       body: 'SAFEENA está construyendo una red global que conecta orígenes cafeteros, productores y mercados de América Latina y Asia. Explora por región, país y — en Colombia — por zonas de origen.',
       primary: 'Explora la red',
       secondary: 'Sigue el recorrido',
