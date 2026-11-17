@@ -47,6 +47,17 @@ const content = {
       zonesTitle: 'Every zone has a story.',
       zonesBody: 'Explore Colombian coffee origins zone by zone, with each profile bringing together local producers, practices and lots.',
       zonesNote: 'The zone directory is taking shape. Names and profiles will appear here as origin details are confirmed.',
+      originsEyebrow: 'COLOMBIA · OUR ORIGINS',
+      originsTitle: 'Three partners. Two places. One shared story.',
+      originsBody: 'Meet the Colombian producers already part of SAFEENA, rooted in the mountain landscapes of Antioquia and Tolima.',
+      mapLabel: 'A MAP OF OUR ORIGINS',
+      mapNote: 'Municipal locations · markers show town centers',
+      mapAlt: 'Illustrated map of Colombia marking Jardín in Antioquia and Murillo in Tolima',
+      providerLabel: 'ORIGIN PARTNERS',
+      locations: [
+        { id: 'jardin', number: '01', place: 'Jardín', department: 'Antioquia', count: '2 PRODUCERS', suppliers: ['Kafesedna', 'Villa Martin'], mapName: 'JARDÍN' },
+        { id: 'murillo', number: '02', place: 'Murillo', department: 'Tolima', count: '1 PRODUCER', suppliers: ['Salinas'], mapName: 'MURILLO' },
+      ],
     },
     values: {
       eyebrow: '04 / WHAT MATTERS',
@@ -117,6 +128,17 @@ const content = {
       zonesTitle: 'Cada zona tiene su historia.',
       zonesBody: 'Explora los orígenes cafeteros de Colombia por zonas, reuniendo productores, prácticas y lotes de cada lugar.',
       zonesNote: 'Estamos organizando el directorio por zonas. Los nombres y perfiles aparecerán a medida que confirmemos la información de origen.',
+      originsEyebrow: 'COLOMBIA · NUESTROS ORÍGENES',
+      originsTitle: 'Tres aliados. Dos lugares. Una historia compartida.',
+      originsBody: 'Conoce a los proveedores colombianos que ya hacen parte de SAFEENA, entre los paisajes de montaña de Antioquia y Tolima.',
+      mapLabel: 'MAPA DE NUESTROS ORÍGENES',
+      mapNote: 'Ubicaciones municipales · los marcadores señalan los cascos urbanos',
+      mapAlt: 'Mapa ilustrado de Colombia con marcas en Jardín, Antioquia, y Murillo, Tolima',
+      providerLabel: 'ALIADOS DE ORIGEN',
+      locations: [
+        { id: 'jardin', number: '01', place: 'Jardín', department: 'Antioquia', count: '2 PROVEEDORES', suppliers: ['Kafesedna', 'Villa Martin'], mapName: 'JARDÍN' },
+        { id: 'murillo', number: '02', place: 'Murillo', department: 'Tolima', count: '1 PROVEEDOR', suppliers: ['Salinas'], mapName: 'MURILLO' },
+      ],
     },
     values: {
       eyebrow: '04 / LO QUE NOS MUEVE',
@@ -325,9 +347,65 @@ function App() {
               <h3>{t.network.zonesTitle}</h3>
               <p>{t.network.zonesBody}</p>
             </div>
-            <div className="zone-directory-note">
-              <span className="zone-directory-note__mark" aria-hidden="true">CO</span>
-              <p>{t.network.zonesNote}</p>
+            <div className="origin-atlas">
+              <div className="origin-atlas__heading">
+                <div>
+                  <p className="eyebrow"><span className="eyebrow__line" />{t.network.originsEyebrow}</p>
+                  <h4>{t.network.originsTitle}</h4>
+                </div>
+                <p>{t.network.originsBody}</p>
+              </div>
+              <div className="origin-atlas__body">
+                <figure className="origin-map">
+                  <div className="origin-map__topline">
+                    <span>{t.network.mapLabel}</span>
+                    <span aria-hidden="true">CO · 01—02</span>
+                  </div>
+                  <div className="origin-map__canvas">
+                    <svg className="origin-map__drawing" viewBox="0 0 500 510" role="img" aria-label={t.network.mapAlt}>
+                      <defs>
+                        <linearGradient id="land-wash" x1="0" x2="1" y1="0" y2="1">
+                          <stop offset="0" stopColor="#d7dfce" />
+                          <stop offset="1" stopColor="#b7c7b3" />
+                        </linearGradient>
+                        <pattern id="map-grain" width="7" height="7" patternUnits="userSpaceOnUse">
+                          <circle cx="1" cy="1" r=".65" fill="#526b58" opacity=".22" />
+                        </pattern>
+                      </defs>
+                      <path className="origin-map__contour" d="M25 137c59-34 99-26 134-4s76 21 112 2 82-28 128-4M17 165c59-34 102-25 139-3s76 22 114 2 83-27 127-3M21 195c56-32 97-27 136-5s80 22 118 2 80-27 125-4M32 225c49-28 91-26 130-5s82 23 120 3 78-27 121-4M33 257c48-27 91-25 131-4s83 23 121 3 76-26 118-4M45 290c42-24 82-23 121-3s81 22 119 3 72-24 111-4" />
+                      <path className="origin-map__land" d="M117 35 161 26l39 8 36-12 35 12 34-4 32 13 30-6 29 16 40 2 22 12-17 12-39 3-29 15-31 4 13 24-14 22-29 17-9 24-29 14-6 31 18 25-10 29-19 18-8 32-24 21-10 32-18 22-23 1-17-19-8-26-23-13-15-28-19-16-8-25-19-12-10-28-22-16-6-28-20-18-2-28 15-17 5-25 20-12 15-25 22-11 17-23z" />
+                      <path className="origin-map__land-grain" d="M117 35 161 26l39 8 36-12 35 12 34-4 32 13 30-6 29 16 40 2 22 12-17 12-39 3-29 15-31 4 13 24-14 22-29 17-9 24-29 14-6 31 18 25-10 29-19 18-8 32-24 21-10 32-18 22-23 1-17-19-8-26-23-13-15-28-19-16-8-25-19-12-10-28-22-16-6-28-20-18-2-28 15-17 5-25 20-12 15-25 22-11 17-23z" />
+                      <path className="origin-map__river" d="M168 151c31 18 36 36 48 54s29 24 47 43 23 39 45 48M226 88c-8 30 3 52 23 66s26 34 27 57" />
+                      <text className="origin-map__region" x="255" y="335">COLOMBIA</text>
+                      <text className="origin-map__water" x="35" y="395">PACIFIC OCEAN</text>
+                      <text className="origin-map__water origin-map__water--east" x="375" y="303">ANDES</text>
+                    </svg>
+                    <a className="origin-map__pin origin-map__pin--jardin" href="#origin-jardin" aria-label={`${t.network.locations[0].place}, ${t.network.locations[0].department}`}>
+                      <span className="origin-map__pin-dot" />
+                      <span className="origin-map__pin-label">{t.network.locations[0].mapName}</span>
+                    </a>
+                    <a className="origin-map__pin origin-map__pin--murillo" href="#origin-murillo" aria-label={`${t.network.locations[1].place}, ${t.network.locations[1].department}`}>
+                      <span className="origin-map__pin-dot" />
+                      <span className="origin-map__pin-label">{t.network.locations[1].mapName}</span>
+                    </a>
+                  </div>
+                  <figcaption className="origin-map__caption"><span className="origin-map__legend-dot" />{t.network.mapNote}</figcaption>
+                </figure>
+                <div className="origin-list" aria-label={t.network.providerLabel}>
+                  <p className="origin-list__label">{t.network.providerLabel}</p>
+                  {t.network.locations.map((location) => (
+                    <article className="origin-card" id={`origin-${location.id}`} key={location.id}>
+                      <div className="origin-card__top">
+                        <span>{location.number} / {location.count}</span>
+                        <span className="origin-card__marker" aria-hidden="true">↗</span>
+                      </div>
+                      <h5>{location.place}</h5>
+                      <p className="origin-card__department">{location.department}, Colombia</p>
+                      <ul>{location.suppliers.map((supplier) => <li key={supplier}>{supplier}</li>)}</ul>
+                    </article>
+                  ))}
+                </div>
+              </div>
             </div>
           </div>
         </section>
