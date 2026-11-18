@@ -235,26 +235,28 @@ button { color: inherit; }
 .origin-zone-summary__producer-copy small { overflow: hidden; color: #777b70; font-size: 9px; text-overflow: ellipsis; white-space: nowrap; }
 .origin-zone-summary__producer-arrow { margin-left: auto; color: var(--red); font-size: 14px; }
 .origin-zone-summary__footnote { margin: auto 0 0; padding-top: 14px; color: #8b8d82; font-size: 8px; line-height: 1.6; }
-.world-origin-map { display: flex; min-width: 0; flex-direction: column; margin: 0; padding: 18px 18px 13px; border: 1px solid rgba(50,74,57,.11); background: linear-gradient(145deg, #f1f2e9 0%, #e7eee7 100%); }
-.world-origin-map__topline { display: flex; align-items: center; justify-content: space-between; gap: 12px; color: #697363; font-size: 8px; font-weight: 750; letter-spacing: .14em; }
-.world-origin-map__topline span:last-child { color: #919487; white-space: nowrap; }
-.world-origin-map__canvas { position: relative; width: 100%; aspect-ratio: 800 / 420; margin-top: 8px; }
-.world-origin-map__drawing { position: absolute; inset: 0; width: 100%; height: 100%; }
-.world-origin-map__graticule { fill: none; stroke: #9aa99a; stroke-width: .7; stroke-dasharray: 2 8; opacity: .32; }
-.world-origin-map__land { fill: url(#world-land); stroke: #829783; stroke-width: 1.3; stroke-linejoin: round; }
-.world-origin-map__grain { fill: url(#world-grain); opacity: .45; }
-.world-origin-map__continent { fill: #6b806d; font-family: Arial, sans-serif; font-size: 8px; font-weight: 700; letter-spacing: .17em; opacity: .72; }
-.world-origin-map__water { fill: #819187; font-size: 7px; font-weight: 700; letter-spacing: .16em; opacity: .7; }
-.world-origin-map__marker { position: absolute; display: flex; align-items: center; gap: 7px; padding: 0; border: 0; color: var(--forest); background: transparent; cursor: pointer; transform: translate(-50%, -50%); }
+.world-origin-map { display: flex; min-width: 0; flex-direction: column; margin: 0; padding: 19px 19px 14px; overflow: hidden; border: 1px solid rgba(50,74,57,.12); border-radius: 13px; background: linear-gradient(145deg, #f8f7f0 0%, #edf0e8 100%); box-shadow: 0 14px 35px rgba(35,52,40,.06); }
+.world-origin-map__topline { display: flex; align-items: center; justify-content: space-between; gap: 12px; color: #536453; font-size: 8px; font-weight: 800; letter-spacing: .15em; }
+.world-origin-map__topline span:last-child { color: #858b7d; white-space: nowrap; }
+.world-origin-map__canvas { position: relative; width: 100%; aspect-ratio: 2 / 1; margin-top: 12px; overflow: hidden; border: 1px solid rgba(73,103,92,.14); border-radius: 13px; background: #e2ece7; }
+.world-origin-map__drawing { position: absolute; inset: 0; display: block; width: 100%; height: 100%; }
+.world-origin-map__ocean { fill: url(#world-ocean); }
+.world-origin-map__graticule { fill: none; stroke: #8aa39a; stroke-width: .7; stroke-dasharray: 1.5 7; opacity: .35; }
+.world-origin-map__equator { fill: none; stroke: #67897b; stroke-width: .85; stroke-dasharray: 3 5; opacity: .46; }
+.world-origin-map__land { fill: url(#world-land); stroke: #788f79; stroke-width: 1.05; stroke-linejoin: round; stroke-linecap: round; }
+.world-origin-map__grain { fill: url(#world-grain); opacity: .42; pointer-events: none; }
+.world-origin-map__continent { fill: #59705d; font-family: Arial, sans-serif; font-size: 9px; font-weight: 800; letter-spacing: .15em; opacity: .74; text-anchor: middle; }
+.world-origin-map__water { fill: #6d8c84; font-family: Arial, sans-serif; font-size: 8px; font-weight: 750; letter-spacing: .13em; opacity: .78; text-anchor: middle; }
+.world-origin-map__marker { position: absolute; display: flex; align-items: center; gap: 8px; padding: 0; border: 0; color: var(--forest); background: transparent; cursor: pointer; transform: translate(-50%, -50%); }
 .world-origin-map__marker--west { flex-direction: row-reverse; }
-.world-origin-map__marker-dot { position: relative; display: block; width: 13px; height: 13px; flex: 0 0 auto; border: 3px solid #f5f3e9; border-radius: 50%; background: var(--red); box-shadow: 0 0 0 1.5px #b95942; }
-.world-origin-map__marker-dot::after { position: absolute; inset: -7px; border: 1px solid rgba(217,78,50,.26); border-radius: 50%; content: ""; }
-.world-origin-map__marker-label { min-width: max-content; padding: 5px 8px; border: 1px solid rgba(48,71,53,.12); border-radius: 999px; color: var(--forest); background: rgba(250,248,240,.96); box-shadow: 0 2px 8px rgba(36,49,42,.08); font-size: 7px; font-weight: 800; letter-spacing: .1em; transition: color .2s ease, background .2s ease; }
+.world-origin-map__marker-dot { position: relative; display: block; width: 14px; height: 14px; flex: 0 0 auto; border: 3px solid #f5f3e9; border-radius: 50%; background: var(--red); box-shadow: 0 0 0 1.5px #b95942; }
+.world-origin-map__marker-dot::after { position: absolute; inset: -7px; border: 1px solid rgba(217,78,50,.29); border-radius: 50%; content: ""; animation: origin-pulse 2.7s ease-out infinite; }
+.world-origin-map__marker-label { min-width: max-content; padding: 6px 9px; border: 1px solid rgba(48,71,53,.13); border-radius: 999px; color: var(--forest); background: rgba(250,248,240,.97); box-shadow: 0 3px 10px rgba(36,49,42,.11); font-size: 9px; font-weight: 800; letter-spacing: .08em; transition: color .2s ease, background .2s ease; }
 .world-origin-map__marker:hover .world-origin-map__marker-label, .world-origin-map__marker--selected .world-origin-map__marker-label { color: white; background: var(--forest); }
 .world-origin-map__marker--future .world-origin-map__marker-dot { border-color: #edf0e6; background: #b8bcad; box-shadow: 0 0 0 1px #93998b; }
 .world-origin-map__marker--future .world-origin-map__marker-dot::after { display: none; }
-.world-origin-map__marker--future .world-origin-map__marker-label { color: #788073; background: rgba(248,246,239,.86); }
-.world-origin-map__legend { display: flex; flex-wrap: wrap; gap: 16px; padding-top: 9px; color: #777b70; font-size: 8px; }
+.world-origin-map__marker--future .world-origin-map__marker-label { color: #788073; background: rgba(248,246,239,.91); }
+.world-origin-map__legend { display: flex; flex-wrap: wrap; gap: 16px; padding-top: 11px; color: #73796d; font-size: 9px; }
 .world-origin-map__legend span { display: flex; align-items: center; gap: 6px; }
 .world-origin-map__legend i { display: inline-block; width: 7px; height: 7px; border-radius: 50%; }
 .world-origin-map__legend-dot { background: var(--red); }
@@ -540,10 +542,14 @@ button { color: inherit; }
   .interior-page__heading { margin-bottom: 31px; }
   .interior-page__heading h1 { font-size: clamp(43px, 10vw, 61px); }
   .interior-page__heading > p:last-child { margin-top: 15px; font-size: 12px; }
-  .world-origin-map { padding: 14px 10px 11px; }
+  .world-origin-map { padding: 14px 11px 11px; border-radius: 11px; }
   .world-origin-map__topline { font-size: 6px; }
+  .world-origin-map__canvas { margin-top: 9px; border-radius: 9px; }
   .world-origin-map__marker { gap: 5px; }
-  .world-origin-map__marker-label { padding: 4px 6px; font-size: 6px; }
+  .world-origin-map__marker-dot { width: 11px; height: 11px; }
+  .world-origin-map__marker-label { padding: 4px 6px; font-size: 7px; }
+  .world-origin-map__continent { font-size: 10px; }
+  .world-origin-map__water { font-size: 7px; }
   .world-origin-map__legend { gap: 10px; font-size: 7px; }
   .origin-explorer__zone-switcher { padding: 11px; }
   .directory-page .producer-teaser-grid { grid-template-columns: 1fr; }
